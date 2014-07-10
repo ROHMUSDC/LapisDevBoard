@@ -1,0 +1,416 @@
+RLU8 Object Linker, Ver.1.51.2 Linkage Information
+[Tue Jun 18 16:11:21 2013]
+
+
+                         ------------------
+                          Control Synopsis
+                         ------------------
+
+I/O controls:    D  SD NS NA
+Other controls: CC STACK( 0400H(1024) )
+                COMB( $$content_of_init $$end_of_init )
+                COMB( $$init_info $$init_info_end )
+
+
+
+                        ------------------------
+                         Object Module Synopsis
+                        ------------------------
+                                                                Creator
+Module Name           File Name                                 CCU8     RASU8
+-----------           ---------                                 -----    -----
+clock                 _output\_obj\clock.obj                    3.31     1.61
+irq                   _output\_obj\irq.obj                      3.31     1.61
+led                   _output\_obj\led.obj                      3.31     1.61
+main                  _output\_obj\main.obj                     3.31     1.61
+ml610111              _output\_obj\ml610111.obj                 -.--     1.61
+pwm                   _output\_obj\pwm.obj                      3.31     1.61
+tbc                   _output\_obj\tbc.obj                      3.31     1.61
+timer                 _output\_obj\timer.obj                    3.31     1.61
+
+
+Number of Modules: 8
+
+Number of Symbols:
+ +---------------------------------------------------------------------------+
+ |          | CODE | DATA | BIT  |NVDATA|NVBIT |TABLE |NUMBER| TBIT || total |
+ |----------+------+------+------+------+------+------+------+------++-------|
+ | SEGMENT  |   130|     3|     0|     0|     0|     8|      |      ||    141|
+ |----------+------+------+------+------+------+------+------+------++-------|
+ | COMMUNAL |     0|     4|     0|     0|     0|     0|      |      ||      4|
+ |----------+------+------+------+------+------+------+------+------++-------|
+ | PUBLIC   |    84|     2|     0|     0|     0|     0|     0|     0||     86|
+ +---------------------------------------------------------------------------+
+
+Target:  ML610111 
+Model:   SMALL
+
+
+Memory Map - Program memory space #0:
+      Type     Start      Stop
+     -----------------------------
+      ROM      00:0000    00:5FFF
+
+Memory Map - Data memory space #0:
+      Type     Start      Stop
+     -----------------------------
+      RAM      00:E000    00:E7FF
+      RAM      00:F000    00:FFFF
+
+Memory Map - Memory space above #1:
+      Type     Start      Stop
+     -----------------------------
+      ROM      02:0000    02:0FFF
+      ROM      08:0000    08:5FFF
+      ROM      0A:0000    0A:0FFF
+
+                         ------------------
+                          Segment Synopsis
+                         ------------------
+
+Link Map - Program memory space #0 ( ROMWINDOW: 0000 - 5FFF )
+
+      Type     Start      Stop       Size              Name
+     -------------------------------------------------------
+      S CODE   00:0000    00:0001    0002(2)           (absolute)
+      S CODE   00:0002    00:0003    0002(2)           (absolute)
+      S CODE   00:0004    00:0005    0002(2)           (absolute)
+      S CODE   00:0006    00:0007    0002(2)           $$_intUndefHdr$irq
+      S CODE   00:0008    00:007F    0078(120)         (absolute)
+      S TABLE  00:0080    00:0087    0008(8)           $$NINITTAB
+      S TABLE  00:0088    00:00C7    0040(64)          $$TAB_tblLedDuty$led
+      S TABLE  00:00C8    00:00CF    0008(8)           $$init_info
+      S TABLE  00:00D0    00:00D1    0002(2)           $$init_info_end
+      S CODE   00:00D2    00:00E1    0010(16)          $$tb_setHtbdiv$tbc
+      S CODE   00:00E2    00:00FD    001C(28)          $$_intT16HINT$irq
+      S CODE   00:00FE    00:0123    0026(38)          $$pwmC_selectClock$pwm
+      S CODE   00:0124    00:013F    001C(28)          $$_intPB0INT$irq
+      S CODE   00:0140    00:015B    001C(28)          $$_intPB1INT$irq
+      S CODE   00:015C    00:0177    001C(28)          $$_intPA0INT$irq
+      S CODE   00:0178    00:0193    001C(28)          $$_intPA1INT$irq
+      S CODE   00:0194    00:01AF    001C(28)          $$_intCMP1INT$irq
+      S CODE   00:01B0    00:01CB    001C(28)          $$_intCMP0INT$irq
+      S CODE   00:01CC    00:01D3    0008(8)           $$_initState$main
+      S CODE   00:01D4    00:022F    005C(92)          $$led_DutySet$led
+      S CODE   00:0230    00:0241    0012(18)          $$led_On$led
+      S CODE   00:0242    00:0242    0000(0)           $$content_of_init
+      S CODE   00:0242    00:0243    0002(2)           $$end_of_init
+      S CODE   00:0244    00:025F    001C(28)          $$_intTM8INT$irq
+      S CODE   00:0260    00:027B    001C(28)          $$_intTM9INT$irq
+      S CODE   00:027C    00:02A3    0028(40)          $$_swInit$main
+      S CODE   00:02A4    00:02BF    001C(28)          $$_intTMEINT$irq
+      S CODE   00:02C0    00:02CD    000E(14)          $$led_cde_On$led
+      S CODE   00:02CE    00:02E9    001C(28)          $$_intTMAINT$irq
+      S CODE   00:02EA    00:02EF    0006(6)           $$tm_stop89$timer
+      S CODE   00:02F0    00:02FF    0010(16)          $$pwmF_setOneShotMode$pwm
+      S CODE   00:0300    00:030F    0010(16)          $$pwmE_setOneShotMode$pwm
+      S CODE   00:0310    00:031F    0010(16)          $$pwmC_setOneShotMode$pwm
+      S CODE   00:0320    00:041B    00FC(252)         $$led_Init$led
+      S CODE   00:041C    00:0437    001C(28)          $$_intUA0INT$irq
+      S CODE   00:0438    00:043D    0006(6)           $$pwmD_setDuty$pwm
+      S CODE   00:043E    00:0459    001C(28)          $$_intUA1INT$irq
+      S CODE   00:045A    00:045F    0006(6)           $$pwmC_setDuty$pwm
+      S CODE   00:0460    00:046F    0010(16)          $$pwmD_setOneShotMode$pwm
+      S CODE   00:0470    00:0475    0006(6)           $$pwmE_setDuty$pwm
+      S CODE   00:0476    00:04B7    0042(66)          $$tm_set89Source$timer
+      S CODE   00:04B8    00:04CB    0014(20)          $$main_clrWDT$main
+      S CODE   00:04CC    00:04F1    0026(38)          $$pwmF_selectClock$pwm
+      S CODE   00:04F2    00:0571    0080(128)         $$_initPeri$main
+      S CODE   00:0572    00:0577    0006(6)           $$pwmF2_setDuty$pwm
+      S CODE   00:0578    00:05A9    0032(50)          $$irq_setHdr$irq
+      S CODE   00:05AA    00:05B1    0008(8)           $$pwmF_clearCount$pwm
+      S CODE   00:05B2    00:05F3    0042(66)          $$tm_setABSource$timer
+      S CODE   00:05F4    00:05F9    0006(6)           $$pwmF0_setDuty$pwm
+      S CODE   00:05FA    00:05FF    0006(6)           $$pwmF1_setDuty$pwm
+      S CODE   00:0600    00:0603    0004(4)           $$irq_di$irq
+      S CODE   00:0604    00:0607    0004(4)           $$irq_ei$irq
+      S CODE   00:0608    00:0623    001C(28)          $$_intT2HINT$irq
+      S CODE   00:0624    00:062D    000A(10)          $$tm_setABData$timer
+      S CODE   00:062E    00:062F    0002(2)           $$_intNullHdr$irq
+      S CODE   00:0630    00:0681    0052(82)          $$clk_setSysclk$clock
+      S CODE   00:0682    00:0689    0008(8)           $$pwmC_clearCount$pwm
+      S CODE   00:068A    00:06AF    0026(38)          $$pwmE_selectClock$pwm
+      S CODE   00:06B0    00:06CB    001C(28)          $$_intPWDINT$irq
+      S CODE   00:06CC    00:06E7    001C(28)          $$led_cde_Off$led
+      S CODE   00:06E8    00:0703    001C(28)          $$_intPWEINT$irq
+      S CODE   00:0704    00:071F    001C(28)          $$_intPWFINT$irq
+      S CODE   00:0720    00:0725    0006(6)           $$pwmF2_setEnable$pwm
+      S CODE   00:0726    00:0741    001C(28)          $$_intPWCINT$irq
+      S CODE   00:0742    00:0747    0006(6)           $$led_f_On$led
+      S CODE   00:0748    00:074D    0006(6)           $$pwmF_setPeriod$pwm
+      S CODE   00:074E    00:0757    000A(10)          $$tm_set89Data$timer
+      S CODE   00:0758    00:077B    0024(36)          $$led_Off$led
+      S CODE   00:077C    00:07A1    0026(38)          $$tm_init$timer
+      S CODE   00:07A2    00:07AB    000A(10)          $$_branchHdr$irq
+      S CODE   00:07AC    00:096D    01C2(450)         $$main$main
+      S CODE   00:096E    00:09C7    005A(90)          $$irq_init$irq
+      S CODE   00:09C8    00:09CF    0008(8)           $$led_f_Off$led
+      S CODE   00:09D0    00:09D5    0006(6)           $$pwmE_setPeriod$pwm
+      S CODE   00:09D6    00:09DB    0006(6)           $$pwmD_setPeriod$pwm
+      S CODE   00:09DC    00:09EB    0010(16)          $$pwmF_selectOutputPolarity$pwm
+      S CODE   00:09EC    00:09F7    000C(12)          $$tm_start89$timer
+      S CODE   00:09F8    00:0A1D    0026(38)          $$pwmD_selectClock$pwm
+      S CODE   00:0A1E    00:0A2D    0010(16)          $$pwmD_selectOutputPolarity$pwm
+      S CODE   00:0A2E    00:0A33    0006(6)           $$pwmC_setPeriod$pwm
+      S CODE   00:0A34    00:0A4F    001C(28)          $$_intPB2INT$irq
+      S CODE   00:0A50    00:0A5F    0010(16)          $$pwmC_selectOutputPolarity$pwm
+      S CODE   00:0A60    00:0A6B    000C(12)          $$tm_startAB$timer
+      S CODE   00:0A6C    00:0A87    001C(28)          $$_intPB3INT$irq
+      S CODE   00:0A88    00:0AA3    001C(28)          $$_intPA2INT$irq
+      S CODE   00:0AA4    00:0ABF    001C(28)          $$_intT32HINT$irq
+      S CODE   00:0AC0    00:0AC7    0008(8)           $$pwmE_clearCount$pwm
+      S CODE   00:0AC8    00:0AE3    001C(28)          $$_intVLSINT$irq
+      S CODE   00:0AE4    00:0AF3    0010(16)          $$pwmE_selectOutputPolarity$pwm
+      S CODE   00:0AF4    00:0AF9    0006(6)           $$pwmF_dutyUpdate$pwm
+      S CODE   00:0AFA    00:0B15    001C(28)          $$_intSADINT$irq
+      S CODE   00:0B16    00:0B31    001C(28)          $$_intT128HINT$irq
+      S CODE   00:0B32    00:0B39    0008(8)           $$pwmD_clearCount$pwm
+      S CODE   00:0B3A    00:0B53    001A(26)          $$_intWDTINT$irq
+      S CODE   00:0B54    00:0B6F    001C(28)          $$_intTMFINT$irq
+      S CODE   00:0B70    00:0B75    0006(6)           $$pwmF0_setEnable$pwm
+      S CODE   00:0B76    00:0B7D    0008(8)           $$_intPA0$main
+      S CODE   00:0B7E    00:0B99    001C(28)          $$_intTMBINT$irq
+      S CODE   00:0B9A    00:0BB5    001C(28)          $$_intI2CSINT$irq
+      S CODE   00:0BB6    00:0BD1    001C(28)          $$_intSIO0INT$irq
+      S CODE   00:0BD2    00:0BD9    0008(8)           $$_intTMB$main
+      S CODE   00:0BDA    00:0C69    0090(144)         $$NCODml610111sw
+      S CODE   00:0C6A    00:0C85    001C(28)          $$_intI2CMINT$irq
+      S CODE   00:0C86    00:0C8B    0006(6)           $$pwmF1_setEnable$pwm
+>GAP<          00:0C8C    00:5FDF    5354(21332)       (ROM)
+      S CODE   00:5FE0    00:5FFF    0020(32)          (absolute)
+
+
+Link Map - Data memory space #0
+
+      Type     Start      Stop       Size              Name
+     -------------------------------------------------------
+      Q ROMWIN 00:0000    00:5FFF    6000(24576)       (ROMWIN)
+>GAP<          00:E000.0  00:E3B1.7  03B2.0(946.0)     (RAM)
+      S DATA   00:E3B2    00:E7B1    0400(1024)        $STACK
+      S DATA   00:E7B2    00:E7EF    003E(62)          $$NVARirq
+      C DATA   00:E7F0    00:E7F1    0002(2)           _stepRedLed
+>GAP<          00:E7F2.0  00:E7F2.7  0001.0(1.0)       (RAM)
+      C DATA   00:E7F3    00:E7F3    0001(1)           _stepLed
+      C DATA   00:E7F4    00:E7F5    0002(2)           _stepBlueLed
+      C DATA   00:E7F6    00:E7F7    0002(2)           _stepGreenLed
+      S DATA   00:E7F8    00:E7FF    0008(8)           $$NINITVAR
+      Q SFR    00:F000    00:FFFF    1000(4096)        (SFR)
+
+
+Link Map - Memory space above #1
+
+      Type     Start      Stop       Size              Name
+     -------------------------------------------------------
+ ---
+      S TABLE  02:0000    02:0FFF    1000(4096)        (absolute)
+ ---
+      S TABLE  08:0000    08:5FFF    6000(24576)       (absolute)
+ ---
+      S TABLE  0A:0000    0A:0FFF    1000(4096)        (absolute)
+
+
+Not Linked segments:
+
+      Module Name         Type       Size              Segment Name 
+     --------------------------------------------------------------
+      led
+                          TABLE      0002(2)           $$TAB_valLedPeriod$led
+     --------------------------------------------------------------
+      pwm
+                          CODE       0026(38)          $$pwmD_selectInterrupt$pwm
+                          CODE       0026(38)          $$pwmE_selectInterrupt$pwm
+                          CODE       0006(6)           $$pwmE_start$pwm
+                          CODE       0006(6)           $$pwmF0_setDisable$pwm
+                          CODE       0006(6)           $$pwmF_stop$pwm
+                          CODE       0026(38)          $$pwmF_selectInterrupt$pwm
+                          CODE       0006(6)           $$pwmF1_setDisable$pwm
+                          CODE       0006(6)           $$pwmE_stop$pwm
+                          CODE       0026(38)          $$pwmC_selectInterrupt$pwm
+                          CODE       0006(6)           $$pwmF_start$pwm
+                          CODE       0006(6)           $$pwmF2_setDisable$pwm
+                          CODE       0006(6)           $$pwmC_start$pwm
+                          CODE       0006(6)           $$pwmD_stop$pwm
+                          CODE       0006(6)           $$pwmC_stop$pwm
+                          CODE       0006(6)           $$pwmD_start$pwm
+     --------------------------------------------------------------
+      tbc
+                          CODE       000C(12)          $$tb_getHtbdiv$tbc
+     --------------------------------------------------------------
+      timer
+                          CODE       0010(16)          $$tm_set8Oneshot$timer
+                          CODE       0010(16)          $$tm_set9Oneshot$timer
+                          CODE       0008(8)           $$tm_clrABCounter$timer
+                          CODE       0010(16)          $$tm_setAOneshot$timer
+                          CODE       0012(18)          $$tm_getABCounter$timer
+                          CODE       0008(8)           $$tm_get89Source$timer
+                          CODE       0006(6)           $$tm_stopAB$timer
+                          CODE       0010(16)          $$tm_setBOneshot$timer
+                          CODE       0008(8)           $$tm_getABSource$timer
+                          CODE       0012(18)          $$tm_get89Counter$timer
+                          CODE       0006(6)           $$tm_restart89$timer
+                          CODE       0008(8)           $$tm_clr89Counter$timer
+                          CODE       0006(6)           $$tm_restartAB$timer
+     --------------------------------------------------------------
+
+
+Total size (CODE  ) = 00C5A   (3162)
+Total size (DATA  ) = 0044D   (1101)
+Total size (BIT   ) = 00000.0 (0.0)
+Total size (NVDATA) = 00000   (0)
+Total size (NVBIT ) = 00000.0 (0.0)
+Total size (TABLE ) = 08052   (32850)
+
+          -----------------------
+           Symbol Table Synopsis
+          -----------------------
+
+Module         Value     Type         Symbol
+------         -----     ----------   ------
+clock
+               00:0630   Pub CODE     _clk_setSysclk
+
+Module         Value     Type         Symbol
+------         -----     ----------   ------
+irq
+               00:0194   Loc CODE     __intCMP1INT
+               00:0AA4   Loc CODE     __intT32HINT
+               00:01B0   Loc CODE     __intCMP0INT
+               00:0244   Loc CODE     __intTM8INT
+               00:0260   Loc CODE     __intTM9INT
+               00:0B16   Loc CODE     __intT128HINT
+               00:0608   Loc CODE     __intT2HINT
+               00:0C6A   Loc CODE     __intI2CMINT
+               00:0B3A   Loc CODE     __intWDTINT
+               00:015C   Loc CODE     __intPA0INT
+               00:02CE   Loc CODE     __intTMAINT
+               00:0178   Loc CODE     __intPA1INT
+               00:0BB6   Loc CODE     __intSIO0INT
+               00:0B9A   Loc CODE     __intI2CSINT
+               00:0AFA   Loc CODE     __intSADINT
+               00:0124   Loc CODE     __intPB0INT
+               00:07A2   Loc CODE     __branchHdr
+               00:02A4   Loc CODE     __intTMEINT
+               00:0140   Loc CODE     __intPB1INT
+               00:0B7E   Loc CODE     __intTMBINT
+               00:0A88   Loc CODE     __intPA2INT
+               00:00E2   Loc CODE     __intT16HINT
+               00:0B54   Loc CODE     __intTMFINT
+               00:0A34   Loc CODE     __intPB2INT
+               00:0A6C   Loc CODE     __intPB3INT
+               00:06B0   Loc CODE     __intPWDINT
+               00:06E8   Loc CODE     __intPWEINT
+               00:0726   Loc CODE     __intPWCINT
+               00:041C   Loc CODE     __intUA0INT
+               00:0006   Loc CODE     __intUndefHdr
+               00:043E   Loc CODE     __intUA1INT
+               00:0704   Loc CODE     __intPWFINT
+               00:0AC8   Loc CODE     __intVLSINT
+               00:096E   Pub CODE     _irq_init
+               00:0600   Pub CODE     _irq_di
+               00:0604   Pub CODE     _irq_ei
+               00:0578   Pub CODE     _irq_setHdr
+               00:062E   Loc CODE     __intNullHdr
+               00:E7B2   Loc DATA     __sIrqHdr
+
+Module         Value     Type         Symbol
+------         -----     ----------   ------
+led
+               00:09C8   Pub CODE     _led_f_Off
+               00:06CC   Pub CODE     _led_cde_Off
+               00:0742   Pub CODE     _led_f_On
+               00:02C0   Pub CODE     _led_cde_On
+               00:01D4   Pub CODE     _led_DutySet
+               00:0320   Pub CODE     _led_Init
+               00:0230   Pub CODE     _led_On
+               00:0758   Pub CODE     _led_Off
+               00:0088   Loc TABLE    __tblLedDuty
+
+Module         Value     Type         Symbol
+------         -----     ----------   ------
+main
+               00:04B8   Pub CODE     _main_clrWDT
+               00:07AC   Pub CODE     _main
+               00:E7F8   Pub DATA     _state
+               00:E7FA   Pub DATA     _state_exec_cnt
+               00:01CC   Loc CODE     __initState
+               00:04F2   Loc CODE     __initPeri
+               00:0B76   Loc CODE     __intPA0
+               00:0BD2   Loc CODE     __intTMB
+               00:027C   Loc CODE     __swInit
+               00:E7FE   Loc DATA     __clrWdt
+               00:E7FB   Loc DATA     __swInput
+               00:E7FD   Loc DATA     __ledChange
+               00:E7FC   Loc DATA     __ledSel
+
+Module         Value     Type         Symbol
+------         -----     ----------   ------
+ml610111
+              0000E7FF   Loc NUMBER   NEAR_RAM_END
+              0000E000   Loc NUMBER   NEAR_RAM_START
+               00:0BFC   Loc CODE     __wdtcounter_clear
+              000000FF   Loc NUMBER   _$$WINVAL
+               00:5FFF   Loc TABLE    _$$ROMWINEND
+               00:0BDE   Loc CODE     $begin
+               00:0000   Loc TABLE    _$$ROMWINSTART
+               00:0C10   Loc CODE     __init_loop
+               00:0C5C   Loc CODE     __init_end
+               00:0BDC   Loc CODE     $$brk_reset
+               00:0C1C   Loc CODE     __skip
+               00:0C38   Loc CODE     __init_loop2
+               00:0C4A   Loc CODE     __loop_by_byte
+               00:0BEC   Loc CODE     __near_ram_loop
+               00:0BDA   Pub CODE     $$start_up
+
+
+Module         Value     Type         Symbol
+------         -----     ----------   ------
+pwm
+               00:0AC0   Pub CODE     _pwmE_clearCount
+               00:0682   Pub CODE     _pwmC_clearCount
+               00:068A   Pub CODE     _pwmE_selectClock
+               00:04CC   Pub CODE     _pwmF_selectClock
+               00:00FE   Pub CODE     _pwmC_selectClock
+               00:09F8   Pub CODE     _pwmD_selectClock
+               00:0C86   Pub CODE     _pwmF1_setEnable
+               00:05F4   Pub CODE     _pwmF0_setDuty
+               00:09DC   Pub CODE     _pwmF_selectOutputPolarity
+               00:09D6   Pub CODE     _pwmD_setPeriod
+               00:0460   Pub CODE     _pwmD_setOneShotMode
+               00:0310   Pub CODE     _pwmC_setOneShotMode
+               00:0AE4   Pub CODE     _pwmE_selectOutputPolarity
+               00:0438   Pub CODE     _pwmD_setDuty
+               00:045A   Pub CODE     _pwmC_setDuty
+               00:0A1E   Pub CODE     _pwmD_selectOutputPolarity
+               00:0470   Pub CODE     _pwmE_setDuty
+               00:0720   Pub CODE     _pwmF2_setEnable
+               00:02F0   Pub CODE     _pwmF_setOneShotMode
+               00:09D0   Pub CODE     _pwmE_setPeriod
+               00:05AA   Pub CODE     _pwmF_clearCount
+               00:0B32   Pub CODE     _pwmD_clearCount
+               00:0A50   Pub CODE     _pwmC_selectOutputPolarity
+               00:0B70   Pub CODE     _pwmF0_setEnable
+               00:0A2E   Pub CODE     _pwmC_setPeriod
+               00:0300   Pub CODE     _pwmE_setOneShotMode
+               00:0748   Pub CODE     _pwmF_setPeriod
+               00:05FA   Pub CODE     _pwmF1_setDuty
+               00:0AF4   Pub CODE     _pwmF_dutyUpdate
+               00:0572   Pub CODE     _pwmF2_setDuty
+
+Module         Value     Type         Symbol
+------         -----     ----------   ------
+tbc
+               00:00D2   Pub CODE     _tb_setHtbdiv
+
+Module         Value     Type         Symbol
+------         -----     ----------   ------
+timer
+               00:0A60   Pub CODE     _tm_startAB
+               00:0624   Pub CODE     _tm_setABData
+               00:02EA   Pub CODE     _tm_stop89
+               00:074E   Pub CODE     _tm_set89Data
+               00:05B2   Pub CODE     _tm_setABSource
+               00:0476   Pub CODE     _tm_set89Source
+               00:077C   Pub CODE     _tm_init
+               00:09EC   Pub CODE     _tm_start89
+
+End of mapfile.

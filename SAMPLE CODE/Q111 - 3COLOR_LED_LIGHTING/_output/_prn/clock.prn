@@ -1,0 +1,148 @@
+RASU8(ML610111)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1 
+ Source File: _output\_obj\clock.asm
+ Object File: _output\_obj\clock.obj
+ Date  : 2013/06/18 Tue.[16:11]
+ Title : 
+## Loc. Object                   Line   Source Statements
+
+                                    1   ;; Compile Options : /TML610111 /MS /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Ipwm /Iuart /Ivolume /Iled /D_ML610Q111 /SS 1024 /SD /Oa /Om /W 3 /Wc /Fa_output\_obj\ 
+                                    2   ;; Version Number  : Ver.3.31.4
+                                    3   ;; File Name       : clock.c
+                                    4   
+                                    5   	type (ML610111) 
+                                    6   	model small, near
+                                    7   	$$clk_setSysclk$clock segment code 2h #0h
+                                    8   CVERSION 3.31.4
+                                    9   CGLOBAL 01H 03H 0000H "clk_setSysclk" 08H 02H 00H 00H 81H 02H 00H 00H 07H
+                                   10   CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+                                   11   CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+                                   12   CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+                                   13   CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+                                   14   CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+                                   15   CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+                                   16   CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+                                   17   CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+                                   18   CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+                                   19   CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+                                   20   CFILE 0001H 00000022H "main\\mcu.h"
+                                   21   CFILE 0002H 000007EEH "C:\\Users\\cschell\\U8DEV~1\\Inc\\ml610111.h"
+                                   22   CFILE 0003H 00000022H "clock\\clock.h"
+                                   23   CFILE 0004H 00000049H "irq\\irq.h"
+                                   24   CFILE 0005H 000000A0H "timer\\timer.h"
+                                   25   CFILE 0006H 00000029H "common\\common.h"
+                                   26   CFILE 0000H 00000068H "clock\\clock.c"
+                                   27   
+  --------------------------       28   	rseg $$clk_setSysclk$clock
+                                   29   CFUNCTION 0
+                                   30   
+00:0000                            31   _clk_setSysclk	:
+                                   32   CBLOCK 0 1 77
+                                   33   
+                                   34   ;;{
+                                   35   CLINEA 0000H 0001H 004DH 0001H 0001H
+00:0000 CE-F8                      36   	push	lr
+                                   37   CBLOCK 0 2 77
+                                   38   CRET 0000H
+                                   39   
+                                   40   ;;	SYSCLK = 0;	// LSCLKëIë
+                                   41   CLINEA 0000H 0001H 0050H 0002H 0019H
+00:0002 82-A0 03-F0                42   	rb	0f003h.0
+                                   43   
+                                   44   ;;	ENOSC  = 0;	// çÇë¨î≠êUí‚é~
+                                   45   CLINEA 0000H 0001H 0051H 0002H 001CH
+00:0006 92-A0 03-F0                46   	rb	0f003h.1
+                                   47   
+                                   48   ;;	OSCM1  = 1;	// ì‡ë†PLL
+                                   49   CLINEA 0000H 0001H 0052H 0002H 0017H
+00:000A B0-A0 02-F0                50   	sb	0f002h.3
+                                   51   
+                                   52   ;;	OSCM0  = 0;
+                                   53   CLINEA 0000H 0001H 0053H 0002H 000CH
+00:000E A2-A0 02-F0                54   	rb	0f002h.2
+                                   55   
+                                   56   ;;	SYSC0  = 0;
+                                   57   CLINEA 0000H 0001H 0055H 0002H 000CH
+00:0012 82-A0 02-F0                58   	rb	0f002h.0
+                                   59   
+                                   60   ;;	SYSC1  = 0;	// ñÒ8MHz OSCLK(==OSCLK/2)
+                                   61   CLINEA 0000H 0001H 0056H 0002H 0027H
+00:0016 92-A0 02-F0                62   	rb	0f002h.1
+                                   63   
+                                   64   ;;	ENOSC  = 1;	// çÇë¨î≠êUäJén
+                                   65   CLINEA 0000H 0001H 0058H 0002H 001CH
+00:001A 90-A0 03-F0                66   	sb	0f003h.1
+                                   67   
+                                   68   ;;	CLKSYS_TM_IRQ_EN = 0;
+                                   69   CLINEA 0000H 0001H 005BH 0002H 0016H
+00:001E A2-A0 13-F0                70   	rb	0f013h.2
+                                   71   
+                                   72   ;;	tm_init( TM_CH_NO_89 );			/* Timer channel */
+                                   73   CLINEA 0000H 0001H 005CH 0002H 002EH
+00:0022 01 00                      74   	mov	r0,	#01h
+00:0024 01-F0'00-00'               75   	bl	_tm_init
+                                   76   
+                                   77   ;;	CLKSYS_TM_IRQ = 0;
+                                   78   CLINEA 0000H 0001H 005DH 0002H 0013H
+00:0028 A2-A0 1B-F0                79   	rb	0f01bh.2
+                                   80   
+                                   81   ;;	tm_set89Source(TM_CS_LSCLK);						/* Operation clock */
+                                   82   CLINEA 0000H 0001H 005EH 0002H 0038H
+00:002C 00 00                      83   	mov	r0,	#00h
+00:002E 01-F0'00-00'               84   	bl	_tm_set89Source
+                                   85   
+                                   86   ;;	tm_set89Data( (unsigned short)(CLKSYS_TIMER_CNT) );	/* Timer count value */
+                                   87   CLINEA 0000H 0001H 005FH 0002H 004CH
+00:0032 62 00                      88   	mov	r0,	#062h
+00:0034 00 01                      89   	mov	r1,	#00h
+00:0036 01-F0'00-00'               90   	bl	_tm_set89Data
+                                   91   
+                                   92   ;;	tm_start89();
+                                   93   CLINEA 0000H 0001H 0060H 0002H 000EH
+00:003A 01-F0'00-00'               94   	bl	_tm_start89
+                                   95   
+                                   96   ;;	while( tm_checkOvf89() == TM_R_NOT_OVF );
+                                   97   CLINEA 0000H 0000H 0061H 0002H 002AH
+00:003E                            98   _$L3 :
+00:003E B1-A0 1B-F0                99   	tb	0f01bh.3
+00:0042 FD C9                     100   	beq	_$L3
+                                  101   
+                                  102   ;;	tm_stop89();
+                                  103   CLINEA 0000H 0001H 0062H 0002H 000DH
+00:0044 01-F0'00-00'              104   	bl	_tm_stop89
+                                  105   
+                                  106   ;;	CLKSYS_TM_IRQ = 0;
+                                  107   CLINEA 0000H 0001H 0063H 0002H 0013H
+00:0048 A2-A0 1B-F0               108   	rb	0f01bh.2
+                                  109   
+                                  110   ;;	SYSCLK = 1;	// HSCLKëIë
+                                  111   CLINEA 0000H 0001H 0065H 0002H 0019H
+00:004C 80-A0 03-F0               112   	sb	0f003h.0
+                                  113   CBLOCKEND 0 2 103
+                                  114   
+                                  115   ;;}
+                                  116   CLINEA 0000H 0001H 0067H 0001H 0001H
+00:0050 8E-F2                     117   	pop	pc
+                                  118   CBLOCKEND 0 1 103
+                                  119   CFUNCTIONEND 0
+                                  120   
+                                  121   	public _clk_setSysclk
+                                  122   	extrn code near : _tm_stop89
+                                  123   	extrn code near : _tm_set89Data
+                                  124   	extrn code near : _tm_set89Source
+                                  125   	extrn code near : _tm_init
+                                  126   	extrn code near : _tm_start89
+                                  127   	extrn code near : _main
+                                  128   
+                                  129   	end
+
+
+
+  Target       : ML610111 (nX-U8/100)
+  Memory Model : SMALL
+  Data   Model : NEAR
+  ROM WINDOW   : (not specified)
+  Internal RAM : E000H to E7FFH
+
+  Errors   : 0
+  Warnings : 0  (/Wrpeast)
+  Lines    : 129

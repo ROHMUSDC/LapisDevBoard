@@ -1,0 +1,1 @@
+ /STACK(1024) /D /SD /NS /CC _output\_obj\clock.obj _output\_obj\irq.obj _output\_obj\led.obj _output\_obj\main.obj _output\_obj\ml610111.obj _output\_obj\pwm.obj _output\_obj\tbc.obj _output\_obj\timer.obj ,ml610q111_3color_led_lighting3.abs,,;

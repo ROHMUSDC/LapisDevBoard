@@ -1,0 +1,254 @@
+(ExpressProject "Mini Low Power Micro Eval Board"
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File ".\library\discrete.olb"
+        (Type "Schematic Library"))
+      (File ".\library\stepperlib.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\mini low power micro eval board.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (ANNOTATE_Scope "0")
+    (ANNOTATE_Mode "1")
+    (ANNOTATE_Action "1")
+    (Annotate_Page_Order "1")
+    (ANNOTATE_Reset_References_to_1 "FALSE")
+    (ANNOTATE_No_Page_Number_Change "FALSE")
+    (ANNOTATE_Property_Combine "{Value}{Source Package}{POWER_GROUP}")
+    (ANNOTATE_IncludeNonPrimitive "FALSE")
+    (ANNOTATE_Refdes_Control_Required "FALSE")
+    (Annotate_type "Default")
+    (width_pages "100")
+    (width_start "80")
+    (width_End "80")
+    ("Layout Reuse: Action" "3")
+    (FLDSTUFF_Scope "0")
+    (FLDSTUFF_Action "0")
+    (FLDSTUFF_Report_File ".\mini low power micro eval board.RPT")
+    (FLDSTUFF_Update_File ".\mini low power micro eval board.UPD")
+    (FLDSTUFF__Uppercase_Result_Property "FALSE")
+    (FLDSTUFF_Uppercase_Update_Property "FALSE")
+    (FLDSTUFF_Uppercase_Unconditionally "FALSE")
+    (FLDSTUFF_Visibility "0")
+    (FLDSTUFF_inst_or_occurrence "0")
+    (FLDSTUFF_Create_Report_File "FALSE")
+    (BOM_Scope "0")
+    (BOM_Mode "0")
+    (BOM_Report_File
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\LAPIS MINI-LPMCU DEMO BOARD\DESIGN FILES\MINI LOW POWER MICRO EVAL BOARD.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0
+       "{Item}\t{Quantity}\t{Reference}\t{Value}\t{Manufacturer}\t{Manufacturer/0x27/s Part No.}\t{Digi-Key Part No.}\t{PCB Footprint}")
+    (BOM_Header
+       "Item\tQuantity\tReference\tValue\tManufacturer\tManufacturer/0x27/s Part #\tDigi-Key Part#\tPCB Footprint")
+    (BOM_Include_File
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\LAPIS MINI-LPMCU DEMO BOARD\DESIGN FILES\MINI LOW POWER MICRO EVAL BOARD.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "TRUE")
+    (Open_BOM_in_Excel "TRUE")
+    (BOM_View_Output "FALSE")
+    (Netlist_TAB "0")
+    (DRC_Scope "0")
+    (DRC_Action "0")
+    (DRC_Create_Warnings "FALSE")
+    (DRC_View_Output "FALSE")
+    (DRC_Run_Electrical_Rules "TRUE")
+    (DRC_Run_Physical_Rules "FALSE")
+    (DRC_Report_File
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\LAPIS MINI-LPMCU DEMO BOARD\DESIGN FILES\MINI LOW POWER MICRO EVAL BOARD.DRC")
+    (DRC_Check_Ports "FALSE")
+    (DRC_Check_Off-Page_Connectors "FALSE")
+    (DRC_Report_Ports_and_Off-page_Connectors "FALSE")
+    (DRC_SDT_Compatibility "FALSE")
+    (DRC_Report_Off-grid_Objects "FALSE")
+    (DRC_Check_Unconnected_Nets "TRUE")
+    (DRC_Check_for_Misleading_TAP "FALSE")
+    (DRC_Report_Netnames "FALSE")
+    (DRC_Check_Single_Node_Nets "TRUE")
+    (DRC_Check_No_Driving_Source "TRUE")
+    (DRC_Check_Duplicate_NetNames "TRUE")
+    (DRC_Check_Floating_Pins "TRUE")
+    (DRC_Check_Physical_Power_Pins_Visibility "TRUE")
+    (DRC_Check_PCB_Footprint_Property "TRUE")
+    (DRC_Check_Normal_Convert_View_Sync "TRUE")
+    (DRC_Check_Incorrect_PinGroup_Assignment "TRUE")
+    (DRC_Check_High_Speed_Props_Syntax "TRUE")
+    (DRC_Check_Missing_Pin_Numbers "TRUE")
+    (DRC_Check_Device_With_No_Pins "TRUE")
+    (DRC_Check_Power_Ground_Short "TRUE")
+    (DRC_Identical_References "TRUE")
+    (DRC_Type_Mismatch "TRUE")
+    (DRC_Visible_Power_pins "FALSE")
+    (DRC_Report_Unused_Part_Packages "TRUE")
+    (DRC_Check_Name_Prop_For_HierBlocks "TRUE")
+    ("Create Allegro Netlist" "TRUE")
+    ("Allegro Netlist Directory" "allegro")
+    ("View Allegro Netlist Files" "FALSE")
+    ("Update Allegro Board" "TRUE")
+    ("Allegro Netlist Output Board File"
+       "C:\Users\cschell\Documents\Projects\LAPIS mini-LPMCU Demo Board\Design Files\allegro\mlpmcu-Rev1.9.brd")
+    ("Allegro Netlist Remove Etch" "TRUE")
+    ("Allegro Netlist Place Changed Component" "ALWAYS_REPLACE")
+    ("Allegro Netlist Open Board in Allegro" "NEITHER")
+    ("Allegro Setup Configuration File"
+       "C:\Cadence\SPB_16.5\tools\capture\allegro.cfg")
+    ("Allegro Setup Backup Versions" "3")
+    ("Allegro Setup Output Warnings" "TRUE")
+    ("Allegro Setup Ignore Constraints" "FALSE")
+    ("Allegro Setup Part Type Length" "31")
+    ("Allegro Netlist Combine Property String" "PCB Footprint")
+    ("Allegro Netlist Ignore Fixed Property" "FALSE")
+    ("Allegro Netlist User Defined Property" "FALSE")
+    ("Allegro Netlist Input Board File"
+       "C:\Users\cschell\Documents\Projects\LAPIS mini-LPMCU Demo Board\Design Files\allegro\mlpmcu-Rev1.8.brd")
+    (GATE_&_PIN_SWAP_Scope "0")
+    (GATE_&_PIN_SWAP_File_Name
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\LAPIS MINI-LPMCU DEMO BOARD\DESIGN FILES\MINI LOW POWER MICRO EVAL BOARD.SWP")
+    (Backannotation_TAB "0")
+    ("Allegro Backannotation Run Genfeed" "TRUE")
+    ("Allegro Backannotation Board File"
+       "C:\Users\cschell\Documents\Projects\LAPIS mini-LPMCU Demo Board\Design Files\allegro\mlpmcu.brd")
+    ("Allegro Backannotation Netlist Directory" "allegro")
+    ("Allegro Backannotation Output File"
+       "allegro\mini low power micro eval board.swp")
+    ("Allegro Backannotation Update Schematic" "TRUE")
+    ("Allegro Backannotation View Output" "FALSE")
+    (Board_sim_option "VHDL_flow"))
+  (Folder "Outputs"
+    (File ".\mini low power micro eval board.bom"
+      (Type "Report"))
+    (File ".\mini low power micro eval board.drc"
+      (Type "Report"))
+    (File ".\allegro\pstxnet.dat"
+      (Type "Report")
+      (DisplayName "pstxnet.dat"))
+    (File ".\allegro\pstxprt.dat"
+      (Type "Report")
+      (DisplayName "pstxprt.dat"))
+    (File ".\allegro\pstchip.dat"
+      (Type "Report")
+      (DisplayName "pstchip.dat"))
+    (File ".\allegro\pinview.dat"
+      (Type "Report")
+      (DisplayName "pinView.dat"))
+    (File ".\allegro\netview.dat"
+      (Type "Report")
+      (DisplayName "netView.dat"))
+    (File ".\allegro\funcview.dat"
+      (Type "Report")
+      (DisplayName "funcView.dat"))
+    (File ".\allegro\compview.dat"
+      (Type "Report")
+      (DisplayName "compView.dat")))
+  (Folder "Referenced Projects")
+  (PartMRUSelector
+    (RaspberryPiSocket
+      (FullPartName "RaspberryPiSocket.Normal")
+      (LibraryName
+         "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\MY ORCAD LIBRARIES\STEPPERLIB.OLB")
+      (DeviceIndex "0"))
+    (CQX15/TO
+      (FullPartName "CQX15/TO.Normal")
+      (LibraryName "C:\CADENCE\SPB_16.5\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    ("2-PIN Jumper"
+      (FullPartName "2-PIN Jumper.Normal")
+      (LibraryName
+         "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\MY ORCAD LIBRARIES\STEPPERLIB.OLB")
+      (DeviceIndex "0"))
+    ("13x2 HDR"
+      (FullPartName "13x2 HDR.Normal")
+      (LibraryName
+         "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\MY ORCAD LIBRARIES\STEPPERLIB.OLB")
+      (DeviceIndex "0"))
+    ("HDR 8x2_.100" "
+      (FullPartName " HDR "8x2_.100.Normal")
+    (LibraryName
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\MY ORCAD LIBRARIES\STEPPERLIB.OLB")
+    (DeviceIndex "0"))
+  ("HDR 9x2"
+    (FullPartName "HDR 9x2.Normal")
+    (LibraryName
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\MY ORCAD LIBRARIES\STEPPERLIB.OLB")
+    (DeviceIndex "0"))
+  (FerriteBead
+    (FullPartName "FerriteBead.Normal")
+    (LibraryName
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\MY ORCAD LIBRARIES\STEPPERLIB.OLB")
+    (DeviceIndex "0"))
+  ("BEAD FERRITE/SM"
+    (FullPartName "BEAD FERRITE/SM.Normal")
+    (LibraryName "C:\CADENCE\SPB_16.5\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+    (DeviceIndex "0"))
+  (FT230XS-R
+    (FullPartName "FT230XS-R.Normal")
+    (LibraryName
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\MY ORCAD LIBRARIES\STEPPERLIB.OLB")
+    (DeviceIndex "0"))
+  (ML610Q112
+    (FullPartName "ML610Q112.Normal")
+    (LibraryName
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\MY ORCAD LIBRARIES\STEPPERLIB.OLB")
+    (DeviceIndex "0"))
+  (ML610Q111
+    (FullPartName "ML610Q111.Normal")
+    (LibraryName
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\MY ORCAD LIBRARIES\STEPPERLIB.OLB")
+    (DeviceIndex "0"))
+  (CON3
+    (FullPartName "CON3.Normal")
+    (LibraryName "C:\CADENCE\SPB_16.5\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+    (DeviceIndex "0"))
+  (GND_SIGNAL
+    (LibraryName "C:\CADENCE\SPB_16.5\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+    (DeviceIndex "0"))
+  (BD3570HFP
+    (FullPartName "BD3570HFP.Normal")
+    (LibraryName
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\MY ORCAD LIBRARIES\STEPPERLIB.OLB")
+    (DeviceIndex "0"))
+  (ML610Q101
+    (FullPartName "ML610Q101.Normal")
+    (LibraryName
+       "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\MY ORCAD LIBRARIES\STEPPERLIB.OLB")
+    (DeviceIndex "0"))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" "Library")
+      (Path "Outputs")
+      (Select "Design Resources"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -8 -30 0 200 0 481"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -30 -178 1204 8 527")
+        (Scroll "-120 0")
+        (Zoom "72")
+        (Occurrence "/"))
+      (Path
+         "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\LAPIS MINI-LPMCU DEMO BOARD\DESIGN FILES\MINI LOW POWER MICRO EVAL BOARD.DSN")
+      (Schematic "SCHEMATIC")
+      (Page "Top"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -30 175 1784 175 694")
+        (Scroll "-233 0")
+        (Zoom "72")
+        (Occurrence "/FTDI IC"))
+      (Path
+         "C:\USERS\CSCHELL\DOCUMENTS\PROJECTS\LAPIS MINI-LPMCU DEMO BOARD\DESIGN FILES\MINI LOW POWER MICRO EVAL BOARD.DSN")
+      (Schematic "FTDI Block")
+      (Page "FTDI IC")))
+  (ISPCBBASICLICENSE "false")
+  (MPSSessionName "cschell"))

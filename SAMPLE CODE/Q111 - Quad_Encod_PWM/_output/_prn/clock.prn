@@ -1,0 +1,74 @@
+RASU8(ML610111)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1 
+ Source File: _output\_obj\clock.asm
+ Object File: _output\_obj\clock.obj
+ Date  : 2013/06/18 Tue.[15:55]
+ Title : 
+## Loc. Object                   Line   Source Statements
+
+                                    1   ;; Compile Options : /TML610111 /MS /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Ipwm /Iuart /SL 127 /SD /Oa /Ot /W 3 /Wc /Fa_output\_obj\ 
+                                    2   ;; Version Number  : Ver.3.31.4
+                                    3   ;; File Name       : clock.c
+                                    4   
+                                    5   	type (ML610111) 
+                                    6   	model small, near
+                                    7   	$$clk_setSysclk$clock segment code 2h #0h
+                                    8   CVERSION 3.31.4
+                                    9   CGLOBAL 01H 03H 0000H "clk_setSysclk" 08H 02H 00H 00H 80H 00H 00H 00H 07H
+                                   10   CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+                                   11   CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+                                   12   CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+                                   13   CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+                                   14   CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+                                   15   CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+                                   16   CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+                                   17   CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+                                   18   CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+                                   19   CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+                                   20   CFILE 0001H 00000023H "main\\mcu.h"
+                                   21   CFILE 0002H 000007EEH "main\\ML610111.H"
+                                   22   CFILE 0003H 00000022H "..\\q102-1~1\\clock\\clock.h"
+                                   23   CFILE 0004H 00000057H "irq\\irq.h"
+                                   24   CFILE 0005H 000001B8H "timer\\timer.h"
+                                   25   CFILE 0000H 00000064H "..\\q102-1~1\\clock\\clock.c"
+                                   26   
+  --------------------------       27   	rseg $$clk_setSysclk$clock
+                                   28   CFUNCTION 0
+                                   29   
+00:0000                            30   _clk_setSysclk	:
+                                   31   CBLOCK 0 1 74
+                                   32   
+                                   33   ;;{
+                                   34   CLINEA 0000H 0001H 004AH 0001H 0001H
+                                   35   CBLOCK 0 2 74
+                                   36   
+                                   37   ;;	SYSC0  = 0;
+                                   38   CLINEA 0000H 0001H 0051H 0002H 000CH
+00:0000 82-A0 02-F0                39   	rb	0f002h.0
+                                   40   
+                                   41   ;;	SYSC1  = 0;	// –ñ8MHz OSCLK(==OSCLK/2)
+                                   42   CLINEA 0000H 0001H 0052H 0002H 0027H
+00:0004 92-A0 02-F0                43   	rb	0f002h.1
+                                   44   CBLOCKEND 0 2 99
+                                   45   
+                                   46   ;;}
+                                   47   CLINEA 0000H 0001H 0063H 0001H 0001H
+00:0008 1F-FE                      48   	rt
+                                   49   CBLOCKEND 0 1 99
+                                   50   CFUNCTIONEND 0
+                                   51   
+                                   52   	public _clk_setSysclk
+                                   53   	extrn code near : _main
+                                   54   
+                                   55   	end
+
+
+
+  Target       : ML610111 (nX-U8/100)
+  Memory Model : SMALL
+  Data   Model : NEAR
+  ROM WINDOW   : (not specified)
+  Internal RAM : E000H to E7FFH
+
+  Errors   : 0
+  Warnings : 0  (/Wrpeast)
+  Lines    : 55

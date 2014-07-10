@@ -1,0 +1,23 @@
+\t (00:00:10) allegro 16.5 P003 (v16-5-13C) i86
+\t (00:00:10)     Journal start - Tue May 28 13:29:37 2013
+\t (00:00:10)         Host=ROHM10748 User=cschell Pid=6872 CPUs=4
+\t (00:00:10) 
+\t (00:00:15) Starting new design...
+\i (00:00:15) trapsize 955
+\i (00:00:15) trapsize 929
+\i (00:00:15) trapsize 959
+\i (00:00:16) trapsize 1693
+\i (00:00:16) trapsize 1816
+\i (00:00:17) etchedit 
+\i (00:00:20) trapsize 1222
+\i (00:00:29) trapsize 1816
+\i (00:00:30) trapsize 812
+\i (00:00:33) new 
+\i (00:00:35) newdrawfillin "menu_cancel"
+\i (00:00:35) etchedit 
+\i (00:00:48) open 
+\i (00:01:18) fillin "C:\Users\cschell\Documents\Projects\Stepper Motor Eval Board\FINAL DESIGN\STEPPER EVAL BRD - PCB Board File - Final.brd"
+\i (00:01:18) cd "C:\Users\cschell\Documents\Projects\Stepper Motor Eval Board\FINAL DESIGN"
+\t (00:01:18) Opening existing design...
+\i (00:01:18) trapsize 2392
+\t (00:01:19)     Journal end - Tue May 28 13:30:45 2013

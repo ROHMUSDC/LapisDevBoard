@@ -1,0 +1,146 @@
+RASU8(ML610178A)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1 
+ Source File: _output\_obj\timer.asm
+ Object File: _output\_obj\timer.obj
+ Date  : 2013/06/18 Tue.[16:52]
+ Title : 
+## Loc. Object                   Line   Source Statements
+
+                                    1   ;; Compile Options : /TML610178A /ML /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Ipwm /Iuart /Ivolume /Iled /D_ML610Q178 /SS 256 /SD /Oa /Ot /W 3 /Wc /Fa_output\_obj\ 
+                                    2   ;; Version Number  : Ver.3.31.4
+                                    3   ;; File Name       : timer.c
+                                    4   
+                                    5   	type (ML610178A) 
+                                    6   	model large, near
+                                    7   	$$tm_init$timer segment code 2h any
+                                    8   CVERSION 3.31.4
+                                    9   CGLOBAL 01H 03H 0000H "tm_init" 08H 02H 00H 00H 80H 00H 00H 00H 07H
+                                   10   CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+                                   11   CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+                                   12   CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+                                   13   CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+                                   14   CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+                                   15   CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+                                   16   CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+                                   17   CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+                                   18   CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+                                   19   CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+                                   20   CFILE 0001H 00000027H "common\\common.h"
+                                   21   CFILE 0002H 00000020H "main\\mcu.h"
+                                   22   CFILE 0003H 000008AAH "main\\ml610178A.h"
+                                   23   CFILE 0004H 000001ABH "timer\\timer.h"
+                                   24   CFILE 0000H 00000049H "timer\\timer.c"
+                                   25   
+  --------------------------       26   	rseg $$tm_init$timer
+                                   27   CFUNCTION 0
+                                   28   
+??:0000                            29   _tm_init	:
+                                   30   CBLOCK 0 1 52
+                                   31   
+                                   32   ;;{
+                                   33   CLINEA 0000H 0001H 0034H 0001H 0001H
+                                   34   CBLOCK 0 2 52
+                                   35   CARGUMENT 46H 0001H 0014H "chNo" 02H 00H 00H
+                                   36   
+                                   37   ;;	switch( chNo ) {
+                                   38   CLINEA 0000H 0001H 0035H 0002H 0011H
+                                   39   CBLOCK 0 3 53
+??:0000 00 70                      40   	cmp	r0,	#00h
+??:0002 05 C9                      41   	beq	_$L34
+                                   42   
+                                   43   ;;	switch( chNo ) {
+                                   44   CLINEA 0000H 0000H 0035H 0002H 0011H
+??:0004 01 70                      45   	cmp	r0,	#01h
+??:0006 0A C9                      46   	beq	_$L35
+                                   47   
+                                   48   ;;	switch( chNo ) {
+                                   49   CLINEA 0000H 0000H 0035H 0002H 0011H
+??:0008 02 70                      50   	cmp	r0,	#02h
+??:000A 0F C9                      51   	beq	_$L36
+                                   52   
+                                   53   ;;	}
+                                   54   CLINEA 0000H 0000H 0047H 0002H 0002H
+                                   55   CBLOCKEND 0 3 71
+                                   56   CBLOCKEND 0 2 72
+                                   57   
+                                   58   ;;}
+                                   59   CLINEA 0000H 0001H 0048H 0001H 0001H
+??:000C 1F-FE                      60   	rt
+                                   61   
+                                   62   ;;	case TM_CH_NO_01 :
+                                   63   CLINEA 0000H 0001H 0036H 0002H 0013H
+??:000E                            64   _$L34 :
+                                   65   
+                                   66   ;;		T0RUN = 0;		/* T0RUN   = 0    ...count stop. */
+                                   67   CLINEA 0000H 0001H 0037H 0003H 0031H
+??:000E 82-A0 33-F0                68   	rb	0f033h.0
+                                   69   
+                                   70   ;;		T1RUN = 0;		/* T1RUN   = 0    ...count stop. */
+                                   71   CLINEA 0000H 0001H 0038H 0003H 0031H
+??:0012 82-A0 37-F0                72   	rb	0f037h.0
+                                   73   
+                                   74   ;;		T01M16 = 1;
+                                   75   CLINEA 0000H 0001H 0039H 0003H 000DH
+??:0016 A0-A0 32-F0                76   	sb	0f032h.2
+                                   77   
+                                   78   ;;		break;
+                                   79   CLINEA 0000H 0001H 003AH 0003H 0008H
+??:001A 1F-FE                      80   	rt
+                                   81   
+                                   82   ;;	case TM_CH_NO_89 :
+                                   83   CLINEA 0000H 0001H 003BH 0002H 0013H
+??:001C                            84   _$L35 :
+                                   85   
+                                   86   ;;		T8RUN = 0;		/* T0RUN   = 0    ...count stop. */
+                                   87   CLINEA 0000H 0001H 003CH 0003H 0031H
+??:001C 82-A0 E3-F8                88   	rb	0f8e3h.0
+                                   89   
+                                   90   ;;		T9RUN = 0;		/* T1RUN   = 0    ...count stop. */
+                                   91   CLINEA 0000H 0001H 003DH 0003H 0031H
+??:0020 82-A0 E7-F8                92   	rb	0f8e7h.0
+                                   93   
+                                   94   ;;		T89M16 = 1;
+                                   95   CLINEA 0000H 0001H 003EH 0003H 000DH
+??:0024 D0-A0 E2-F8                96   	sb	0f8e2h.5
+                                   97   
+                                   98   ;;		break;
+                                   99   CLINEA 0000H 0001H 003FH 0003H 0008H
+??:0028 1F-FE                     100   	rt
+                                  101   
+                                  102   ;;	case TM_CH_NO_AB :
+                                  103   CLINEA 0000H 0001H 0040H 0002H 0013H
+??:002A                           104   _$L36 :
+                                  105   
+                                  106   ;;		TARUN = 0;		/* T0RUN   = 0    ...count stop. */
+                                  107   CLINEA 0000H 0001H 0041H 0003H 0031H
+??:002A 82-A0 EB-F8               108   	rb	0f8ebh.0
+                                  109   
+                                  110   ;;		TBRUN = 0;		/* T1RUN   = 0    ...count stop. */
+                                  111   CLINEA 0000H 0001H 0042H 0003H 0031H
+??:002E 82-A0 EF-F8               112   	rb	0f8efh.0
+                                  113   
+                                  114   ;;		TABM16 = 1;
+                                  115   CLINEA 0000H 0001H 0043H 0003H 000DH
+??:0032 D0-A0 EA-F8               116   	sb	0f8eah.5
+                                  117   
+                                  118   ;;		break;
+                                  119   CLINEA 0000H 0001H 0044H 0003H 0008H
+??:0036 1F-FE                     120   	rt
+                                  121   CBLOCKEND 0 1 72
+                                  122   CFUNCTIONEND 0
+                                  123   
+                                  124   	public _tm_init
+                                  125   	extrn code far : _main
+                                  126   
+                                  127   	end
+
+
+
+  Target       : ML610178A (nX-U8/100)
+  Memory Model : LARGE
+  Data   Model : NEAR
+  ROM WINDOW   : (not specified)
+  Internal RAM : E000H to EFFFH
+
+  Errors   : 0
+  Warnings : 0  (/Wrpeast)
+  Lines    : 127

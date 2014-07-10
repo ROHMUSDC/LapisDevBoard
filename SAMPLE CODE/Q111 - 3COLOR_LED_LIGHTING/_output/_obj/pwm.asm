@@ -1,0 +1,1379 @@
+;; Compile Options : /TML610111 /MS /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Ipwm /Iuart /Ivolume /Iled /D_ML610Q111 /SS 1024 /SD /Oa /Om /W 3 /Wc /Fa_output\_obj\ 
+;; Version Number  : Ver.3.31.4
+;; File Name       : pwm.c
+
+	type (ML610111) 
+	model small, near
+	$$pwmC_clearCount$pwm segment code 2h #0h
+	$$pwmC_selectClock$pwm segment code 2h #0h
+	$$pwmC_selectInterrupt$pwm segment code 2h #0h
+	$$pwmC_selectOutputPolarity$pwm segment code 2h #0h
+	$$pwmC_setDuty$pwm segment code 2h #0h
+	$$pwmC_setOneShotMode$pwm segment code 2h #0h
+	$$pwmC_setPeriod$pwm segment code 2h #0h
+	$$pwmC_start$pwm segment code 2h #0h
+	$$pwmC_stop$pwm segment code 2h #0h
+	$$pwmD_clearCount$pwm segment code 2h #0h
+	$$pwmD_selectClock$pwm segment code 2h #0h
+	$$pwmD_selectInterrupt$pwm segment code 2h #0h
+	$$pwmD_selectOutputPolarity$pwm segment code 2h #0h
+	$$pwmD_setDuty$pwm segment code 2h #0h
+	$$pwmD_setOneShotMode$pwm segment code 2h #0h
+	$$pwmD_setPeriod$pwm segment code 2h #0h
+	$$pwmD_start$pwm segment code 2h #0h
+	$$pwmD_stop$pwm segment code 2h #0h
+	$$pwmE_clearCount$pwm segment code 2h #0h
+	$$pwmE_selectClock$pwm segment code 2h #0h
+	$$pwmE_selectInterrupt$pwm segment code 2h #0h
+	$$pwmE_selectOutputPolarity$pwm segment code 2h #0h
+	$$pwmE_setDuty$pwm segment code 2h #0h
+	$$pwmE_setOneShotMode$pwm segment code 2h #0h
+	$$pwmE_setPeriod$pwm segment code 2h #0h
+	$$pwmE_start$pwm segment code 2h #0h
+	$$pwmE_stop$pwm segment code 2h #0h
+	$$pwmF0_setDisable$pwm segment code 2h #0h
+	$$pwmF0_setDuty$pwm segment code 2h #0h
+	$$pwmF0_setEnable$pwm segment code 2h #0h
+	$$pwmF1_setDisable$pwm segment code 2h #0h
+	$$pwmF1_setDuty$pwm segment code 2h #0h
+	$$pwmF1_setEnable$pwm segment code 2h #0h
+	$$pwmF2_setDisable$pwm segment code 2h #0h
+	$$pwmF2_setDuty$pwm segment code 2h #0h
+	$$pwmF2_setEnable$pwm segment code 2h #0h
+	$$pwmF_clearCount$pwm segment code 2h #0h
+	$$pwmF_dutyUpdate$pwm segment code 2h #0h
+	$$pwmF_selectClock$pwm segment code 2h #0h
+	$$pwmF_selectInterrupt$pwm segment code 2h #0h
+	$$pwmF_selectOutputPolarity$pwm segment code 2h #0h
+	$$pwmF_setOneShotMode$pwm segment code 2h #0h
+	$$pwmF_setPeriod$pwm segment code 2h #0h
+	$$pwmF_start$pwm segment code 2h #0h
+	$$pwmF_stop$pwm segment code 2h #0h
+CVERSION 3.31.4
+CGLOBAL 01H 03H 0000H "pwmE_clearCount" 08H 02H 14H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmC_clearCount" 08H 02H 02H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmE_selectClock" 08H 02H 15H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF0_setDisable" 08H 02H 29H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmC_stop" 08H 02H 07H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmE_stop" 08H 02H 19H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF2_setDisable" 08H 02H 2BH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF_selectClock" 08H 02H 20H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmC_selectClock" 08H 02H 03H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmD_selectClock" 08H 02H 0CH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmE_selectInterrupt" 08H 02H 16H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF1_setEnable" 08H 02H 27H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF0_setDuty" 08H 02H 1CH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF_selectOutputPolarity" 08H 02H 22H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmD_setPeriod" 08H 02H 09H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmD_setOneShotMode" 08H 02H 11H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmC_setOneShotMode" 08H 02H 08H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmE_selectOutputPolarity" 08H 02H 17H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmE_start" 08H 02H 18H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF_start" 08H 02H 23H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmC_start" 08H 02H 06H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmD_start" 08H 02H 0FH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmD_setDuty" 08H 02H 0AH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmC_setDuty" 08H 02H 01H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmD_selectOutputPolarity" 08H 02H 0EH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmE_setDuty" 08H 02H 13H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmD_selectInterrupt" 08H 02H 0DH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF2_setEnable" 08H 02H 28H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF_setOneShotMode" 08H 02H 25H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmE_setPeriod" 08H 02H 12H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF_clearCount" 08H 02H 1FH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmD_clearCount" 08H 02H 0BH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmD_stop" 08H 02H 10H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF_stop" 08H 02H 24H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF1_setDisable" 08H 02H 2AH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmC_selectOutputPolarity" 08H 02H 05H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF_selectInterrupt" 08H 02H 21H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF0_setEnable" 08H 02H 26H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmC_setPeriod" 08H 02H 00H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmE_setOneShotMode" 08H 02H 1AH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmC_selectInterrupt" 08H 02H 04H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF_setPeriod" 08H 02H 1BH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF1_setDuty" 08H 02H 1DH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF_dutyUpdate" 08H 02H 2CH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "pwmF2_setDuty" 08H 02H 1EH 00H 80H 00H 00H 00H 07H
+CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+CFILE 0001H 00000022H "main\\mcu.h"
+CFILE 0002H 000007EEH "C:\\Users\\cschell\\U8DEV~1\\Inc\\ml610111.h"
+CFILE 0003H 00000080H "pwm\\pwm.h"
+CFILE 0000H 00000119H "pwm\\pwm.c"
+
+	rseg $$pwmC_setPeriod$pwm
+CFUNCTION 0
+
+_pwmC_setPeriod	:
+CBLOCK 0 1 32
+
+;;{
+CLINEA 0000H 0001H 0020H 0001H 0001H
+CBLOCK 0 2 32
+CARGUMENT 46H 0002H 0024H "period" 02H 00H 01H
+
+;;	PWCP = period;
+CLINEA 0000H 0001H 0021H 0002H 000FH
+	st	er0,	0f910h
+CBLOCKEND 0 2 34
+
+;;}
+CLINEA 0000H 0001H 0022H 0001H 0001H
+	rt
+CBLOCKEND 0 1 34
+CFUNCTIONEND 0
+
+
+	rseg $$pwmC_setDuty$pwm
+CFUNCTION 1
+
+_pwmC_setDuty	:
+CBLOCK 1 1 37
+
+;;{
+CLINEA 0000H 0001H 0025H 0001H 0001H
+CBLOCK 1 2 37
+CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+
+;;	PWCD = duty;
+CLINEA 0000H 0001H 0026H 0002H 000DH
+	st	er0,	0f912h
+CBLOCKEND 1 2 39
+
+;;}
+CLINEA 0000H 0001H 0027H 0001H 0001H
+	rt
+CBLOCKEND 1 1 39
+CFUNCTIONEND 1
+
+
+	rseg $$pwmC_clearCount$pwm
+CFUNCTION 2
+
+_pwmC_clearCount	:
+CBLOCK 2 1 42
+
+;;{
+CLINEA 0000H 0001H 002AH 0001H 0001H
+CBLOCK 2 2 42
+
+;;	PWCCL = 0;
+CLINEA 0000H 0001H 002BH 0002H 000BH
+	mov	r0,	#00h
+	st	r0,	0f914h
+CBLOCKEND 2 2 44
+
+;;}
+CLINEA 0000H 0001H 002CH 0001H 0001H
+	rt
+CBLOCKEND 2 1 44
+CFUNCTIONEND 2
+
+
+	rseg $$pwmC_selectClock$pwm
+CFUNCTION 3
+
+_pwmC_selectClock	:
+CBLOCK 3 1 47
+
+;;{
+CLINEA 0000H 0001H 002FH 0001H 0001H
+	mov	r2,	r0
+CBLOCK 3 2 47
+CARGUMENT 46H 0001H 0016H "clkSel" 02H 00H 00H
+CLOCAL 46H 0001H 0015H 0002H "tmpCs" 02H 00H 00H
+
+;;	PCCS0 =  tmpCs       & 1;
+CLINEA 0000H 0001H 0032H 0002H 001AH
+	and	r0,	#01h
+	beq	_$M4
+	sb	0f916h.0
+	bal	_$M5
+_$M4 :
+	rb	0f916h.0
+_$M5 :
+
+;;	PCCS1 = (tmpCs >> 1) & 1;
+CLINEA 0000H 0001H 0033H 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	srlc	r0,	#01h
+	and	r0,	#01h
+	beq	_$M6
+	sb	0f916h.1
+	rt
+_$M6 :
+	rb	0f916h.1
+CBLOCKEND 3 2 52
+
+;;}
+CLINEA 0000H 0001H 0034H 0001H 0001H
+	rt
+CBLOCKEND 3 1 52
+CFUNCTIONEND 3
+
+
+	rseg $$pwmC_selectInterrupt$pwm
+CFUNCTION 4
+
+_pwmC_selectInterrupt	:
+CBLOCK 4 1 55
+
+;;{
+CLINEA 0000H 0001H 0037H 0001H 0001H
+	mov	r2,	r0
+CBLOCK 4 2 55
+CARGUMENT 46H 0001H 0016H "intSel" 02H 00H 00H
+CLOCAL 46H 0001H 0015H 0002H "tmpIs" 02H 00H 00H
+
+;;	PCIS0 =  tmpIs       & 1;
+CLINEA 0000H 0001H 0039H 0002H 001AH
+	and	r0,	#01h
+	beq	_$M9
+	sb	0f916h.2
+	bal	_$M10
+_$M9 :
+	rb	0f916h.2
+_$M10 :
+
+;;	PCIS1 = (tmpIs >> 1) & 1;
+CLINEA 0000H 0001H 003AH 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	srlc	r0,	#01h
+	and	r0,	#01h
+	beq	_$M11
+	sb	0f916h.3
+	rt
+_$M11 :
+	rb	0f916h.3
+CBLOCKEND 4 2 59
+
+;;}
+CLINEA 0000H 0001H 003BH 0001H 0001H
+	rt
+CBLOCKEND 4 1 59
+CFUNCTIONEND 4
+
+
+	rseg $$pwmC_selectOutputPolarity$pwm
+CFUNCTION 5
+
+_pwmC_selectOutputPolarity	:
+CBLOCK 5 1 62
+
+;;{
+CLINEA 0000H 0001H 003EH 0001H 0001H
+CBLOCK 5 2 62
+CARGUMENT 46H 0001H 0014H "outPol" 02H 00H 00H
+
+;;	PCNEG = outPol;
+CLINEA 0000H 0001H 003FH 0002H 0010H
+	and	r0,	#01h
+	beq	_$M14
+	sb	0f916h.4
+	rt
+_$M14 :
+	rb	0f916h.4
+CBLOCKEND 5 2 64
+
+;;}
+CLINEA 0000H 0001H 0040H 0001H 0001H
+	rt
+CBLOCKEND 5 1 64
+CFUNCTIONEND 5
+
+
+	rseg $$pwmC_start$pwm
+CFUNCTION 6
+
+_pwmC_start	:
+CBLOCK 6 1 67
+
+;;{
+CLINEA 0000H 0001H 0043H 0001H 0001H
+CBLOCK 6 2 67
+
+;;	PCRUN = 1;
+CLINEA 0000H 0001H 0044H 0002H 000BH
+	sb	0f917h.0
+CBLOCKEND 6 2 69
+
+;;}
+CLINEA 0000H 0001H 0045H 0001H 0001H
+	rt
+CBLOCKEND 6 1 69
+CFUNCTIONEND 6
+
+
+	rseg $$pwmC_stop$pwm
+CFUNCTION 7
+
+_pwmC_stop	:
+CBLOCK 7 1 72
+
+;;{
+CLINEA 0000H 0001H 0048H 0001H 0001H
+CBLOCK 7 2 72
+
+;;	PCRUN = 0;
+CLINEA 0000H 0001H 0049H 0002H 000BH
+	rb	0f917h.0
+CBLOCKEND 7 2 74
+
+;;}
+CLINEA 0000H 0001H 004AH 0001H 0001H
+	rt
+CBLOCKEND 7 1 74
+CFUNCTIONEND 7
+
+
+	rseg $$pwmC_setOneShotMode$pwm
+CFUNCTION 8
+
+_pwmC_setOneShotMode	:
+CBLOCK 8 1 77
+
+;;{
+CLINEA 0000H 0001H 004DH 0001H 0001H
+CBLOCK 8 2 77
+CARGUMENT 46H 0001H 0014H "mode" 02H 00H 00H
+
+;;	PCOST = (mode) & 1;
+CLINEA 0000H 0001H 004EH 0002H 0014H
+	and	r0,	#01h
+	beq	_$M19
+	sb	0f918h.7
+	rt
+_$M19 :
+	rb	0f918h.7
+CBLOCKEND 8 2 79
+
+;;}
+CLINEA 0000H 0001H 004FH 0001H 0001H
+	rt
+CBLOCKEND 8 1 79
+CFUNCTIONEND 8
+
+
+	rseg $$pwmD_setPeriod$pwm
+CFUNCTION 9
+
+_pwmD_setPeriod	:
+CBLOCK 9 1 84
+
+;;{
+CLINEA 0000H 0001H 0054H 0001H 0001H
+CBLOCK 9 2 84
+CARGUMENT 46H 0002H 0024H "period" 02H 00H 01H
+
+;;	PWDP = period;
+CLINEA 0000H 0001H 0055H 0002H 000FH
+	st	er0,	0f920h
+CBLOCKEND 9 2 86
+
+;;}
+CLINEA 0000H 0001H 0056H 0001H 0001H
+	rt
+CBLOCKEND 9 1 86
+CFUNCTIONEND 9
+
+
+	rseg $$pwmD_setDuty$pwm
+CFUNCTION 10
+
+_pwmD_setDuty	:
+CBLOCK 10 1 89
+
+;;{
+CLINEA 0000H 0001H 0059H 0001H 0001H
+CBLOCK 10 2 89
+CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+
+;;	PWDD = duty;
+CLINEA 0000H 0001H 005AH 0002H 000DH
+	st	er0,	0f922h
+CBLOCKEND 10 2 91
+
+;;}
+CLINEA 0000H 0001H 005BH 0001H 0001H
+	rt
+CBLOCKEND 10 1 91
+CFUNCTIONEND 10
+
+
+	rseg $$pwmD_clearCount$pwm
+CFUNCTION 11
+
+_pwmD_clearCount	:
+CBLOCK 11 1 94
+
+;;{
+CLINEA 0000H 0001H 005EH 0001H 0001H
+CBLOCK 11 2 94
+
+;;	PWDCL = 0;
+CLINEA 0000H 0001H 005FH 0002H 000BH
+	mov	r0,	#00h
+	st	r0,	0f924h
+CBLOCKEND 11 2 96
+
+;;}
+CLINEA 0000H 0001H 0060H 0001H 0001H
+	rt
+CBLOCKEND 11 1 96
+CFUNCTIONEND 11
+
+
+	rseg $$pwmD_selectClock$pwm
+CFUNCTION 12
+
+_pwmD_selectClock	:
+CBLOCK 12 1 99
+
+;;{
+CLINEA 0000H 0001H 0063H 0001H 0001H
+	mov	r2,	r0
+CBLOCK 12 2 99
+CARGUMENT 46H 0001H 0016H "clkSel" 02H 00H 00H
+CLOCAL 46H 0001H 0015H 0002H "tmpCs" 02H 00H 00H
+
+;;	PDCS0 =  tmpCs       & 1;
+CLINEA 0000H 0001H 0066H 0002H 001AH
+	and	r0,	#01h
+	beq	_$M25
+	sb	0f926h.0
+	bal	_$M26
+_$M25 :
+	rb	0f926h.0
+_$M26 :
+
+;;	PDCS1 = (tmpCs >> 1) & 1;
+CLINEA 0000H 0001H 0067H 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	srlc	r0,	#01h
+	and	r0,	#01h
+	beq	_$M27
+	sb	0f926h.1
+	rt
+_$M27 :
+	rb	0f926h.1
+CBLOCKEND 12 2 104
+
+;;}
+CLINEA 0000H 0001H 0068H 0001H 0001H
+	rt
+CBLOCKEND 12 1 104
+CFUNCTIONEND 12
+
+
+	rseg $$pwmD_selectInterrupt$pwm
+CFUNCTION 13
+
+_pwmD_selectInterrupt	:
+CBLOCK 13 1 107
+
+;;{
+CLINEA 0000H 0001H 006BH 0001H 0001H
+	mov	r2,	r0
+CBLOCK 13 2 107
+CARGUMENT 46H 0001H 0016H "intSel" 02H 00H 00H
+CLOCAL 46H 0001H 0015H 0002H "tmpIs" 02H 00H 00H
+
+;;	PDIS0 =  tmpIs       & 1;
+CLINEA 0000H 0001H 006DH 0002H 001AH
+	and	r0,	#01h
+	beq	_$M30
+	sb	0f926h.2
+	bal	_$M31
+_$M30 :
+	rb	0f926h.2
+_$M31 :
+
+;;	PDIS1 = (tmpIs >> 1) & 1;
+CLINEA 0000H 0001H 006EH 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	srlc	r0,	#01h
+	and	r0,	#01h
+	beq	_$M32
+	sb	0f926h.3
+	rt
+_$M32 :
+	rb	0f926h.3
+CBLOCKEND 13 2 111
+
+;;}
+CLINEA 0000H 0001H 006FH 0001H 0001H
+	rt
+CBLOCKEND 13 1 111
+CFUNCTIONEND 13
+
+
+	rseg $$pwmD_selectOutputPolarity$pwm
+CFUNCTION 14
+
+_pwmD_selectOutputPolarity	:
+CBLOCK 14 1 114
+
+;;{
+CLINEA 0000H 0001H 0072H 0001H 0001H
+CBLOCK 14 2 114
+CARGUMENT 46H 0001H 0014H "outPol" 02H 00H 00H
+
+;;	PDNEG = outPol;
+CLINEA 0000H 0001H 0073H 0002H 0010H
+	and	r0,	#01h
+	beq	_$M35
+	sb	0f926h.4
+	rt
+_$M35 :
+	rb	0f926h.4
+CBLOCKEND 14 2 116
+
+;;}
+CLINEA 0000H 0001H 0074H 0001H 0001H
+	rt
+CBLOCKEND 14 1 116
+CFUNCTIONEND 14
+
+
+	rseg $$pwmD_start$pwm
+CFUNCTION 15
+
+_pwmD_start	:
+CBLOCK 15 1 119
+
+;;{
+CLINEA 0000H 0001H 0077H 0001H 0001H
+CBLOCK 15 2 119
+
+;;	PDRUN = 1;
+CLINEA 0000H 0001H 0078H 0002H 000BH
+	sb	0f927h.0
+CBLOCKEND 15 2 121
+
+;;}
+CLINEA 0000H 0001H 0079H 0001H 0001H
+	rt
+CBLOCKEND 15 1 121
+CFUNCTIONEND 15
+
+
+	rseg $$pwmD_stop$pwm
+CFUNCTION 16
+
+_pwmD_stop	:
+CBLOCK 16 1 124
+
+;;{
+CLINEA 0000H 0001H 007CH 0001H 0001H
+CBLOCK 16 2 124
+
+;;	PDRUN = 0;
+CLINEA 0000H 0001H 007DH 0002H 000BH
+	rb	0f927h.0
+CBLOCKEND 16 2 126
+
+;;}
+CLINEA 0000H 0001H 007EH 0001H 0001H
+	rt
+CBLOCKEND 16 1 126
+CFUNCTIONEND 16
+
+
+	rseg $$pwmD_setOneShotMode$pwm
+CFUNCTION 17
+
+_pwmD_setOneShotMode	:
+CBLOCK 17 1 129
+
+;;{
+CLINEA 0000H 0001H 0081H 0001H 0001H
+CBLOCK 17 2 129
+CARGUMENT 46H 0001H 0014H "mode" 02H 00H 00H
+
+;;	PDOST = (mode) & 1;
+CLINEA 0000H 0001H 0082H 0002H 0014H
+	and	r0,	#01h
+	beq	_$M40
+	sb	0f928h.7
+	rt
+_$M40 :
+	rb	0f928h.7
+CBLOCKEND 17 2 131
+
+;;}
+CLINEA 0000H 0001H 0083H 0001H 0001H
+	rt
+CBLOCKEND 17 1 131
+CFUNCTIONEND 17
+
+
+	rseg $$pwmE_setPeriod$pwm
+CFUNCTION 18
+
+_pwmE_setPeriod	:
+CBLOCK 18 1 136
+
+;;{
+CLINEA 0000H 0001H 0088H 0001H 0001H
+CBLOCK 18 2 136
+CARGUMENT 46H 0002H 0024H "period" 02H 00H 01H
+
+;;	PWEP = period;
+CLINEA 0000H 0001H 0089H 0002H 000FH
+	st	er0,	0f930h
+CBLOCKEND 18 2 138
+
+;;}
+CLINEA 0000H 0001H 008AH 0001H 0001H
+	rt
+CBLOCKEND 18 1 138
+CFUNCTIONEND 18
+
+
+	rseg $$pwmE_setDuty$pwm
+CFUNCTION 19
+
+_pwmE_setDuty	:
+CBLOCK 19 1 141
+
+;;{
+CLINEA 0000H 0001H 008DH 0001H 0001H
+CBLOCK 19 2 141
+CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+
+;;	PWED = duty;
+CLINEA 0000H 0001H 008EH 0002H 000DH
+	st	er0,	0f932h
+CBLOCKEND 19 2 143
+
+;;}
+CLINEA 0000H 0001H 008FH 0001H 0001H
+	rt
+CBLOCKEND 19 1 143
+CFUNCTIONEND 19
+
+
+	rseg $$pwmE_clearCount$pwm
+CFUNCTION 20
+
+_pwmE_clearCount	:
+CBLOCK 20 1 146
+
+;;{
+CLINEA 0000H 0001H 0092H 0001H 0001H
+CBLOCK 20 2 146
+
+;;	PWECL = 0;
+CLINEA 0000H 0001H 0093H 0002H 000BH
+	mov	r0,	#00h
+	st	r0,	0f934h
+CBLOCKEND 20 2 148
+
+;;}
+CLINEA 0000H 0001H 0094H 0001H 0001H
+	rt
+CBLOCKEND 20 1 148
+CFUNCTIONEND 20
+
+
+	rseg $$pwmE_selectClock$pwm
+CFUNCTION 21
+
+_pwmE_selectClock	:
+CBLOCK 21 1 151
+
+;;{
+CLINEA 0000H 0001H 0097H 0001H 0001H
+	mov	r2,	r0
+CBLOCK 21 2 151
+CARGUMENT 46H 0001H 0016H "clkSel" 02H 00H 00H
+CLOCAL 46H 0001H 0015H 0002H "tmpCs" 02H 00H 00H
+
+;;	PECS0 =  tmpCs       & 1;
+CLINEA 0000H 0001H 009AH 0002H 001AH
+	and	r0,	#01h
+	beq	_$M46
+	sb	0f936h.0
+	bal	_$M47
+_$M46 :
+	rb	0f936h.0
+_$M47 :
+
+;;	PECS1 = (tmpCs >> 1) & 1;
+CLINEA 0000H 0001H 009BH 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	srlc	r0,	#01h
+	and	r0,	#01h
+	beq	_$M48
+	sb	0f936h.1
+	rt
+_$M48 :
+	rb	0f936h.1
+CBLOCKEND 21 2 156
+
+;;}
+CLINEA 0000H 0001H 009CH 0001H 0001H
+	rt
+CBLOCKEND 21 1 156
+CFUNCTIONEND 21
+
+
+	rseg $$pwmE_selectInterrupt$pwm
+CFUNCTION 22
+
+_pwmE_selectInterrupt	:
+CBLOCK 22 1 159
+
+;;{
+CLINEA 0000H 0001H 009FH 0001H 0001H
+	mov	r2,	r0
+CBLOCK 22 2 159
+CARGUMENT 46H 0001H 0016H "intSel" 02H 00H 00H
+CLOCAL 46H 0001H 0015H 0002H "tmpIs" 02H 00H 00H
+
+;;	PEIS0 =  tmpIs       & 1;
+CLINEA 0000H 0001H 00A1H 0002H 001AH
+	and	r0,	#01h
+	beq	_$M51
+	sb	0f936h.2
+	bal	_$M52
+_$M51 :
+	rb	0f936h.2
+_$M52 :
+
+;;	PEIS1 = (tmpIs >> 1) & 1;
+CLINEA 0000H 0001H 00A2H 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	srlc	r0,	#01h
+	and	r0,	#01h
+	beq	_$M53
+	sb	0f936h.3
+	rt
+_$M53 :
+	rb	0f936h.3
+CBLOCKEND 22 2 163
+
+;;}
+CLINEA 0000H 0001H 00A3H 0001H 0001H
+	rt
+CBLOCKEND 22 1 163
+CFUNCTIONEND 22
+
+
+	rseg $$pwmE_selectOutputPolarity$pwm
+CFUNCTION 23
+
+_pwmE_selectOutputPolarity	:
+CBLOCK 23 1 166
+
+;;{
+CLINEA 0000H 0001H 00A6H 0001H 0001H
+CBLOCK 23 2 166
+CARGUMENT 46H 0001H 0014H "outPol" 02H 00H 00H
+
+;;	PENEG = outPol;
+CLINEA 0000H 0001H 00A7H 0002H 0010H
+	and	r0,	#01h
+	beq	_$M56
+	sb	0f936h.4
+	rt
+_$M56 :
+	rb	0f936h.4
+CBLOCKEND 23 2 168
+
+;;}
+CLINEA 0000H 0001H 00A8H 0001H 0001H
+	rt
+CBLOCKEND 23 1 168
+CFUNCTIONEND 23
+
+
+	rseg $$pwmE_start$pwm
+CFUNCTION 24
+
+_pwmE_start	:
+CBLOCK 24 1 171
+
+;;{
+CLINEA 0000H 0001H 00ABH 0001H 0001H
+CBLOCK 24 2 171
+
+;;	PERUN = 1;
+CLINEA 0000H 0001H 00ACH 0002H 000BH
+	sb	0f937h.0
+CBLOCKEND 24 2 173
+
+;;}
+CLINEA 0000H 0001H 00ADH 0001H 0001H
+	rt
+CBLOCKEND 24 1 173
+CFUNCTIONEND 24
+
+
+	rseg $$pwmE_stop$pwm
+CFUNCTION 25
+
+_pwmE_stop	:
+CBLOCK 25 1 176
+
+;;{
+CLINEA 0000H 0001H 00B0H 0001H 0001H
+CBLOCK 25 2 176
+
+;;	PERUN = 0;
+CLINEA 0000H 0001H 00B1H 0002H 000BH
+	rb	0f937h.0
+CBLOCKEND 25 2 178
+
+;;}
+CLINEA 0000H 0001H 00B2H 0001H 0001H
+	rt
+CBLOCKEND 25 1 178
+CFUNCTIONEND 25
+
+
+	rseg $$pwmE_setOneShotMode$pwm
+CFUNCTION 26
+
+_pwmE_setOneShotMode	:
+CBLOCK 26 1 181
+
+;;{
+CLINEA 0000H 0001H 00B5H 0001H 0001H
+CBLOCK 26 2 181
+CARGUMENT 46H 0001H 0014H "mode" 02H 00H 00H
+
+;;	PEOST = (mode) & 1;
+CLINEA 0000H 0001H 00B6H 0002H 0014H
+	and	r0,	#01h
+	beq	_$M61
+	sb	0f938h.7
+	rt
+_$M61 :
+	rb	0f938h.7
+CBLOCKEND 26 2 183
+
+;;}
+CLINEA 0000H 0001H 00B7H 0001H 0001H
+	rt
+CBLOCKEND 26 1 183
+CFUNCTIONEND 26
+
+
+	rseg $$pwmF_setPeriod$pwm
+CFUNCTION 27
+
+_pwmF_setPeriod	:
+CBLOCK 27 1 187
+
+;;{
+CLINEA 0000H 0001H 00BBH 0001H 0001H
+CBLOCK 27 2 187
+CARGUMENT 46H 0002H 0024H "period" 02H 00H 01H
+
+;;	PWFP = period;
+CLINEA 0000H 0001H 00BCH 0002H 000FH
+	st	er0,	0f960h
+CBLOCKEND 27 2 189
+
+;;}
+CLINEA 0000H 0001H 00BDH 0001H 0001H
+	rt
+CBLOCKEND 27 1 189
+CFUNCTIONEND 27
+
+
+	rseg $$pwmF0_setDuty$pwm
+CFUNCTION 28
+
+_pwmF0_setDuty	:
+CBLOCK 28 1 192
+
+;;{
+CLINEA 0000H 0001H 00C0H 0001H 0001H
+CBLOCK 28 2 192
+CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+
+;;	PWF0D = duty;
+CLINEA 0000H 0001H 00C1H 0002H 000EH
+	st	er0,	0f962h
+CBLOCKEND 28 2 194
+
+;;}
+CLINEA 0000H 0001H 00C2H 0001H 0001H
+	rt
+CBLOCKEND 28 1 194
+CFUNCTIONEND 28
+
+
+	rseg $$pwmF1_setDuty$pwm
+CFUNCTION 29
+
+_pwmF1_setDuty	:
+CBLOCK 29 1 197
+
+;;{
+CLINEA 0000H 0001H 00C5H 0001H 0001H
+CBLOCK 29 2 197
+CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+
+;;	PWF1D = duty;
+CLINEA 0000H 0001H 00C6H 0002H 000EH
+	st	er0,	0f964h
+CBLOCKEND 29 2 199
+
+;;}
+CLINEA 0000H 0001H 00C7H 0001H 0001H
+	rt
+CBLOCKEND 29 1 199
+CFUNCTIONEND 29
+
+
+	rseg $$pwmF2_setDuty$pwm
+CFUNCTION 30
+
+_pwmF2_setDuty	:
+CBLOCK 30 1 202
+
+;;{
+CLINEA 0000H 0001H 00CAH 0001H 0001H
+CBLOCK 30 2 202
+CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+
+;;	PWF2D = duty;
+CLINEA 0000H 0001H 00CBH 0002H 000EH
+	st	er0,	0f966h
+CBLOCKEND 30 2 204
+
+;;}
+CLINEA 0000H 0001H 00CCH 0001H 0001H
+	rt
+CBLOCKEND 30 1 204
+CFUNCTIONEND 30
+
+
+	rseg $$pwmF_clearCount$pwm
+CFUNCTION 31
+
+_pwmF_clearCount	:
+CBLOCK 31 1 207
+
+;;{
+CLINEA 0000H 0001H 00CFH 0001H 0001H
+CBLOCK 31 2 207
+
+;;	PWFCL = 0;
+CLINEA 0000H 0001H 00D0H 0002H 000BH
+	mov	r0,	#00h
+	st	r0,	0f970h
+CBLOCKEND 31 2 209
+
+;;}
+CLINEA 0000H 0001H 00D1H 0001H 0001H
+	rt
+CBLOCKEND 31 1 209
+CFUNCTIONEND 31
+
+
+	rseg $$pwmF_selectClock$pwm
+CFUNCTION 32
+
+_pwmF_selectClock	:
+CBLOCK 32 1 212
+
+;;{
+CLINEA 0000H 0001H 00D4H 0001H 0001H
+	mov	r2,	r0
+CBLOCK 32 2 212
+CARGUMENT 46H 0001H 0016H "clkSel" 02H 00H 00H
+CLOCAL 46H 0001H 0015H 0002H "tmpCs" 02H 00H 00H
+
+;;	PFCS0 =  tmpCs       & 1;
+CLINEA 0000H 0001H 00D6H 0002H 001AH
+	and	r0,	#01h
+	beq	_$M69
+	sb	0f972h.0
+	bal	_$M70
+_$M69 :
+	rb	0f972h.0
+_$M70 :
+
+;;	PFCS1 = (tmpCs >> 1) & 1;
+CLINEA 0000H 0001H 00D7H 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	srlc	r0,	#01h
+	and	r0,	#01h
+	beq	_$M71
+	sb	0f972h.1
+	rt
+_$M71 :
+	rb	0f972h.1
+CBLOCKEND 32 2 216
+
+;;}
+CLINEA 0000H 0001H 00D8H 0001H 0001H
+	rt
+CBLOCKEND 32 1 216
+CFUNCTIONEND 32
+
+
+	rseg $$pwmF_selectInterrupt$pwm
+CFUNCTION 33
+
+_pwmF_selectInterrupt	:
+CBLOCK 33 1 219
+
+;;{
+CLINEA 0000H 0001H 00DBH 0001H 0001H
+	mov	r2,	r0
+CBLOCK 33 2 219
+CARGUMENT 46H 0001H 0016H "intSel" 02H 00H 00H
+CLOCAL 46H 0001H 0015H 0002H "tmpIs" 02H 00H 00H
+
+;;	PFIS0 =  tmpIs       & 1;
+CLINEA 0000H 0001H 00DDH 0002H 001AH
+	and	r0,	#01h
+	beq	_$M74
+	sb	0f972h.2
+	bal	_$M75
+_$M74 :
+	rb	0f972h.2
+_$M75 :
+
+;;	PFIS1 = (tmpIs >> 1) & 1;
+CLINEA 0000H 0001H 00DEH 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	srlc	r0,	#01h
+	and	r0,	#01h
+	beq	_$M76
+	sb	0f972h.3
+	rt
+_$M76 :
+	rb	0f972h.3
+CBLOCKEND 33 2 223
+
+;;}
+CLINEA 0000H 0001H 00DFH 0001H 0001H
+	rt
+CBLOCKEND 33 1 223
+CFUNCTIONEND 33
+
+
+	rseg $$pwmF_selectOutputPolarity$pwm
+CFUNCTION 34
+
+_pwmF_selectOutputPolarity	:
+CBLOCK 34 1 226
+
+;;{
+CLINEA 0000H 0001H 00E2H 0001H 0001H
+CBLOCK 34 2 226
+CARGUMENT 46H 0001H 0014H "outPol" 02H 00H 00H
+
+;;	PFNEG = outPol & 1;
+CLINEA 0000H 0001H 00E3H 0002H 0014H
+	and	r0,	#01h
+	beq	_$M79
+	sb	0f972h.4
+	rt
+_$M79 :
+	rb	0f972h.4
+CBLOCKEND 34 2 228
+
+;;}
+CLINEA 0000H 0001H 00E4H 0001H 0001H
+	rt
+CBLOCKEND 34 1 228
+CFUNCTIONEND 34
+
+
+	rseg $$pwmF_start$pwm
+CFUNCTION 35
+
+_pwmF_start	:
+CBLOCK 35 1 231
+
+;;{
+CLINEA 0000H 0001H 00E7H 0001H 0001H
+CBLOCK 35 2 231
+
+;;	PFRUN = 1;
+CLINEA 0000H 0001H 00E8H 0002H 000BH
+	sb	0f973h.0
+CBLOCKEND 35 2 233
+
+;;}
+CLINEA 0000H 0001H 00E9H 0001H 0001H
+	rt
+CBLOCKEND 35 1 233
+CFUNCTIONEND 35
+
+
+	rseg $$pwmF_stop$pwm
+CFUNCTION 36
+
+_pwmF_stop	:
+CBLOCK 36 1 236
+
+;;{
+CLINEA 0000H 0001H 00ECH 0001H 0001H
+CBLOCK 36 2 236
+
+;;	PFRUN = 0;
+CLINEA 0000H 0001H 00EDH 0002H 000BH
+	rb	0f973h.0
+CBLOCKEND 36 2 238
+
+;;}
+CLINEA 0000H 0001H 00EEH 0001H 0001H
+	rt
+CBLOCKEND 36 1 238
+CFUNCTIONEND 36
+
+
+	rseg $$pwmF_setOneShotMode$pwm
+CFUNCTION 37
+
+_pwmF_setOneShotMode	:
+CBLOCK 37 1 241
+
+;;{
+CLINEA 0000H 0001H 00F1H 0001H 0001H
+CBLOCK 37 2 241
+CARGUMENT 46H 0001H 0014H "mode" 02H 00H 00H
+
+;;	PFOST = (mode) & 1;
+CLINEA 0000H 0001H 00F2H 0002H 0014H
+	and	r0,	#01h
+	beq	_$M84
+	sb	0f974h.7
+	rt
+_$M84 :
+	rb	0f974h.7
+CBLOCKEND 37 2 243
+
+;;}
+CLINEA 0000H 0001H 00F3H 0001H 0001H
+	rt
+CBLOCKEND 37 1 243
+CFUNCTIONEND 37
+
+
+	rseg $$pwmF0_setEnable$pwm
+CFUNCTION 38
+
+_pwmF0_setEnable	:
+CBLOCK 38 1 246
+
+;;{
+CLINEA 0000H 0001H 00F6H 0001H 0001H
+CBLOCK 38 2 246
+
+;;	PF0EN = 1;
+CLINEA 0000H 0001H 00F7H 0002H 000BH
+	sb	0f976h.4
+CBLOCKEND 38 2 248
+
+;;}
+CLINEA 0000H 0001H 00F8H 0001H 0001H
+	rt
+CBLOCKEND 38 1 248
+CFUNCTIONEND 38
+
+
+	rseg $$pwmF1_setEnable$pwm
+CFUNCTION 39
+
+_pwmF1_setEnable	:
+CBLOCK 39 1 251
+
+;;{
+CLINEA 0000H 0001H 00FBH 0001H 0001H
+CBLOCK 39 2 251
+
+;;	PF1EN = 1;
+CLINEA 0000H 0001H 00FCH 0002H 000BH
+	sb	0f976h.5
+CBLOCKEND 39 2 253
+
+;;}
+CLINEA 0000H 0001H 00FDH 0001H 0001H
+	rt
+CBLOCKEND 39 1 253
+CFUNCTIONEND 39
+
+
+	rseg $$pwmF2_setEnable$pwm
+CFUNCTION 40
+
+_pwmF2_setEnable	:
+CBLOCK 40 1 256
+
+;;{
+CLINEA 0000H 0001H 0100H 0001H 0001H
+CBLOCK 40 2 256
+
+;;	PF2EN = 1;
+CLINEA 0000H 0001H 0101H 0002H 000BH
+	sb	0f976h.6
+CBLOCKEND 40 2 258
+
+;;}
+CLINEA 0000H 0001H 0102H 0001H 0001H
+	rt
+CBLOCKEND 40 1 258
+CFUNCTIONEND 40
+
+
+	rseg $$pwmF0_setDisable$pwm
+CFUNCTION 41
+
+_pwmF0_setDisable	:
+CBLOCK 41 1 261
+
+;;{
+CLINEA 0000H 0001H 0105H 0001H 0001H
+CBLOCK 41 2 261
+
+;;	PF0EN = 0;
+CLINEA 0000H 0001H 0106H 0002H 000BH
+	rb	0f976h.4
+CBLOCKEND 41 2 263
+
+;;}
+CLINEA 0000H 0001H 0107H 0001H 0001H
+	rt
+CBLOCKEND 41 1 263
+CFUNCTIONEND 41
+
+
+	rseg $$pwmF1_setDisable$pwm
+CFUNCTION 42
+
+_pwmF1_setDisable	:
+CBLOCK 42 1 266
+
+;;{
+CLINEA 0000H 0001H 010AH 0001H 0001H
+CBLOCK 42 2 266
+
+;;	PF1EN = 0;
+CLINEA 0000H 0001H 010BH 0002H 000BH
+	rb	0f976h.5
+CBLOCKEND 42 2 268
+
+;;}
+CLINEA 0000H 0001H 010CH 0001H 0001H
+	rt
+CBLOCKEND 42 1 268
+CFUNCTIONEND 42
+
+
+	rseg $$pwmF2_setDisable$pwm
+CFUNCTION 43
+
+_pwmF2_setDisable	:
+CBLOCK 43 1 271
+
+;;{
+CLINEA 0000H 0001H 010FH 0001H 0001H
+CBLOCK 43 2 271
+
+;;	PF2EN = 0;
+CLINEA 0000H 0001H 0110H 0002H 000BH
+	rb	0f976h.6
+CBLOCKEND 43 2 273
+
+;;}
+CLINEA 0000H 0001H 0111H 0001H 0001H
+	rt
+CBLOCKEND 43 1 273
+CFUNCTIONEND 43
+
+
+	rseg $$pwmF_dutyUpdate$pwm
+CFUNCTION 44
+
+_pwmF_dutyUpdate	:
+CBLOCK 44 1 276
+
+;;{
+CLINEA 0000H 0001H 0114H 0001H 0001H
+CBLOCK 44 2 276
+
+;;	PFUD = 1;
+CLINEA 0000H 0001H 0115H 0002H 000AH
+	sb	0f977h.0
+CBLOCKEND 44 2 278
+
+;;}
+CLINEA 0000H 0001H 0116H 0001H 0001H
+	rt
+CBLOCKEND 44 1 278
+CFUNCTIONEND 44
+
+	public _pwmE_clearCount
+	public _pwmC_clearCount
+	public _pwmE_selectClock
+	public _pwmF0_setDisable
+	public _pwmC_stop
+	public _pwmE_stop
+	public _pwmF2_setDisable
+	public _pwmF_selectClock
+	public _pwmC_selectClock
+	public _pwmD_selectClock
+	public _pwmE_selectInterrupt
+	public _pwmF1_setEnable
+	public _pwmF0_setDuty
+	public _pwmF_selectOutputPolarity
+	public _pwmD_setPeriod
+	public _pwmD_setOneShotMode
+	public _pwmC_setOneShotMode
+	public _pwmE_selectOutputPolarity
+	public _pwmE_start
+	public _pwmF_start
+	public _pwmC_start
+	public _pwmD_start
+	public _pwmD_setDuty
+	public _pwmC_setDuty
+	public _pwmD_selectOutputPolarity
+	public _pwmE_setDuty
+	public _pwmD_selectInterrupt
+	public _pwmF2_setEnable
+	public _pwmF_setOneShotMode
+	public _pwmE_setPeriod
+	public _pwmF_clearCount
+	public _pwmD_clearCount
+	public _pwmD_stop
+	public _pwmF_stop
+	public _pwmF1_setDisable
+	public _pwmC_selectOutputPolarity
+	public _pwmF_selectInterrupt
+	public _pwmF0_setEnable
+	public _pwmC_setPeriod
+	public _pwmE_setOneShotMode
+	public _pwmC_selectInterrupt
+	public _pwmF_setPeriod
+	public _pwmF1_setDuty
+	public _pwmF_dutyUpdate
+	public _pwmF2_setDuty
+	extrn code near : _main
+
+	end

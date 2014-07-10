@@ -1,0 +1,748 @@
+;; Compile Options : /TML610111 /MS /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Ipwm /Iuart /Ivolume /Iled /D_ML610Q111 /SS 1024 /SD /Oa /Om /W 3 /Wc /Fa_output\_obj\ 
+;; Version Number  : Ver.3.31.4
+;; File Name       : timer.c
+
+	type (ML610111) 
+	model small, near
+	$$tm_clr89Counter$timer segment code 2h #0h
+	$$tm_clrABCounter$timer segment code 2h #0h
+	$$tm_get89Counter$timer segment code 2h #0h
+	$$tm_get89Source$timer segment code 2h #0h
+	$$tm_getABCounter$timer segment code 2h #0h
+	$$tm_getABSource$timer segment code 2h #0h
+	$$tm_init$timer segment code 2h #0h
+	$$tm_restart89$timer segment code 2h #0h
+	$$tm_restartAB$timer segment code 2h #0h
+	$$tm_set89Data$timer segment code 2h #0h
+	$$tm_set89Source$timer segment code 2h #0h
+	$$tm_set8Oneshot$timer segment code 2h #0h
+	$$tm_set9Oneshot$timer segment code 2h #0h
+	$$tm_setABData$timer segment code 2h #0h
+	$$tm_setABSource$timer segment code 2h #0h
+	$$tm_setAOneshot$timer segment code 2h #0h
+	$$tm_setBOneshot$timer segment code 2h #0h
+	$$tm_start89$timer segment code 2h #0h
+	$$tm_startAB$timer segment code 2h #0h
+	$$tm_stop89$timer segment code 2h #0h
+	$$tm_stopAB$timer segment code 2h #0h
+CVERSION 3.31.4
+CGLOBAL 01H 02H 0000H "tm_get89Counter" 08H 02H 07H 00H 80H 00H 00H 00H 08H
+CGLOBAL 01H 02H 0000H "tm_getABSource" 08H 02H 10H 00H 80H 00H 00H 00H 00H
+CGLOBAL 01H 02H 0000H "tm_get89Source" 08H 02H 0FH 00H 80H 00H 00H 00H 00H
+CGLOBAL 01H 03H 0000H "tm_startAB" 08H 02H 02H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_restartAB" 08H 02H 04H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_clrABCounter" 08H 02H 0AH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 02H 0000H "tm_getABCounter" 08H 02H 08H 00H 80H 00H 00H 00H 08H
+CGLOBAL 01H 03H 0000H "tm_setABData" 08H 02H 0CH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_stop89" 08H 02H 05H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_stopAB" 08H 02H 06H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_setAOneshot" 08H 02H 24H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_setBOneshot" 08H 02H 25H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_set9Oneshot" 08H 02H 23H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_set8Oneshot" 08H 02H 22H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_set89Data" 08H 02H 0BH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_setABSource" 08H 02H 0EH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_set89Source" 08H 02H 0DH 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_init" 08H 02H 00H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_clr89Counter" 08H 02H 09H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_restart89" 08H 02H 03H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "tm_start89" 08H 02H 01H 00H 80H 00H 00H 00H 07H
+CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+CFILE 0001H 00000029H "common\\common.h"
+CFILE 0002H 00000022H "main\\mcu.h"
+CFILE 0003H 000007EEH "C:\\Users\\cschell\\U8DEV~1\\Inc\\ml610111.h"
+CFILE 0004H 000000A0H "timer\\timer.h"
+CFILE 0000H 000000F4H "timer\\timer.c"
+
+	rseg $$tm_init$timer
+CFUNCTION 0
+
+_tm_init	:
+CBLOCK 0 1 52
+
+;;{
+CLINEA 0000H 0001H 0034H 0001H 0001H
+CBLOCK 0 2 52
+CARGUMENT 46H 0001H 0014H "chNo" 02H 00H 00H
+
+;;	switch( chNo ) {
+CLINEA 0000H 0001H 0035H 0002H 0011H
+CBLOCK 0 3 53
+	cmp	r0,	#01h
+	beq	_$L6
+
+;;	switch( chNo ) {
+CLINEA 0000H 0000H 0035H 0002H 0011H
+	cmp	r0,	#02h
+	beq	_$L7
+
+;;	}
+CLINEA 0000H 0000H 0042H 0002H 0002H
+CBLOCKEND 0 3 66
+CBLOCKEND 0 2 67
+
+;;}
+CLINEA 0000H 0001H 0043H 0001H 0001H
+	rt
+
+;;	case TM_CH_NO_89 :
+CLINEA 0000H 0001H 0036H 0002H 0013H
+_$L6 :
+
+;;		T8RUN = 0;		/* T0RUN   = 0    ...count stop. */
+CLINEA 0000H 0001H 0037H 0003H 0031H
+	rb	0f8e3h.0
+
+;;		T9RUN = 0;		/* T1RUN   = 0    ...count stop. */
+CLINEA 0000H 0001H 0038H 0003H 0031H
+	rb	0f8e7h.0
+
+;;		T89M16 = 1;
+CLINEA 0000H 0001H 0039H 0003H 000DH
+	sb	0f8e2h.5
+
+;;		break;
+CLINEA 0000H 0001H 003AH 0003H 0008H
+	rt
+
+;;	case TM_CH_NO_AB :
+CLINEA 0000H 0001H 003BH 0002H 0013H
+_$L7 :
+
+;;		TARUN = 0;		/* T0RUN   = 0    ...count stop. */
+CLINEA 0000H 0001H 003CH 0003H 0031H
+	rb	0f8ebh.0
+
+;;		TBRUN = 0;		/* T1RUN   = 0    ...count stop. */
+CLINEA 0000H 0001H 003DH 0003H 0031H
+	rb	0f8efh.0
+
+;;		TABM16 = 1;
+CLINEA 0000H 0001H 003EH 0003H 000DH
+	sb	0f8eah.5
+
+;;		break;
+CLINEA 0000H 0001H 003FH 0003H 0008H
+	rt
+CBLOCKEND 0 1 67
+CFUNCTIONEND 0
+
+
+	rseg $$tm_start89$timer
+CFUNCTION 1
+
+_tm_start89	:
+CBLOCK 1 1 77
+
+;;{
+CLINEA 0000H 0001H 004DH 0001H 0001H
+CBLOCK 1 2 77
+
+;;	TM8C = 0;
+CLINEA 0000H 0001H 004EH 0002H 000AH
+	mov	r0,	#00h
+	st	r0,	0f8e1h
+
+;;	T8RUN = 1;
+CLINEA 0000H 0001H 004FH 0002H 000BH
+	sb	0f8e3h.0
+CBLOCKEND 1 2 80
+
+;;}
+CLINEA 0000H 0001H 0050H 0001H 0001H
+	rt
+CBLOCKEND 1 1 80
+CFUNCTIONEND 1
+
+
+	rseg $$tm_startAB$timer
+CFUNCTION 2
+
+_tm_startAB	:
+CBLOCK 2 1 83
+
+;;{
+CLINEA 0000H 0001H 0053H 0001H 0001H
+CBLOCK 2 2 83
+
+;;	TMAC = 0;
+CLINEA 0000H 0001H 0054H 0002H 000AH
+	mov	r0,	#00h
+	st	r0,	0f8e9h
+
+;;	TARUN = 1;
+CLINEA 0000H 0001H 0055H 0002H 000BH
+	sb	0f8ebh.0
+CBLOCKEND 2 2 86
+
+;;}
+CLINEA 0000H 0001H 0056H 0001H 0001H
+	rt
+CBLOCKEND 2 1 86
+CFUNCTIONEND 2
+
+
+	rseg $$tm_restart89$timer
+CFUNCTION 3
+
+_tm_restart89	:
+CBLOCK 3 1 96
+
+;;{
+CLINEA 0000H 0001H 0060H 0001H 0001H
+CBLOCK 3 2 96
+
+;;	T8RUN = 1;
+CLINEA 0000H 0001H 0061H 0002H 000BH
+	sb	0f8e3h.0
+CBLOCKEND 3 2 98
+
+;;}
+CLINEA 0000H 0001H 0062H 0001H 0001H
+	rt
+CBLOCKEND 3 1 98
+CFUNCTIONEND 3
+
+
+	rseg $$tm_restartAB$timer
+CFUNCTION 4
+
+_tm_restartAB	:
+CBLOCK 4 1 101
+
+;;{
+CLINEA 0000H 0001H 0065H 0001H 0001H
+CBLOCK 4 2 101
+
+;;	TARUN = 1;
+CLINEA 0000H 0001H 0066H 0002H 000BH
+	sb	0f8ebh.0
+CBLOCKEND 4 2 103
+
+;;}
+CLINEA 0000H 0001H 0067H 0001H 0001H
+	rt
+CBLOCKEND 4 1 103
+CFUNCTIONEND 4
+
+
+	rseg $$tm_stop89$timer
+CFUNCTION 5
+
+_tm_stop89	:
+CBLOCK 5 1 113
+
+;;{
+CLINEA 0000H 0001H 0071H 0001H 0001H
+CBLOCK 5 2 113
+
+;;	T8RUN = 0;
+CLINEA 0000H 0001H 0072H 0002H 000BH
+	rb	0f8e3h.0
+CBLOCKEND 5 2 115
+
+;;}
+CLINEA 0000H 0001H 0073H 0001H 0001H
+	rt
+CBLOCKEND 5 1 115
+CFUNCTIONEND 5
+
+
+	rseg $$tm_stopAB$timer
+CFUNCTION 6
+
+_tm_stopAB	:
+CBLOCK 6 1 118
+
+;;{
+CLINEA 0000H 0001H 0076H 0001H 0001H
+CBLOCK 6 2 118
+
+;;	TARUN = 0;
+CLINEA 0000H 0001H 0077H 0002H 000BH
+	rb	0f8ebh.0
+CBLOCKEND 6 2 120
+
+;;}
+CLINEA 0000H 0001H 0078H 0001H 0001H
+	rt
+CBLOCKEND 6 1 120
+CFUNCTIONEND 6
+
+
+	rseg $$tm_get89Counter$timer
+CFUNCTION 7
+
+_tm_get89Counter	:
+CBLOCK 7 1 130
+
+;;{
+CLINEA 0000H 0001H 0082H 0001H 0001H
+CBLOCK 7 2 130
+CLOCAL 46H 0002H 0025H 0002H "ret" 02H 00H 08H
+
+;;	unsigned short ret = TM8C;
+CLINEA 0000H 0001H 0083H 0002H 001BH
+	l	r0,	0f8e1h
+	mov	r1,	#00h
+	mov	er2,	er0
+
+;;	ret |= (TM9C << 8);
+CLINEA 0000H 0001H 0084H 0002H 0014H
+	l	r0,	0f8e5h
+	or	r3,	r0
+
+;;	return ret;
+CLINEA 0000H 0001H 0085H 0002H 000CH
+	mov	er0,	er2
+CBLOCKEND 7 2 134
+
+;;}
+CLINEA 0000H 0000H 0086H 0001H 0001H
+	rt
+CBLOCKEND 7 1 134
+CFUNCTIONEND 7
+
+
+	rseg $$tm_getABCounter$timer
+CFUNCTION 8
+
+_tm_getABCounter	:
+CBLOCK 8 1 137
+
+;;{
+CLINEA 0000H 0001H 0089H 0001H 0001H
+CBLOCK 8 2 137
+CLOCAL 46H 0002H 0025H 0002H "ret" 02H 00H 08H
+
+;;	unsigned short ret = TMAC;
+CLINEA 0000H 0001H 008AH 0002H 001BH
+	l	r0,	0f8e9h
+	mov	r1,	#00h
+	mov	er2,	er0
+
+;;	ret |= (TMBC << 8);
+CLINEA 0000H 0001H 008BH 0002H 0014H
+	l	r0,	0f8edh
+	or	r3,	r0
+
+;;	return ret;
+CLINEA 0000H 0001H 008CH 0002H 000CH
+	mov	er0,	er2
+CBLOCKEND 8 2 141
+
+;;}
+CLINEA 0000H 0000H 008DH 0001H 0001H
+	rt
+CBLOCKEND 8 1 141
+CFUNCTIONEND 8
+
+
+	rseg $$tm_clr89Counter$timer
+CFUNCTION 9
+
+_tm_clr89Counter	:
+CBLOCK 9 1 151
+
+;;{
+CLINEA 0000H 0001H 0097H 0001H 0001H
+CBLOCK 9 2 151
+
+;;	TM8C = 0x00;
+CLINEA 0000H 0001H 0098H 0002H 000DH
+	mov	r0,	#00h
+	st	r0,	0f8e1h
+CBLOCKEND 9 2 153
+
+;;}
+CLINEA 0000H 0001H 0099H 0001H 0001H
+	rt
+CBLOCKEND 9 1 153
+CFUNCTIONEND 9
+
+
+	rseg $$tm_clrABCounter$timer
+CFUNCTION 10
+
+_tm_clrABCounter	:
+CBLOCK 10 1 156
+
+;;{
+CLINEA 0000H 0001H 009CH 0001H 0001H
+CBLOCK 10 2 156
+
+;;	TMAC = 0x00;
+CLINEA 0000H 0001H 009DH 0002H 000DH
+	mov	r0,	#00h
+	st	r0,	0f8e9h
+CBLOCKEND 10 2 158
+
+;;}
+CLINEA 0000H 0001H 009EH 0001H 0001H
+	rt
+CBLOCKEND 10 1 158
+CFUNCTIONEND 10
+
+
+	rseg $$tm_set89Data$timer
+CFUNCTION 11
+
+_tm_set89Data	:
+CBLOCK 11 1 168
+
+;;{
+CLINEA 0000H 0001H 00A8H 0001H 0001H
+CBLOCK 11 2 168
+CARGUMENT 46H 0002H 0024H "data" 02H 00H 01H
+
+;;	TM8D = (unsigned char)(data & 0xFF);
+CLINEA 0000H 0001H 00A9H 0002H 0025H
+	st	r0,	0f8e0h
+
+;;	TM9D = (unsigned char)(data >> 8);
+CLINEA 0000H 0001H 00AAH 0002H 0023H
+	st	r1,	0f8e4h
+CBLOCKEND 11 2 171
+
+;;}
+CLINEA 0000H 0001H 00ABH 0001H 0001H
+	rt
+CBLOCKEND 11 1 171
+CFUNCTIONEND 11
+
+
+	rseg $$tm_setABData$timer
+CFUNCTION 12
+
+_tm_setABData	:
+CBLOCK 12 1 174
+
+;;{
+CLINEA 0000H 0001H 00AEH 0001H 0001H
+CBLOCK 12 2 174
+CARGUMENT 46H 0002H 0024H "data" 02H 00H 01H
+
+;;	TMAD = (unsigned char)(data & 0xFF);
+CLINEA 0000H 0001H 00AFH 0002H 0025H
+	st	r0,	0f8e8h
+
+;;	TMBD = (unsigned char)(data >> 8);
+CLINEA 0000H 0001H 00B0H 0002H 0023H
+	st	r1,	0f8ech
+CBLOCKEND 12 2 177
+
+;;}
+CLINEA 0000H 0001H 00B1H 0001H 0001H
+	rt
+CBLOCKEND 12 1 177
+CFUNCTIONEND 12
+
+
+	rseg $$tm_get89Source$timer
+CFUNCTION 15
+
+_tm_get89Source	:
+CBLOCK 15 1 188
+
+;;{
+CLINEA 0000H 0001H 00BCH 0001H 0001H
+CBLOCK 15 2 188
+
+;;	return (unsigned char)(TM8CON0 & TM_CS_MASK);
+CLINEA 0000H 0001H 00BDH 0002H 002EH
+	l	r0,	0f8e2h
+	and	r0,	#07h
+CBLOCKEND 15 2 190
+
+;;}
+CLINEA 0000H 0000H 00BEH 0001H 0001H
+	rt
+CBLOCKEND 15 1 190
+CFUNCTIONEND 15
+
+
+	rseg $$tm_getABSource$timer
+CFUNCTION 16
+
+_tm_getABSource	:
+CBLOCK 16 1 193
+
+;;{
+CLINEA 0000H 0001H 00C1H 0001H 0001H
+CBLOCK 16 2 193
+
+;;	return (unsigned char)(TMACON0 & TM_CS_MASK);
+CLINEA 0000H 0001H 00C2H 0002H 002EH
+	l	r0,	0f8eah
+	and	r0,	#07h
+CBLOCKEND 16 2 195
+
+;;}
+CLINEA 0000H 0000H 00C3H 0001H 0001H
+	rt
+CBLOCKEND 16 1 195
+CFUNCTIONEND 16
+
+
+	rseg $$tm_set89Source$timer
+CFUNCTION 13
+
+_tm_set89Source	:
+CBLOCK 13 1 205
+
+;;{
+CLINEA 0000H 0001H 00CDH 0001H 0001H
+	mov	r2,	r0
+CBLOCK 13 2 205
+CARGUMENT 46H 0001H 0016H "cs" 02H 00H 00H
+
+;;	T8CS0 = (cs & 0x01);
+CLINEA 0000H 0001H 00CEH 0002H 0015H
+	and	r0,	#01h
+	beq	_$M16
+	sb	0f8e2h.0
+	bal	_$M17
+_$M16 :
+	rb	0f8e2h.0
+_$M17 :
+
+;;	T8CS1 = (cs & 0x02) >> 1;
+CLINEA 0000H 0001H 00CFH 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	and	r0,	#02h
+	and	r1,	#00h
+	srlc	r0,	#01h
+	and	r0,	#01h
+	beq	_$M18
+	sb	0f8e2h.1
+	bal	_$M19
+_$M18 :
+	rb	0f8e2h.1
+_$M19 :
+
+;;	T8CS2 = (cs & 0x04) >> 2;
+CLINEA 0000H 0001H 00D0H 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	and	r0,	#04h
+	and	r1,	#00h
+	srlc	r0,	#02h
+	and	r0,	#01h
+	beq	_$M20
+	sb	0f8e2h.2
+	rt
+_$M20 :
+	rb	0f8e2h.2
+CBLOCKEND 13 2 209
+
+;;}
+CLINEA 0000H 0001H 00D1H 0001H 0001H
+	rt
+CBLOCKEND 13 1 209
+CFUNCTIONEND 13
+
+
+	rseg $$tm_setABSource$timer
+CFUNCTION 14
+
+_tm_setABSource	:
+CBLOCK 14 1 212
+
+;;{
+CLINEA 0000H 0001H 00D4H 0001H 0001H
+	mov	r2,	r0
+CBLOCK 14 2 212
+CARGUMENT 46H 0001H 0016H "cs" 02H 00H 00H
+
+;;	TACS0 = (cs & 0x01);
+CLINEA 0000H 0001H 00D5H 0002H 0015H
+	and	r0,	#01h
+	beq	_$M23
+	sb	0f8eah.0
+	bal	_$M24
+_$M23 :
+	rb	0f8eah.0
+_$M24 :
+
+;;	TACS1 = (cs & 0x02) >> 1;
+CLINEA 0000H 0001H 00D6H 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	and	r0,	#02h
+	and	r1,	#00h
+	srlc	r0,	#01h
+	and	r0,	#01h
+	beq	_$M25
+	sb	0f8eah.1
+	bal	_$M26
+_$M25 :
+	rb	0f8eah.1
+_$M26 :
+
+;;	TACS2 = (cs & 0x04) >> 2;
+CLINEA 0000H 0001H 00D7H 0002H 001AH
+	mov	r0,	r2
+	mov	r1,	#00h
+	and	r0,	#04h
+	and	r1,	#00h
+	srlc	r0,	#02h
+	and	r0,	#01h
+	beq	_$M27
+	sb	0f8eah.2
+	rt
+_$M27 :
+	rb	0f8eah.2
+CBLOCKEND 14 2 216
+
+;;}
+CLINEA 0000H 0001H 00D8H 0001H 0001H
+	rt
+CBLOCKEND 14 1 216
+CFUNCTIONEND 14
+
+
+	rseg $$tm_set8Oneshot$timer
+CFUNCTION 34
+
+_tm_set8Oneshot	:
+CBLOCK 34 1 226
+
+;;{
+CLINEA 0000H 0001H 00E2H 0001H 0001H
+CBLOCK 34 2 226
+CARGUMENT 46H 0001H 0014H "ost" 02H 00H 00H
+
+;;	T8OST = ost;
+CLINEA 0000H 0001H 00E3H 0002H 000DH
+	and	r0,	#01h
+	beq	_$M30
+	sb	0f8e2h.7
+	rt
+_$M30 :
+	rb	0f8e2h.7
+CBLOCKEND 34 2 228
+
+;;}
+CLINEA 0000H 0001H 00E4H 0001H 0001H
+	rt
+CBLOCKEND 34 1 228
+CFUNCTIONEND 34
+
+
+	rseg $$tm_set9Oneshot$timer
+CFUNCTION 35
+
+_tm_set9Oneshot	:
+CBLOCK 35 1 231
+
+;;{
+CLINEA 0000H 0001H 00E7H 0001H 0001H
+CBLOCK 35 2 231
+CARGUMENT 46H 0001H 0014H "ost" 02H 00H 00H
+
+;;	T9OST = ost;
+CLINEA 0000H 0001H 00E8H 0002H 000DH
+	and	r0,	#01h
+	beq	_$M33
+	sb	0f8e6h.7
+	rt
+_$M33 :
+	rb	0f8e6h.7
+CBLOCKEND 35 2 233
+
+;;}
+CLINEA 0000H 0001H 00E9H 0001H 0001H
+	rt
+CBLOCKEND 35 1 233
+CFUNCTIONEND 35
+
+
+	rseg $$tm_setAOneshot$timer
+CFUNCTION 36
+
+_tm_setAOneshot	:
+CBLOCK 36 1 236
+
+;;{
+CLINEA 0000H 0001H 00ECH 0001H 0001H
+CBLOCK 36 2 236
+CARGUMENT 46H 0001H 0014H "ost" 02H 00H 00H
+
+;;	TAOST = ost;
+CLINEA 0000H 0001H 00EDH 0002H 000DH
+	and	r0,	#01h
+	beq	_$M36
+	sb	0f8eah.7
+	rt
+_$M36 :
+	rb	0f8eah.7
+CBLOCKEND 36 2 238
+
+;;}
+CLINEA 0000H 0001H 00EEH 0001H 0001H
+	rt
+CBLOCKEND 36 1 238
+CFUNCTIONEND 36
+
+
+	rseg $$tm_setBOneshot$timer
+CFUNCTION 37
+
+_tm_setBOneshot	:
+CBLOCK 37 1 241
+
+;;{
+CLINEA 0000H 0001H 00F1H 0001H 0001H
+CBLOCK 37 2 241
+CARGUMENT 46H 0001H 0014H "ost" 02H 00H 00H
+
+;;	TBOST = ost;
+CLINEA 0000H 0001H 00F2H 0002H 000DH
+	and	r0,	#01h
+	beq	_$M39
+	sb	0f8eeh.7
+	rt
+_$M39 :
+	rb	0f8eeh.7
+CBLOCKEND 37 2 243
+
+;;}
+CLINEA 0000H 0001H 00F3H 0001H 0001H
+	rt
+CBLOCKEND 37 1 243
+CFUNCTIONEND 37
+
+	public _tm_get89Counter
+	public _tm_getABSource
+	public _tm_get89Source
+	public _tm_startAB
+	public _tm_restartAB
+	public _tm_clrABCounter
+	public _tm_getABCounter
+	public _tm_setABData
+	public _tm_stop89
+	public _tm_stopAB
+	public _tm_setAOneshot
+	public _tm_setBOneshot
+	public _tm_set9Oneshot
+	public _tm_set8Oneshot
+	public _tm_set89Data
+	public _tm_setABSource
+	public _tm_set89Source
+	public _tm_init
+	public _tm_clr89Counter
+	public _tm_restart89
+	public _tm_start89
+	extrn code near : _main
+
+	end

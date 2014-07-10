@@ -1,0 +1,2353 @@
+;; Compile Options : /TML610178A /ML /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Ipwm /Iuart /Ivolume /Iled /D_ML610Q178 /SS 256 /SD /Oa /Ot /W 3 /Wc /Fa_output\_obj\ 
+;; Version Number  : Ver.3.31.4
+;; File Name       : main.c
+
+	type (ML610178A) 
+	model large, near
+	$$NINITVAR segment data 2h #0h
+	$$NINITTAB segment table 2h any
+	$$TAB$$S202$main segment table 2h #0h
+	$$TAB$$S207$main segment table 2h #0h
+	$$TAB$$S212$main segment table 2h #0h
+	$$TAB$$S216$main segment table 2h #0h
+	$$TAB$$S224$main segment table 2h #0h
+	$$TAB$$S227$main segment table 2h #0h
+	$$TAB$$S230$main segment table 2h #0h
+	$$TAB$$S231$main segment table 2h #0h
+	$$TAB$$S30$main segment table 2h #0h
+	$$TAB_valBzrHalfCycle$main segment table 2h #0h
+	$$TAB_valIntervalCycle$main segment table 2h #0h
+	$$_IntervalInit$main segment code 2h any
+	$$_IntervalStart$main segment code 2h any
+	$$_IntervalStop$main segment code 2h any
+	$$_bzrInit$main segment code 2h any
+	$$_bzrOperate$main segment code 2h any
+	$$_bzrStart$main segment code 2h any
+	$$_changeNextState$main segment code 2h any
+	$$_changeNextStateColor$main segment code 2h any
+	$$_initPeri$main segment code 2h any
+	$$_initState$main segment code 2h any
+	$$_intP00$main segment code 2h any
+	$$_intP01$main segment code 2h any
+	$$_intP02$main segment code 2h any
+	$$_intP03$main segment code 2h any
+	$$_intT16H$main segment code 2h any
+	$$_intTM1$main segment code 2h any
+	$$_intTM9$main segment code 2h any
+	$$_sendStr$main segment code 2h any
+	$$_stateColorBulb$main segment code 2h any
+	$$_stateColorMixed$main segment code 2h any
+	$$_stateColorNatural$main segment code 2h any
+	$$_stateNightLight$main segment code 2h any
+	$$_swInit$main segment code 2h any
+	$$main$main segment code 2h any
+	$$main_clrWDT$main segment code 2h any
+	STACKSEG 0100h
+CVERSION 3.31.4
+CSGLOBAL 03H 0000H "_bzrStart" 08H 02H 63H 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_changeNextStateColor" 08H 02H 6DH 00H 81H 04H 00H 00H 07H
+CSGLOBAL 03H 0000H "_sendStr" 08H 02H 6EH 00H 83H 10H 00H 00H 07H
+CSGLOBAL 03H 0000H "_stateColorNatural" 08H 02H 68H 00H 81H 04H 00H 00H 07H
+CSGLOBAL 03H 0000H "_initState" 08H 02H 59H 00H 81H 04H 00H 00H 07H
+CSGLOBAL 03H 0000H "_bzrOperate" 08H 02H 64H 00H 81H 04H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "main_clrWDT" 08H 02H 3DH 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_stateColorBulb" 08H 02H 69H 00H 81H 04H 00H 00H 07H
+CSGLOBAL 03H 0000H "_stateColorMixed" 08H 02H 6AH 00H 81H 04H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "main" 08H 02H 6FH 00H 80H 00H 00H 00H 01H
+CSGLOBAL 03H 0000H "_initPeri" 08H 02H 58H 00H 81H 08H 00H 00H 07H
+CSGLOBAL 03H 0000H "_stateNightLight" 08H 02H 6BH 00H 81H 04H 00H 00H 07H
+CSGLOBAL 03H 0000H "_IntervalStop" 08H 02H 67H 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_intP00" 08H 02H 5AH 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_intP01" 08H 02H 5BH 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_intP02" 08H 02H 5CH 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_intP03" 08H 02H 5DH 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_IntervalStart" 08H 02H 66H 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_intTM1" 08H 02H 5EH 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_intTM9" 08H 02H 5FH 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_IntervalInit" 08H 02H 65H 00H 81H 04H 00H 00H 07H
+CSGLOBAL 03H 0000H "_swInit" 08H 02H 61H 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_intT16H" 08H 02H 60H 00H 80H 00H 00H 00H 07H
+CSGLOBAL 03H 0000H "_changeNextState" 08H 02H 6CH 00H 81H 04H 00H 00H 07H
+CSGLOBAL 03H 0000H "_bzrInit" 08H 02H 62H 00H 81H 04H 00H 00H 07H
+CSTRUCTTAG 0000H 0000H 0003H 0003H 00000001H "_Notag"
+CSTRUCTMEM 52H 00000001H 00000000H "state" 02H 00H 00H
+CSTRUCTMEM 52H 00000002H 00000001H "state_sub" 02H 00H 00H
+CSTRUCTMEM 52H 00000005H 00000003H "reserve" 02H 00H 00H
+CSTRUCTTAG 0000H 0000H 0002H 0002H 00000004H "_Notag"
+CSTRUCTMEM 42H 00000002H 00000000H "dutyHigh" 02H 00H 08H
+CSTRUCTMEM 42H 00000002H 00000002H "dutyLow" 02H 00H 08H
+CSTRUCTTAG 0000H 0000H 0001H 0004H 00000008H "_Notag"
+CSTRUCTMEM 42H 00000002H 00000000H "adMin" 02H 00H 08H
+CSTRUCTMEM 42H 00000002H 00000002H "adMax" 02H 00H 08H
+CSTRUCTMEM 42H 00000002H 00000004H "dutyNatural" 02H 00H 08H
+CSTRUCTMEM 42H 00000002H 00000006H "dutyBulb" 02H 00H 08H
+CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+CTYPEDEF 0000H 0000H 43H "STRUCT_STATE" 04H 00H 05H 03H 00H
+CTYPEDEF 0000H 0000H 43H "STRUCT_STEP_MIXED_DUTY" 04H 00H 05H 01H 00H
+CTYPEDEF 0000H 0000H 43H "STRUCT_STEP_NIGHT_DUTY" 04H 00H 05H 02H 00H
+CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+CSGLOBAL 42H 0001H "_bzrCount" 02H 00H 00H
+CGLOBAL 02H 42H 0001H "stepNight" 02H 00H 00H
+CSGLOBAL 00H 0002H "_valIntervalCycle" 02H 00H 08H
+CSGLOBAL 42H 0001H "_swInput" 02H 00H 00H
+CSGLOBAL 43H 0001H "_state" 04H 00H 05H 03H 00H
+CGLOBAL 02H 42H 0001H "stepNatural" 02H 00H 00H
+CSGLOBAL 42H 0001H "_IntervalFlag" 02H 00H 00H
+CGLOBAL 02H 42H 0001H "stepMixed" 02H 00H 00H
+CSGLOBAL 00H 0002H "_valBzrHalfCycle" 02H 00H 08H
+CGLOBAL 02H 42H 0001H "stepBulb" 02H 00H 00H
+CFILE 0001H 00000027H "common\\common.h"
+CFILE 0002H 00000020H "main\\mcu.h"
+CFILE 0003H 000008AAH "main\\ml610178A.h"
+CFILE 0004H 00000048H "irq\\irq.h"
+CFILE 0005H 00000022H "clock\\clock.h"
+CFILE 0006H 00000046H "tbc\\tbc.h"
+CFILE 0007H 000001ABH "timer\\timer.h"
+CFILE 0008H 00000023H "main\\main.h"
+CFILE 0009H 0000001FH "uart\\uart.h"
+CFILE 000AH 0000001FH "volume\\volume.h"
+CFILE 000BH 0000006EH "led\\led.h"
+CFILE 0000H 00000306H "main\\main.c"
+
+	rseg $$main$main
+CFUNCTION 111
+
+_main	:
+CBLOCK 111 1 180
+
+;;{
+CLINEA 0000H 0001H 00B4H 0001H 0001H
+CBLOCK 111 2 180
+
+;;	_initPeri();
+CLINEA 0000H 0001H 00B7H 0002H 000DH
+	bl	__initPeri
+
+;;	uartSendStr( STR_INIT, (unsigned char)STR_INIT_NUM );
+CLINEA 0000H 0001H 00BBH 0002H 0036H
+	mov	r2,	#01bh
+	mov	r0,	#BYTE1 OFFSET $$S30
+	mov	r1,	#BYTE2 OFFSET $$S30
+	bl	_uartSendStr
+
+;;	_initState();
+CLINEA 0000H 0001H 00BFH 0002H 000EH
+	bl	__initState
+
+;;	for (;;)
+CLINEA 0000H 0000H 00C2H 0002H 0009H
+_$L33 :
+CBLOCK 111 3 195
+
+;;		main_clrWDT();
+CLINEA 0000H 0001H 00C5H 0003H 0010H
+	bl	_main_clrWDT
+
+;;		if( _state.state == STATE_COLOR )
+CLINEA 0000H 0001H 00C7H 0003H 0023H
+	tb	NEAR __state.0
+	bne	_$L37
+CBLOCK 111 4 200
+
+;;			switch( _state.state_sub )
+CLINEA 0000H 0001H 00C9H 0004H 001DH
+	l	r0,	NEAR __state
+	srl	r0,	#01h
+	and	r0,	#03h
+CBLOCK 111 5 202
+	cmp	r0,	#00h
+	beq	_$L44
+
+;;			switch( _state.state_sub )
+CLINEA 0000H 0000H 00C9H 0004H 001DH
+	cmp	r0,	#01h
+	beq	_$L45
+
+;;			switch( _state.state_sub )
+CLINEA 0000H 0000H 00C9H 0004H 001DH
+	cmp	r0,	#02h
+	beq	_$L46
+
+;;					_initState();
+CLINEA 0000H 0001H 00D5H 0006H 0012H
+	bl	__initState
+CBLOCKEND 111 5 215
+
+;;			}
+CLINEA 0000H 0000H 00D7H 0004H 0004H
+_$L42 :
+
+;;		else if( _state.state == STATE_NIGHT )
+CLINEA 0000H 0001H 00D9H 0003H 0028H
+	bal	_$L48
+_$L37 :
+	tb	NEAR __state.0
+	beq	_$L33
+CBLOCK 111 6 218
+
+;;			_stateNightLight();
+CLINEA 0000H 0001H 00DBH 0004H 0016H
+	bl	__stateNightLight
+CBLOCKEND 111 6 220
+
+;;		}
+CLINEA 0000H 0000H 00DCH 0003H 0003H
+_$L48 :
+CBLOCKEND 111 3 221
+CBLOCKEND 111 4 224
+	bal	_$L33
+
+;;	}
+CLINEA 0000H 0000H 00DDH 0002H 0002H
+CBLOCKEND 111 2 224
+
+;;				case STATE_COLOR_NATURAL:
+CLINEA 0000H 0001H 00CBH 0005H 001DH
+_$L44 :
+
+;;					_stateColorNatural();
+CLINEA 0000H 0001H 00CCH 0006H 001AH
+	bl	__stateColorNatural
+
+;;					break;
+CLINEA 0000H 0001H 00CDH 0006H 000BH
+	bal	_$L42
+
+;;				case STATE_COLOR_BULB:
+CLINEA 0000H 0001H 00CEH 0005H 001AH
+_$L45 :
+
+;;					_stateColorBulb();
+CLINEA 0000H 0001H 00CFH 0006H 0017H
+	bl	__stateColorBulb
+
+;;					break;
+CLINEA 0000H 0001H 00D0H 0006H 000BH
+	bal	_$L42
+
+;;				case STATE_COLOR_MIXED:
+CLINEA 0000H 0001H 00D1H 0005H 001BH
+_$L46 :
+
+;;					_stateColorMixed();
+CLINEA 0000H 0001H 00D2H 0006H 0018H
+	bl	__stateColorMixed
+
+;;					break;
+CLINEA 0000H 0001H 00D3H 0006H 000BH
+	bal	_$L42
+CBLOCKEND 111 1 224
+CFUNCTIONEND 111
+
+
+	rseg $$main_clrWDT$main
+CFUNCTION 61
+
+_main_clrWDT	:
+CBLOCK 61 1 234
+
+;;{
+CLINEA 0000H 0001H 00EAH 0001H 0001H
+CBLOCK 61 2 234
+
+;;	do {
+CLINEA 0000H 0001H 00EBH 0002H 0005H
+_$L53 :
+CBLOCK 61 3 235
+
+;;		WDTCON = 0x5Au;
+CLINEA 0000H 0001H 00ECH 0003H 0011H
+	mov	r0,	#05ah
+	st	r0,	0f00eh
+CBLOCKEND 61 3 237
+
+;;	} while (WDP != 1);
+CLINEA 0000H 0000H 00EDH 0002H 0014H
+	tb	0f00eh.0
+	beq	_$L53
+
+;;	WDTCON = 0xA5u;
+CLINEA 0000H 0001H 00EEH 0002H 0010H
+	mov	r0,	#0a5h
+	st	r0,	0f00eh
+CBLOCKEND 61 2 239
+
+;;}
+CLINEA 0000H 0001H 00EFH 0001H 0001H
+	rt
+CBLOCKEND 61 1 239
+CFUNCTIONEND 61
+
+
+	rseg $$_initPeri$main
+CFUNCTION 88
+
+__initPeri	:
+CBLOCK 88 1 253
+
+;;{
+CLINEA 0000H 0001H 00FDH 0001H 0001H
+	push	lr
+CBLOCK 88 2 253
+CRET 0000H
+
+;;	BLKCON0 = 0x00; // 
+CLINEA 0000H 0001H 00FFH 0002H 0014H
+	mov	r0,	#00h
+	st	r0,	0f028h
+
+;;	BLKCON2 = 0x8B; // UART0
+CLINEA 0000H 0001H 0100H 0002H 0019H
+	mov	r0,	#08bh
+	st	r0,	0f02ah
+
+;;	BLKCON4 = 0x60; // SA-ADC
+CLINEA 0000H 0001H 0101H 0002H 001AH
+	mov	r0,	#060h
+	st	r0,	0f02ch
+
+;;	BLKCON6 = 0x00; // 
+CLINEA 0000H 0001H 0102H 0002H 0014H
+	mov	r0,	#00h
+	st	r0,	0f02eh
+
+;;	BLKCON7 = 0x00; // PWM
+CLINEA 0000H 0001H 0103H 0002H 0017H
+	st	r0,	0f02fh
+
+;;	irq_di();
+CLINEA 0000H 0001H 0106H 0002H 000AH
+	bl	_irq_di
+
+;;	irq_init();
+CLINEA 0000H 0001H 0107H 0002H 000CH
+	bl	_irq_init
+
+;;	(void)irq_setHdr( (unsigned char)IRQ_NO_P00INT, _intP00 );
+CLINEA 0000H 0001H 0108H 0002H 003BH
+	mov	r0,	#SEG __intP00
+	push	r0
+	mov	r0,	#BYTE1 OFFSET __intP00
+	mov	r1,	#BYTE2 OFFSET __intP00
+	push	er0
+	mov	r0,	#02h
+	bl	_irq_setHdr
+	add	sp,	#4 
+
+;;	(void)irq_setHdr( (unsigned char)IRQ_NO_P01INT, _intP01 );
+CLINEA 0000H 0001H 0109H 0002H 003BH
+	mov	r0,	#SEG __intP01
+	push	r0
+	mov	r0,	#BYTE1 OFFSET __intP01
+	mov	r1,	#BYTE2 OFFSET __intP01
+	push	er0
+	mov	r0,	#03h
+	bl	_irq_setHdr
+	add	sp,	#4 
+
+;;	(void)irq_setHdr( (unsigned char)IRQ_NO_P02INT, _intP02 );
+CLINEA 0000H 0001H 010AH 0002H 003BH
+	mov	r0,	#SEG __intP02
+	push	r0
+	mov	r0,	#BYTE1 OFFSET __intP02
+	mov	r1,	#BYTE2 OFFSET __intP02
+	push	er0
+	mov	r0,	#04h
+	bl	_irq_setHdr
+	add	sp,	#4 
+
+;;	(void)irq_setHdr( (unsigned char)IRQ_NO_P03INT, _intP03 );
+CLINEA 0000H 0001H 010BH 0002H 003BH
+	mov	r0,	#SEG __intP03
+	push	r0
+	mov	r0,	#BYTE1 OFFSET __intP03
+	mov	r1,	#BYTE2 OFFSET __intP03
+	push	er0
+	mov	r0,	#05h
+	bl	_irq_setHdr
+	add	sp,	#4 
+
+;;	(void)irq_setHdr( (unsigned char)IRQ_NO_TM1INT, _intTM1 );
+CLINEA 0000H 0001H 010CH 0002H 003BH
+	mov	r0,	#SEG __intTM1
+	push	r0
+	mov	r0,	#BYTE1 OFFSET __intTM1
+	mov	r1,	#BYTE2 OFFSET __intTM1
+	push	er0
+	mov	r0,	#0ah
+	bl	_irq_setHdr
+	add	sp,	#4 
+
+;;	(void)irq_setHdr( (unsigned char)IRQ_NO_TM9INT, _intTM9 );
+CLINEA 0000H 0001H 010DH 0002H 003BH
+	mov	r0,	#SEG __intTM9
+	push	r0
+	mov	r0,	#BYTE1 OFFSET __intTM9
+	mov	r1,	#BYTE2 OFFSET __intTM9
+	push	er0
+	mov	r0,	#01ah
+	bl	_irq_setHdr
+	add	sp,	#4 
+
+;;	(void)irq_setHdr( (unsigned char)IRQ_NO_T16HINT, _intT16H );
+CLINEA 0000H 0001H 010EH 0002H 003DH
+	mov	r0,	#SEG __intT16H
+	push	r0
+	mov	r0,	#BYTE1 OFFSET __intT16H
+	mov	r1,	#BYTE2 OFFSET __intT16H
+	push	er0
+	mov	r0,	#014h
+	bl	_irq_setHdr
+	add	sp,	#4 
+
+;;	EP00 = 1;
+CLINEA 0000H 0001H 010FH 0002H 000AH
+	sb	0f011h.0
+
+;;	EP01 = 1;
+CLINEA 0000H 0001H 0110H 0002H 000AH
+	sb	0f011h.1
+
+;;	EP02 = 1;
+CLINEA 0000H 0001H 0111H 0002H 000AH
+	sb	0f011h.2
+
+;;	EP03 = 1;
+CLINEA 0000H 0001H 0112H 0002H 000AH
+	sb	0f011h.3
+
+;;	ETM9 = 1;
+CLINEA 0000H 0001H 0114H 0002H 000AH
+	sb	0f013h.3
+
+;;	irq_ei();
+CLINEA 0000H 0001H 0116H 0002H 000AH
+	bl	_irq_ei
+
+;;	WDTMOD = 0x03; // 
+CLINEA 0000H 0001H 0119H 0002H 0013H
+	mov	r0,	#03h
+	st	r0,	0f00fh
+
+;;	main_clrWDT();
+CLINEA 0000H 0001H 011AH 0002H 000FH
+	bl	_main_clrWDT
+
+;;	clk_setSysclk();
+CLINEA 0000H 0001H 011DH 0002H 0011H
+	bl	_clk_setSysclk
+
+;;	tb_setHtbdiv( (unsigned char)TB_HTD_1_2 );
+CLINEA 0000H 0001H 0120H 0002H 002BH
+	mov	r0,	#0eh
+	st	r0,	0f00bh
+
+;;	_swInit();
+CLINEA 0000H 0001H 0123H 0002H 000BH
+	bl	__swInit
+
+;;	_bzrInit();
+CLINEA 0000H 0001H 0126H 0002H 000CH
+	bl	__bzrInit
+
+;;	ledNaturalInit();
+CLINEA 0000H 0001H 0129H 0002H 0012H
+	bl	_ledNaturalInit
+
+;;	ledBulbInit();
+CLINEA 0000H 0001H 012AH 0002H 000FH
+	bl	_ledBulbInit
+
+;;	ledMixedInit();
+CLINEA 0000H 0001H 012BH 0002H 0010H
+	bl	_ledMixedInit
+
+;;	ledNightInit();
+CLINEA 0000H 0001H 012CH 0002H 0010H
+	bl	_ledNightInit
+
+;;	volInit();
+CLINEA 0000H 0001H 012FH 0002H 000BH
+	bl	_volInit
+
+;;	uartInit();
+CLINEA 0000H 0001H 0132H 0002H 000CH
+	bl	_uartInit
+
+;;	_IntervalInit();
+CLINEA 0000H 0001H 0135H 0002H 0011H
+	bl	__IntervalInit
+CBLOCKEND 88 2 310
+
+;;}
+CLINEA 0000H 0001H 0136H 0001H 0001H
+	pop	pc
+CBLOCKEND 88 1 310
+CFUNCTIONEND 88
+
+
+	rseg $$_initState$main
+CFUNCTION 89
+
+__initState	:
+CBLOCK 89 1 313
+
+;;{
+CLINEA 0000H 0001H 0139H 0001H 0001H
+	push	lr
+CBLOCK 89 2 313
+CRET 0000H
+
+;;	_state.state = STATE_COLOR;
+CLINEA 0000H 0001H 013BH 0002H 001CH
+	rb	NEAR __state.0
+
+;;	_state.state_sub = STATE_COLOR_NATURAL;
+CLINEA 0000H 0001H 013CH 0002H 0028H
+	rb	NEAR __state.2
+	rb	NEAR __state.1
+
+;;	ledNaturalOn();
+CLINEA 0000H 0001H 013DH 0002H 0010H
+	bl	_ledNaturalOn
+
+;;	ledBulbOff();
+CLINEA 0000H 0001H 013FH 0002H 000EH
+	bl	_ledBulbOff
+
+;;	ledNightOff();
+CLINEA 0000H 0001H 0140H 0002H 000FH
+	bl	_ledNightOff
+
+;;	_sendStr();
+CLINEA 0000H 0001H 0142H 0002H 000CH
+	bl	__sendStr
+CBLOCKEND 89 2 323
+
+;;}
+CLINEA 0000H 0001H 0143H 0001H 0001H
+	pop	pc
+CBLOCKEND 89 1 323
+CFUNCTIONEND 89
+
+
+	rseg $$_intP00$main
+CFUNCTION 90
+
+__intP00	:
+CBLOCK 90 1 328
+
+;;{
+CLINEA 0000H 0001H 0148H 0001H 0001H
+CBLOCK 90 2 328
+
+;;	_swInput = ( _swInput==SW_NONE ) ? SW_COLOR : _swInput;
+CLINEA 0000H 0000H 0149H 0002H 0038H
+	l	r0,	NEAR __swInput
+	bne	_$L58
+	mov	er0,	#1 
+_$L58 :
+_$L60 :
+	st	r0,	NEAR __swInput
+CBLOCKEND 90 2 330
+
+;;}
+CLINEA 0000H 0001H 014AH 0001H 0001H
+	rt
+CBLOCKEND 90 1 330
+CFUNCTIONEND 90
+
+
+	rseg $$_intP01$main
+CFUNCTION 91
+
+__intP01	:
+CBLOCK 91 1 333
+
+;;{
+CLINEA 0000H 0001H 014DH 0001H 0001H
+CBLOCK 91 2 333
+
+;;	_swInput = ( _swInput==SW_NONE ) ? SW_NIGHT : _swInput;
+CLINEA 0000H 0000H 014EH 0002H 0038H
+	l	r0,	NEAR __swInput
+	bne	_$L62
+	mov	er0,	#2 
+_$L62 :
+_$L64 :
+	st	r0,	NEAR __swInput
+CBLOCKEND 91 2 335
+
+;;}
+CLINEA 0000H 0001H 014FH 0001H 0001H
+	rt
+CBLOCKEND 91 1 335
+CFUNCTIONEND 91
+
+
+	rseg $$_intP02$main
+CFUNCTION 92
+
+__intP02	:
+CBLOCK 92 1 338
+
+;;{
+CLINEA 0000H 0001H 0152H 0001H 0001H
+CBLOCK 92 2 338
+
+;;	_swInput = ( _swInput==SW_NONE ) ? SW_PLUS : _swInput;
+CLINEA 0000H 0000H 0153H 0002H 0037H
+	l	r0,	NEAR __swInput
+	bne	_$L66
+	mov	er0,	#3 
+_$L66 :
+_$L68 :
+	st	r0,	NEAR __swInput
+CBLOCKEND 92 2 340
+
+;;}
+CLINEA 0000H 0001H 0154H 0001H 0001H
+	rt
+CBLOCKEND 92 1 340
+CFUNCTIONEND 92
+
+
+	rseg $$_intP03$main
+CFUNCTION 93
+
+__intP03	:
+CBLOCK 93 1 343
+
+;;{
+CLINEA 0000H 0001H 0157H 0001H 0001H
+CBLOCK 93 2 343
+
+;;	_swInput = ( _swInput==SW_NONE ) ? SW_MINUS : _swInput;
+CLINEA 0000H 0000H 0158H 0002H 0038H
+	l	r0,	NEAR __swInput
+	bne	_$L70
+	mov	er0,	#4 
+_$L70 :
+_$L72 :
+	st	r0,	NEAR __swInput
+CBLOCKEND 93 2 345
+
+;;}
+CLINEA 0000H 0001H 0159H 0001H 0001H
+	rt
+CBLOCKEND 93 1 345
+CFUNCTIONEND 93
+
+
+	rseg $$_intTM1$main
+CFUNCTION 94
+
+__intTM1	:
+CBLOCK 94 1 348
+
+;;{
+CLINEA 0000H 0001H 015CH 0001H 0001H
+CBLOCK 94 2 348
+
+;;	_IntervalFlag = TRUE;
+CLINEA 0000H 0001H 015DH 0002H 0016H
+	mov	r0,	#01h
+	st	r0,	NEAR __IntervalFlag
+CBLOCKEND 94 2 350
+
+;;}
+CLINEA 0000H 0001H 015EH 0001H 0001H
+	rt
+CBLOCKEND 94 1 350
+CFUNCTIONEND 94
+
+
+	rseg $$_intTM9$main
+CFUNCTION 95
+
+__intTM9	:
+CBLOCK 95 1 353
+
+;;{
+CLINEA 0000H 0001H 0161H 0001H 0001H
+CBLOCK 95 2 353
+
+;;	ledNightToggle();
+CLINEA 0000H 0001H 0162H 0002H 0012H
+	b	_ledNightToggle
+CBLOCKEND 95 2 355
+CLINEA 0000H 0001H 0163H 0001H 0001H
+CBLOCKEND 95 1 355
+CFUNCTIONEND 95
+
+
+	rseg $$_intT16H$main
+CFUNCTION 96
+
+__intT16H	:
+CBLOCK 96 1 358
+
+;;{
+CLINEA 0000H 0001H 0166H 0001H 0001H
+CBLOCK 96 2 358
+
+;;	_bzrOperate();
+CLINEA 0000H 0001H 0167H 0002H 000FH
+	b	__bzrOperate
+CBLOCKEND 96 2 360
+CLINEA 0000H 0001H 0168H 0001H 0001H
+CBLOCKEND 96 1 360
+CFUNCTIONEND 96
+
+
+	rseg $$_swInit$main
+CFUNCTION 97
+
+__swInit	:
+CBLOCK 97 1 364
+
+;;{
+CLINEA 0000H 0001H 016CH 0001H 0001H
+CBLOCK 97 2 364
+
+;;	P00E0 = 0;
+CLINEA 0000H 0001H 0170H 0002H 000BH
+	rb	0f020h.0
+
+;;	P00E1 = 1;	// pos edge interrupt
+CLINEA 0000H 0001H 0171H 0002H 0021H
+	sb	0f021h.0
+
+;;	P00SM = 1;	// sampling enable
+CLINEA 0000H 0001H 0172H 0002H 001EH
+	sb	0f022h.0
+
+;;	P01E0 = 0;
+CLINEA 0000H 0001H 0175H 0002H 000BH
+	rb	0f020h.1
+
+;;	P01E1 = 1;	// pos edge interrupt
+CLINEA 0000H 0001H 0176H 0002H 0021H
+	sb	0f021h.1
+
+;;	P01SM = 1;	// sampling enable
+CLINEA 0000H 0001H 0177H 0002H 001EH
+	sb	0f022h.1
+
+;;	P02E0 = 0;
+CLINEA 0000H 0001H 017AH 0002H 000BH
+	rb	0f020h.2
+
+;;	P02E1 = 1;	// pos edge interrupt
+CLINEA 0000H 0001H 017BH 0002H 0021H
+	sb	0f021h.2
+
+;;	P02SM = 1;	// sampling enable
+CLINEA 0000H 0001H 017CH 0002H 001EH
+	sb	0f022h.2
+
+;;	P03E0 = 0;
+CLINEA 0000H 0001H 017FH 0002H 000BH
+	rb	0f020h.3
+
+;;	P03E1 = 1;	// pos edge interrupt
+CLINEA 0000H 0001H 0180H 0002H 0021H
+	sb	0f021h.3
+
+;;	P03SM = 1;	// sampling enable
+CLINEA 0000H 0001H 0181H 0002H 001EH
+	sb	0f022h.3
+
+;;	_swInput = SW_NONE;
+CLINEA 0000H 0001H 0184H 0002H 0014H
+	mov	r0,	#00h
+	st	r0,	NEAR __swInput
+CBLOCKEND 97 2 389
+
+;;}
+CLINEA 0000H 0001H 0185H 0001H 0001H
+	rt
+CBLOCKEND 97 1 389
+CFUNCTIONEND 97
+
+
+	rseg $$_bzrInit$main
+CFUNCTION 98
+
+__bzrInit	:
+CBLOCK 98 1 393
+
+;;{
+CLINEA 0000H 0001H 0189H 0001H 0001H
+	push	lr
+CBLOCK 98 2 393
+CRET 0000H
+
+;;	P23C0 = 1;
+CLINEA 0000H 0001H 018BH 0002H 000BH
+	sb	0f212h.3
+
+;;	P23C1 = 1;	// cmos
+CLINEA 0000H 0001H 018CH 0002H 0013H
+	sb	0f213h.3
+
+;;	P23MD  = 0;
+CLINEA 0000H 0001H 018DH 0002H 000CH
+	rb	0f214h.3
+
+;;	P23MD1 = 1;	// timer b
+CLINEA 0000H 0001H 018EH 0002H 0017H
+	sb	0f215h.3
+
+;;	tm_init( TM_CH_NO_AB ); // count stop, 16bit mode
+CLINEA 0000H 0001H 0190H 0002H 0032H
+	mov	r0,	#02h
+	bl	_tm_init
+
+;;	tm_setABSource( TM_CS_HTBCLK );
+CLINEA 0000H 0001H 0191H 0002H 0020H
+	sb	0f8eah.0
+	rb	0f8eah.1
+
+;;	tm_setAOneshot( TM_OST_DIS ); // normal(auto reload) mode
+CLINEA 0000H 0001H 0192H 0002H 003AH
+	rb	0f8eah.7
+
+;;	TBNEG = 0;	// 正論理
+CLINEA 0000H 0001H 0193H 0002H 0015H
+	rb	0f8eeh.6
+
+;;	tm_setABData( _valBzrHalfCycle );
+CLINEA 0000H 0001H 0195H 0002H 0022H
+	mov	r0,	#030h
+	st	r0,	0f8e8h
+	mov	r0,	#03h
+	st	r0,	0f8ech
+
+;;	_bzrCount = 0;
+CLINEA 0000H 0001H 0198H 0002H 000FH
+	mov	r0,	#00h
+	st	r0,	NEAR __bzrCount
+CBLOCKEND 98 2 409
+
+;;}
+CLINEA 0000H 0001H 0199H 0001H 0001H
+	pop	pc
+CBLOCKEND 98 1 409
+CFUNCTIONEND 98
+
+
+	rseg $$_bzrStart$main
+CFUNCTION 99
+
+__bzrStart	:
+CBLOCK 99 1 412
+
+;;{
+CLINEA 0000H 0001H 019CH 0001H 0001H
+CBLOCK 99 2 412
+CARGUMENT 46H 0001H 0014H "num" 02H 00H 00H
+
+;;	tm_stopAB();
+CLINEA 0000H 0001H 019DH 0002H 000DH
+	rb	0f8ebh.0
+
+;;	_bzrCount = ( num * 2u );
+CLINEA 0000H 0001H 019EH 0002H 001AH
+	add	r0,	r0
+	st	r0,	NEAR __bzrCount
+
+;;	Q16H = 0;
+CLINEA 0000H 0001H 01A0H 0002H 000AH
+	rb	0f01fh.0
+
+;;	E16H = 1;
+CLINEA 0000H 0001H 01A1H 0002H 000AH
+	sb	0f017h.0
+CBLOCKEND 99 2 418
+
+;;}
+CLINEA 0000H 0001H 01A2H 0001H 0001H
+	rt
+CBLOCKEND 99 1 418
+CFUNCTIONEND 99
+
+
+	rseg $$_bzrOperate$main
+CFUNCTION 100
+
+__bzrOperate	:
+CBLOCK 100 1 421
+
+;;{
+CLINEA 0000H 0001H 01A5H 0001H 0001H
+	push	lr
+CBLOCK 100 2 421
+CRET 0000H
+
+;;	if( _bzrCount > 0 )
+CLINEA 0000H 0001H 01A6H 0002H 0014H
+	l	r0,	NEAR __bzrCount
+	cmp	r0,	#00h
+	ble	_$L85
+CBLOCK 100 3 423
+
+;;		_bzrCount--;
+CLINEA 0000H 0000H 01A8H 0003H 000EH
+	add	r0,	#0ffh
+	st	r0,	NEAR __bzrCount
+
+;;		if( (_bzrCount % 2) == TRUE )
+CLINEA 0000H 0001H 01A9H 0003H 001FH
+	mov	r1,	#00h
+	mov	er2,	#2 
+	bl	__imodu8lw
+	cmp	r0,	#01h
+	cmpc	r1,	#00h
+	bne	_$L82
+CBLOCK 100 4 426
+
+;;			tm_startAB();
+CLINEA 0000H 0001H 01ABH 0004H 0010H
+	mov	r0,	#00h
+	st	r0,	0f8e9h
+	sb	0f8ebh.0
+CBLOCKEND 100 4 428
+
+;;		else
+CLINEA 0000H 0001H 01ADH 0003H 0006H
+	bal	_$L84
+_$L82 :
+CBLOCK 100 5 430
+
+;;			tm_stopAB();
+CLINEA 0000H 0001H 01AFH 0004H 000FH
+	rb	0f8ebh.0
+CBLOCKEND 100 5 432
+
+;;		}
+CLINEA 0000H 0000H 01B0H 0003H 0003H
+_$L84 :
+
+;;		if( _bzrCount == 0 )
+CLINEA 0000H 0001H 01B2H 0003H 0016H
+	l	r0,	NEAR __bzrCount
+	bne	_$L85
+CBLOCK 100 6 435
+
+;;			E16H = 0;
+CLINEA 0000H 0001H 01B4H 0004H 000CH
+	rb	0f017h.0
+CBLOCKEND 100 6 437
+
+;;		}
+CLINEA 0000H 0000H 01B5H 0003H 0003H
+_$L85 :
+CBLOCKEND 100 3 438
+CBLOCKEND 100 2 439
+
+;;}
+CLINEA 0000H 0001H 01B7H 0001H 0001H
+	pop	pc
+CBLOCKEND 100 1 439
+CFUNCTIONEND 100
+
+
+	rseg $$_IntervalInit$main
+CFUNCTION 101
+
+__IntervalInit	:
+CBLOCK 101 1 442
+
+;;{
+CLINEA 0000H 0001H 01BAH 0001H 0001H
+	push	lr
+CBLOCK 101 2 442
+CRET 0000H
+
+;;	tm_init( TM_CH_NO_01 ); // count stop, 16bit mode
+CLINEA 0000H 0001H 01BBH 0002H 0032H
+	mov	r0,	#00h
+	bl	_tm_init
+
+;;	tm_set01Source( TM_CS_HTBCLK );
+CLINEA 0000H 0001H 01BCH 0002H 0020H
+	sb	0f032h.0
+	rb	0f032h.1
+
+;;	tm_set01Data( _valIntervalCycle );
+CLINEA 0000H 0001H 01BEH 0002H 0023H
+	mov	r0,	#0aah
+	st	r0,	0f030h
+	mov	r0,	#09fh
+	st	r0,	0f034h
+
+;;	_IntervalFlag = FALSE;
+CLINEA 0000H 0001H 01C1H 0002H 0017H
+	mov	r0,	#00h
+	st	r0,	NEAR __IntervalFlag
+CBLOCKEND 101 2 451
+
+;;}
+CLINEA 0000H 0001H 01C3H 0001H 0001H
+	pop	pc
+CBLOCKEND 101 1 451
+CFUNCTIONEND 101
+
+
+	rseg $$_IntervalStart$main
+CFUNCTION 102
+
+__IntervalStart	:
+CBLOCK 102 1 454
+
+;;{
+CLINEA 0000H 0001H 01C6H 0001H 0001H
+CBLOCK 102 2 454
+
+;;	_IntervalFlag = FALSE;
+CLINEA 0000H 0001H 01C7H 0002H 0017H
+	mov	r0,	#00h
+	st	r0,	NEAR __IntervalFlag
+
+;;	ETM1 = 1;
+CLINEA 0000H 0001H 01C8H 0002H 000AH
+	sb	0f013h.1
+
+;;	tm_start01();
+CLINEA 0000H 0001H 01C9H 0002H 000EH
+	st	r0,	0f031h
+	sb	0f033h.0
+CBLOCKEND 102 2 458
+
+;;}
+CLINEA 0000H 0001H 01CAH 0001H 0001H
+	rt
+CBLOCKEND 102 1 458
+CFUNCTIONEND 102
+
+
+	rseg $$_IntervalStop$main
+CFUNCTION 103
+
+__IntervalStop	:
+CBLOCK 103 1 461
+
+;;{
+CLINEA 0000H 0001H 01CDH 0001H 0001H
+CBLOCK 103 2 461
+
+;;	tm_stop01();
+CLINEA 0000H 0001H 01CEH 0002H 000DH
+	rb	0f033h.0
+
+;;	ETM1 = 0;
+CLINEA 0000H 0001H 01CFH 0002H 000AH
+	rb	0f013h.1
+CBLOCKEND 103 2 464
+
+;;}
+CLINEA 0000H 0001H 01D0H 0001H 0001H
+	rt
+CBLOCKEND 103 1 464
+CFUNCTIONEND 103
+
+
+	rseg $$_stateColorNatural$main
+CFUNCTION 104
+
+__stateColorNatural	:
+CBLOCK 104 1 471
+
+;;{
+CLINEA 0000H 0001H 01D7H 0001H 0001H
+	push	lr
+CBLOCK 104 2 471
+CRET 0000H
+CLOCAL 46H 0001H 0015H 0002H "bzr" 02H 00H 00H
+CLOCAL 46H 0001H 0014H 0002H "result" 02H 00H 00H
+
+;;	unsigned char bzr = 0;
+CLINEA 0000H 0001H 01D8H 0002H 0017H
+	mov	r1,	#00h
+
+;;	if( _swInput != SW_NONE )
+CLINEA 0000H 0001H 01DBH 0002H 001AH
+	l	r0,	NEAR __swInput
+	beq	_$L110
+CBLOCK 104 3 476
+
+;;		if( _swInput == SW_COLOR )
+CLINEA 0000H 0001H 01DDH 0003H 001CH
+	cmp	r0,	#01h
+	bne	_$L93
+CBLOCK 104 4 478
+
+;;			_changeNextStateColor();
+CLINEA 0000H 0001H 01DFH 0004H 001BH
+	bl	__changeNextStateColor
+
+;;			bzr = BZR_STATE_CHANGE;
+CLINEA 0000H 0001H 01E0H 0004H 001AH
+	mov	r1,	#02h
+
+;;		else if( _swInput == SW_NIGHT )
+CLINEA 0000H 0001H 01E2H 0003H 0021H
+	bal	_$L105
+_$L93 :
+	cmp	r0,	#02h
+	bne	_$L96
+CBLOCK 104 5 483
+
+;;			_changeNextState();
+CLINEA 0000H 0001H 01E4H 0004H 0016H
+	bl	__changeNextState
+
+;;			bzr = BZR_STATE_CHANGE;
+CLINEA 0000H 0001H 01E5H 0004H 001AH
+	mov	r1,	#02h
+
+;;		else if( _swInput == SW_PLUS )
+CLINEA 0000H 0001H 01E7H 0003H 0020H
+	bal	_$L105
+_$L96 :
+	cmp	r0,	#03h
+	bne	_$L99
+CBLOCK 104 6 488
+
+;;			result = ledNaturalStepUpDn( STEP_UP );
+CLINEA 0000H 0000H 01E9H 0004H 002AH
+	mov	r0,	#00h
+	bl	_ledNaturalStepUpDn
+
+;;			bzr = ( result == PASS ) ? BZR_PLUSMINUS : BZR_PLUSMINUS_LIMIT;
+CLINEA 0000H 0000H 01EAH 0004H 0042H
+	cmp	r0,	#01h
+	bne	_$L101
+	mov	er0,	#1 
+	bal	_$L103
+_$L101 :
+	mov	er0,	#4 
+_$L103 :
+	mov	r1,	r0
+
+;;		else if( _swInput == SW_MINUS )
+CLINEA 0000H 0001H 01ECH 0003H 0021H
+	bal	_$L105
+_$L99 :
+	cmp	r0,	#04h
+	bne	_$L105
+CBLOCK 104 7 493
+
+;;			result = ledNaturalStepUpDn( STEP_DOWN );
+CLINEA 0000H 0000H 01EEH 0004H 002CH
+	mov	r0,	#01h
+	bl	_ledNaturalStepUpDn
+
+;;			bzr = ( result == PASS ) ? BZR_PLUSMINUS : BZR_PLUSMINUS_LIMIT;
+CLINEA 0000H 0000H 01EFH 0004H 0042H
+	cmp	r0,	#01h
+	bne	_$L107
+	mov	er0,	#1 
+	bal	_$L109
+_$L107 :
+	mov	er0,	#4 
+_$L109 :
+	mov	r1,	r0
+CBLOCKEND 104 7 496
+
+;;		}
+CLINEA 0000H 0000H 01F0H 0003H 0003H
+_$L105 :
+CBLOCKEND 104 6 505
+CBLOCKEND 104 5 505
+
+;;		_swInput = SW_NONE;
+CLINEA 0000H 0001H 01F1H 0003H 0015H
+	mov	r0,	#00h
+	st	r0,	NEAR __swInput
+
+;;		if( bzr != 0 )
+CLINEA 0000H 0001H 01F3H 0003H 0010H
+	mov	r0,	r1
+	cmp	r1,	#00h
+	beq	_$L110
+CBLOCKEND 104 4 505
+CBLOCK 104 8 500
+
+;;			_bzrStart( bzr );
+CLINEA 0000H 0001H 01F5H 0004H 0014H
+	bl	__bzrStart
+
+;;			_sendStr();
+CLINEA 0000H 0001H 01F6H 0004H 000EH
+	bl	__sendStr
+CBLOCKEND 104 8 503
+
+;;		}
+CLINEA 0000H 0000H 01F7H 0003H 0003H
+_$L110 :
+CBLOCKEND 104 3 504
+CBLOCKEND 104 2 505
+
+;;}
+CLINEA 0000H 0001H 01F9H 0001H 0001H
+	pop	pc
+CBLOCKEND 104 1 505
+CFUNCTIONEND 104
+
+
+	rseg $$_stateColorBulb$main
+CFUNCTION 105
+
+__stateColorBulb	:
+CBLOCK 105 1 508
+
+;;{
+CLINEA 0000H 0001H 01FCH 0001H 0001H
+	push	lr
+CBLOCK 105 2 508
+CRET 0000H
+CLOCAL 46H 0001H 0015H 0002H "bzr" 02H 00H 00H
+CLOCAL 46H 0001H 0014H 0002H "result" 02H 00H 00H
+
+;;	unsigned char bzr = 0;
+CLINEA 0000H 0001H 01FDH 0002H 0017H
+	mov	r1,	#00h
+
+;;	if( _swInput != SW_NONE )
+CLINEA 0000H 0001H 0200H 0002H 001AH
+	l	r0,	NEAR __swInput
+	beq	_$L132
+CBLOCK 105 3 513
+
+;;		if( _swInput == SW_COLOR )
+CLINEA 0000H 0001H 0202H 0003H 001CH
+	cmp	r0,	#01h
+	bne	_$L115
+CBLOCK 105 4 515
+
+;;			_changeNextStateColor();
+CLINEA 0000H 0001H 0204H 0004H 001BH
+	bl	__changeNextStateColor
+
+;;			bzr = BZR_STATE_CHANGE;
+CLINEA 0000H 0001H 0205H 0004H 001AH
+	mov	r1,	#02h
+
+;;		else if( _swInput == SW_NIGHT )
+CLINEA 0000H 0001H 0207H 0003H 0021H
+	bal	_$L127
+_$L115 :
+	cmp	r0,	#02h
+	bne	_$L118
+CBLOCK 105 5 520
+
+;;			_changeNextState();
+CLINEA 0000H 0001H 0209H 0004H 0016H
+	bl	__changeNextState
+
+;;			bzr = BZR_STATE_CHANGE;
+CLINEA 0000H 0001H 020AH 0004H 001AH
+	mov	r1,	#02h
+
+;;		else if( _swInput == SW_PLUS )
+CLINEA 0000H 0001H 020CH 0003H 0020H
+	bal	_$L127
+_$L118 :
+	cmp	r0,	#03h
+	bne	_$L121
+CBLOCK 105 6 525
+
+;;			result = ledBulbStepUpDn( STEP_UP );
+CLINEA 0000H 0000H 020EH 0004H 0027H
+	mov	r0,	#00h
+	bl	_ledBulbStepUpDn
+
+;;			bzr = ( result == PASS ) ? BZR_PLUSMINUS : BZR_PLUSMINUS_LIMIT;
+CLINEA 0000H 0000H 020FH 0004H 0042H
+	cmp	r0,	#01h
+	bne	_$L123
+	mov	er0,	#1 
+	bal	_$L125
+_$L123 :
+	mov	er0,	#4 
+_$L125 :
+	mov	r1,	r0
+
+;;		else if( _swInput == SW_MINUS )
+CLINEA 0000H 0001H 0211H 0003H 0021H
+	bal	_$L127
+_$L121 :
+	cmp	r0,	#04h
+	bne	_$L127
+CBLOCK 105 7 530
+
+;;			result = ledBulbStepUpDn( STEP_DOWN );
+CLINEA 0000H 0000H 0213H 0004H 0029H
+	mov	r0,	#01h
+	bl	_ledBulbStepUpDn
+
+;;			bzr = ( result == PASS ) ? BZR_PLUSMINUS : BZR_PLUSMINUS_LIMIT;
+CLINEA 0000H 0000H 0214H 0004H 0042H
+	cmp	r0,	#01h
+	bne	_$L129
+	mov	er0,	#1 
+	bal	_$L131
+_$L129 :
+	mov	er0,	#4 
+_$L131 :
+	mov	r1,	r0
+CBLOCKEND 105 7 533
+
+;;		}
+CLINEA 0000H 0000H 0215H 0003H 0003H
+_$L127 :
+CBLOCKEND 105 6 542
+CBLOCKEND 105 5 542
+
+;;		_swInput = SW_NONE;
+CLINEA 0000H 0001H 0216H 0003H 0015H
+	mov	r0,	#00h
+	st	r0,	NEAR __swInput
+
+;;		if( bzr != 0 )
+CLINEA 0000H 0001H 0218H 0003H 0010H
+	mov	r0,	r1
+	cmp	r1,	#00h
+	beq	_$L132
+CBLOCKEND 105 4 542
+CBLOCK 105 8 537
+
+;;			_bzrStart( bzr );
+CLINEA 0000H 0001H 021AH 0004H 0014H
+	bl	__bzrStart
+
+;;			_sendStr();
+CLINEA 0000H 0001H 021BH 0004H 000EH
+	bl	__sendStr
+CBLOCKEND 105 8 540
+
+;;		}
+CLINEA 0000H 0000H 021CH 0003H 0003H
+_$L132 :
+CBLOCKEND 105 3 541
+CBLOCKEND 105 2 542
+
+;;}
+CLINEA 0000H 0001H 021EH 0001H 0001H
+	pop	pc
+CBLOCKEND 105 1 542
+CFUNCTIONEND 105
+
+
+	rseg $$_stateColorMixed$main
+CFUNCTION 106
+
+__stateColorMixed	:
+CBLOCK 106 1 545
+
+;;{
+CLINEA 0000H 0001H 0221H 0001H 0001H
+	push	lr
+CBLOCK 106 2 545
+CRET 0000H
+CLOCAL 46H 0001H 0015H 0002H "bzr" 02H 00H 00H
+CLOCAL 46H 0002H 0024H 0002H "adValue" 02H 00H 08H
+CLOCAL 46H 0002H 0024H 0002H "step" 02H 00H 08H
+
+;;	unsigned char bzr = 0;
+CLINEA 0000H 0001H 0222H 0002H 0017H
+	mov	r1,	#00h
+
+;;	if( _swInput != SW_NONE )
+CLINEA 0000H 0001H 0226H 0002H 001AH
+	l	r0,	NEAR __swInput
+	beq	_$L135
+CBLOCK 106 3 551
+
+;;		if( _swInput == SW_COLOR )
+CLINEA 0000H 0001H 0228H 0003H 001CH
+	cmp	r0,	#01h
+	bne	_$L137
+CBLOCK 106 4 553
+
+;;			_changeNextStateColor();
+CLINEA 0000H 0001H 022AH 0004H 001BH
+	bl	__changeNextStateColor
+
+;;			bzr = BZR_STATE_CHANGE;
+CLINEA 0000H 0001H 022BH 0004H 001AH
+	mov	r1,	#02h
+
+;;		else if( _swInput == SW_NIGHT )
+CLINEA 0000H 0001H 022DH 0003H 0021H
+	bal	_$L140
+_$L137 :
+	cmp	r0,	#02h
+	bne	_$L140
+CBLOCK 106 5 558
+
+;;			_changeNextState();
+CLINEA 0000H 0001H 022FH 0004H 0016H
+	bl	__changeNextState
+
+;;			bzr = BZR_STATE_CHANGE;
+CLINEA 0000H 0001H 0230H 0004H 001AH
+	mov	r1,	#02h
+CBLOCKEND 106 5 561
+
+;;		}
+CLINEA 0000H 0000H 0231H 0003H 0003H
+_$L140 :
+
+;;		_swInput = SW_NONE;
+CLINEA 0000H 0001H 0232H 0003H 0015H
+	mov	r0,	#00h
+	st	r0,	NEAR __swInput
+
+;;		if( bzr != 0 )
+CLINEA 0000H 0001H 0234H 0003H 0010H
+	mov	r0,	r1
+	cmp	r1,	#00h
+	beq	_$L145
+CBLOCKEND 106 4 578
+CBLOCK 106 6 565
+
+;;			_bzrStart( bzr );
+CLINEA 0000H 0001H 0236H 0004H 0014H
+	bl	__bzrStart
+
+;;			_sendStr();
+CLINEA 0000H 0001H 0237H 0004H 000EH
+	bl	__sendStr
+CBLOCKEND 106 6 568
+
+;;	else if( _IntervalFlag == TRUE ) // 定期的に実施する処理
+CLINEA 0000H 0001H 023AH 0002H 0039H
+	bal	_$L145
+_$L135 :
+	l	r0,	NEAR __IntervalFlag
+	cmp	r0,	#01h
+	bne	_$L145
+CBLOCK 106 7 571
+
+;;		adValue = volGetAdValue();
+CLINEA 0000H 0000H 023CH 0003H 001CH
+	bl	_volGetAdValue
+
+;;		step = adValueToStep(adValue);
+CLINEA 0000H 0000H 023EH 0003H 0020H
+	bl	_adValueToStep
+
+;;		ledMixedStepUpDn( step );
+CLINEA 0000H 0001H 023FH 0003H 001BH
+	bl	_ledMixedStepUpDn
+
+;;		_IntervalFlag = FALSE;
+CLINEA 0000H 0001H 0240H 0003H 0018H
+	mov	r0,	#00h
+	st	r0,	NEAR __IntervalFlag
+CBLOCKEND 106 7 577
+
+;;	}
+CLINEA 0000H 0000H 0241H 0002H 0002H
+_$L145 :
+CBLOCKEND 106 3 578
+CBLOCKEND 106 2 578
+
+;;}
+CLINEA 0000H 0001H 0242H 0001H 0001H
+	pop	pc
+CBLOCKEND 106 1 578
+CFUNCTIONEND 106
+
+
+	rseg $$_stateNightLight$main
+CFUNCTION 107
+
+__stateNightLight	:
+CBLOCK 107 1 581
+
+;;{
+CLINEA 0000H 0001H 0245H 0001H 0001H
+	push	lr
+CBLOCK 107 2 581
+CRET 0000H
+CLOCAL 46H 0001H 0015H 0002H "bzr" 02H 00H 00H
+CLOCAL 46H 0001H 0014H 0002H "result" 02H 00H 00H
+
+;;	unsigned char bzr = 0;
+CLINEA 0000H 0001H 0246H 0002H 0017H
+	mov	r1,	#00h
+
+;;	if( _swInput != SW_NONE )
+CLINEA 0000H 0001H 0249H 0002H 001AH
+	l	r0,	NEAR __swInput
+	beq	_$L164
+CBLOCK 107 3 586
+
+;;		if( _swInput == SW_COLOR )
+CLINEA 0000H 0001H 024BH 0003H 001CH
+	cmp	r0,	#01h
+	bne	_$L150
+CBLOCK 107 4 588
+
+;;			_changeNextState();
+CLINEA 0000H 0001H 024DH 0004H 0016H
+	bl	__changeNextState
+
+;;			bzr = BZR_STATE_CHANGE;
+CLINEA 0000H 0001H 024EH 0004H 001AH
+	mov	r1,	#02h
+
+;;		else if( _swInput == SW_PLUS )
+CLINEA 0000H 0001H 0250H 0003H 0020H
+	bal	_$L159
+_$L150 :
+	cmp	r0,	#03h
+	bne	_$L153
+CBLOCK 107 5 593
+
+;;			result = ledNightStepUpDn( STEP_UP );
+CLINEA 0000H 0000H 0252H 0004H 0028H
+	mov	r0,	#00h
+	bl	_ledNightStepUpDn
+
+;;			bzr = ( result == PASS ) ? BZR_PLUSMINUS : BZR_PLUSMINUS_LIMIT;
+CLINEA 0000H 0000H 0253H 0004H 0042H
+	cmp	r0,	#01h
+	bne	_$L155
+	mov	er0,	#1 
+	bal	_$L157
+_$L155 :
+	mov	er0,	#4 
+_$L157 :
+	mov	r1,	r0
+
+;;		else if( _swInput == SW_MINUS )
+CLINEA 0000H 0001H 0255H 0003H 0021H
+	bal	_$L159
+_$L153 :
+	cmp	r0,	#04h
+	bne	_$L159
+CBLOCK 107 6 598
+
+;;			result = ledNightStepUpDn( STEP_DOWN );
+CLINEA 0000H 0000H 0257H 0004H 002AH
+	mov	r0,	#01h
+	bl	_ledNightStepUpDn
+
+;;			bzr = ( result == PASS ) ? BZR_PLUSMINUS : BZR_PLUSMINUS_LIMIT;
+CLINEA 0000H 0000H 0258H 0004H 0042H
+	cmp	r0,	#01h
+	bne	_$L161
+	mov	er0,	#1 
+	bal	_$L163
+_$L161 :
+	mov	er0,	#4 
+_$L163 :
+	mov	r1,	r0
+CBLOCKEND 107 6 601
+
+;;		}
+CLINEA 0000H 0000H 0259H 0003H 0003H
+_$L159 :
+CBLOCKEND 107 5 611
+
+;;		_swInput = SW_NONE;
+CLINEA 0000H 0001H 025AH 0003H 0015H
+	mov	r0,	#00h
+	st	r0,	NEAR __swInput
+
+;;		if( bzr != 0 )
+CLINEA 0000H 0001H 025CH 0003H 0010H
+	mov	r0,	r1
+	cmp	r1,	#00h
+	beq	_$L164
+CBLOCKEND 107 4 611
+CBLOCK 107 7 605
+
+;;			_bzrStart( bzr );
+CLINEA 0000H 0001H 025EH 0004H 0014H
+	bl	__bzrStart
+
+;;			_sendStr();
+CLINEA 0000H 0001H 025FH 0004H 000EH
+	bl	__sendStr
+CBLOCKEND 107 7 608
+
+;;		}
+CLINEA 0000H 0000H 0260H 0003H 0003H
+_$L164 :
+CBLOCKEND 107 3 610
+CBLOCKEND 107 2 611
+
+;;}
+CLINEA 0000H 0001H 0263H 0001H 0001H
+	pop	pc
+CBLOCKEND 107 1 611
+CFUNCTIONEND 107
+
+
+	rseg $$_changeNextState$main
+CFUNCTION 108
+
+__changeNextState	:
+CBLOCK 108 1 616
+
+;;{
+CLINEA 0000H 0001H 0268H 0001H 0001H
+	push	lr
+CBLOCK 108 2 616
+CRET 0000H
+CLOCAL 46H 0002H 0024H 0002H "adValue" 02H 00H 08H
+
+;;	if( _state.state == STATE_COLOR )
+CLINEA 0000H 0001H 026BH 0002H 0022H
+	tb	NEAR __state.0
+	bne	_$L167
+CBLOCK 108 3 620
+
+;;		_state.state = STATE_NIGHT;
+CLINEA 0000H 0001H 026DH 0003H 001DH
+	sb	NEAR __state.0
+
+;;		switch( _state.state_sub )
+CLINEA 0000H 0001H 026EH 0003H 001CH
+	l	r0,	NEAR __state
+	srl	r0,	#01h
+	and	r0,	#03h
+CBLOCK 108 4 623
+	cmp	r0,	#00h
+	beq	_$L174
+
+;;		switch( _state.state_sub )
+CLINEA 0000H 0000H 026EH 0003H 001CH
+	cmp	r0,	#01h
+	beq	_$L175
+
+;;		switch( _state.state_sub )
+CLINEA 0000H 0000H 026EH 0003H 001CH
+	cmp	r0,	#02h
+	beq	_$L176
+
+;;				ledNaturalOff();
+CLINEA 0000H 0001H 027DH 0005H 0014H
+	bl	_ledNaturalOff
+
+;;				ledBulbOff();
+CLINEA 0000H 0001H 027EH 0005H 0011H
+	bl	_ledBulbOff
+
+;;				_state.state_sub = STATE_COLOR_NATURAL;
+CLINEA 0000H 0001H 027FH 0005H 002BH
+	rb	NEAR __state.2
+	rb	NEAR __state.1
+CBLOCKEND 108 4 641
+
+;;		}
+CLINEA 0000H 0000H 0281H 0003H 0003H
+_$L172 :
+
+;;		ledNightOn();
+CLINEA 0000H 0001H 0282H 0003H 000FH
+	bl	_ledNightOn
+
+;;	else // STATE_NIGHT
+CLINEA 0000H 0001H 0284H 0002H 0014H
+	bal	_$L181
+_$L167 :
+CBLOCK 108 5 645
+
+;;		_state.state = STATE_COLOR;
+CLINEA 0000H 0001H 0286H 0003H 001DH
+	rb	NEAR __state.0
+
+;;		ledNightOff();
+CLINEA 0000H 0001H 0287H 0003H 0010H
+	bl	_ledNightOff
+
+;;		switch( _state.state_sub )
+CLINEA 0000H 0001H 0288H 0003H 001CH
+	l	r0,	NEAR __state
+	srl	r0,	#01h
+	and	r0,	#03h
+CBLOCK 108 6 649
+	cmp	r0,	#00h
+	beq	_$L183
+
+;;		switch( _state.state_sub )
+CLINEA 0000H 0000H 0288H 0003H 001CH
+	cmp	r0,	#01h
+	beq	_$L184
+
+;;		switch( _state.state_sub )
+CLINEA 0000H 0000H 0288H 0003H 001CH
+	cmp	r0,	#02h
+	beq	_$L185
+
+;;				_state.state_sub = STATE_COLOR_NATURAL;
+CLINEA 0000H 0001H 029AH 0005H 002BH
+	rb	NEAR __state.2
+	rb	NEAR __state.1
+
+;;				ledNaturalOn();
+CLINEA 0000H 0001H 029BH 0005H 0013H
+	bl	_ledNaturalOn
+CBLOCKEND 108 6 669
+
+;;		}
+CLINEA 0000H 0000H 029DH 0003H 0003H
+_$L181 :
+CBLOCKEND 108 5 670
+CBLOCKEND 108 3 671
+CBLOCKEND 108 2 671
+
+;;}
+CLINEA 0000H 0001H 029FH 0001H 0001H
+	pop	pc
+
+;;			case STATE_COLOR_NATURAL:
+CLINEA 0000H 0001H 0270H 0004H 001CH
+_$L174 :
+
+;;				ledNaturalOff();
+CLINEA 0000H 0001H 0271H 0005H 0014H
+	bl	_ledNaturalOff
+
+;;				break;
+CLINEA 0000H 0001H 0272H 0005H 000AH
+	bal	_$L172
+
+;;			case STATE_COLOR_BULB:
+CLINEA 0000H 0001H 0273H 0004H 0019H
+_$L175 :
+
+;;				ledBulbOff();
+CLINEA 0000H 0001H 0274H 0005H 0011H
+	bl	_ledBulbOff
+
+;;				break;
+CLINEA 0000H 0001H 0275H 0005H 000AH
+	bal	_$L172
+
+;;			case STATE_COLOR_MIXED:
+CLINEA 0000H 0001H 0276H 0004H 001AH
+_$L176 :
+
+;;				_IntervalStop();
+CLINEA 0000H 0001H 0277H 0005H 0014H
+	bl	__IntervalStop
+
+;;				ledMixedOff();
+CLINEA 0000H 0001H 0278H 0005H 0012H
+	bl	_ledMixedOff
+
+;;				break;
+CLINEA 0000H 0001H 0279H 0005H 000AH
+	bal	_$L172
+
+;;			case STATE_COLOR_NATURAL:
+CLINEA 0000H 0001H 028AH 0004H 001CH
+_$L183 :
+
+;;				ledNaturalOn();
+CLINEA 0000H 0001H 028BH 0005H 0013H
+	bl	_ledNaturalOn
+
+;;				break;
+CLINEA 0000H 0001H 028CH 0005H 000AH
+	bal	_$L181
+
+;;			case STATE_COLOR_BULB:
+CLINEA 0000H 0001H 028DH 0004H 0019H
+_$L184 :
+
+;;				ledBulbOn();
+CLINEA 0000H 0001H 028EH 0005H 0010H
+	bl	_ledBulbOn
+
+;;				break;
+CLINEA 0000H 0001H 028FH 0005H 000AH
+	bal	_$L181
+
+;;			case STATE_COLOR_MIXED:
+CLINEA 0000H 0001H 0290H 0004H 001AH
+_$L185 :
+
+;;				adValue = volGetAdValue();
+CLINEA 0000H 0000H 0291H 0005H 001EH
+	bl	_volGetAdValue
+
+;;				stepMixed = adValueToStep(adValue);
+CLINEA 0000H 0000H 0293H 0005H 0027H
+	bl	_adValueToStep
+	st	r0,	NEAR _stepMixed
+
+;;				ledMixedOn();
+CLINEA 0000H 0001H 0294H 0005H 0011H
+	bl	_ledMixedOn
+
+;;				_IntervalStart();
+CLINEA 0000H 0001H 0295H 0005H 0015H
+	bl	__IntervalStart
+
+;;				break;
+CLINEA 0000H 0001H 0296H 0005H 000AH
+	bal	_$L181
+CBLOCKEND 108 1 671
+CFUNCTIONEND 108
+
+
+	rseg $$_changeNextStateColor$main
+CFUNCTION 109
+
+__changeNextStateColor	:
+CBLOCK 109 1 674
+
+;;{
+CLINEA 0000H 0001H 02A2H 0001H 0001H
+	push	lr
+CBLOCK 109 2 674
+CRET 0000H
+CLOCAL 46H 0002H 0024H 0002H "adValue" 02H 00H 08H
+
+;;	if( _state.state_sub == STATE_COLOR_NATURAL )
+CLINEA 0000H 0001H 02A5H 0002H 002EH
+	l	r0,	NEAR __state
+	srl	r0,	#01h
+	and	r0,	#03h
+	cmp	r0,	#00h
+	bne	_$L187
+CBLOCK 109 3 678
+
+;;		_state.state_sub = STATE_COLOR_BULB;
+CLINEA 0000H 0001H 02A7H 0003H 0026H
+	l	r0,	NEAR __state
+	and	r0,	#0f9h
+	or	r0,	#02h
+	st	r0,	NEAR __state
+
+;;		ledNaturalOff();
+CLINEA 0000H 0001H 02A8H 0003H 0012H
+	bl	_ledNaturalOff
+
+;;		ledBulbOn();
+CLINEA 0000H 0001H 02A9H 0003H 000EH
+	bl	_ledBulbOn
+
+;;	else if( _state.state_sub == STATE_COLOR_BULB )
+CLINEA 0000H 0001H 02ABH 0002H 0030H
+	bal	_$L192
+_$L187 :
+	cmp	r0,	#01h
+	bne	_$L190
+CBLOCK 109 4 684
+
+;;		_state.state_sub = STATE_COLOR_MIXED;
+CLINEA 0000H 0001H 02ADH 0003H 0027H
+	l	r0,	NEAR __state
+	and	r0,	#0f9h
+	or	r0,	#04h
+	st	r0,	NEAR __state
+
+;;		ledBulbOff();
+CLINEA 0000H 0001H 02AEH 0003H 000FH
+	bl	_ledBulbOff
+
+;;		adValue = volGetAdValue();
+CLINEA 0000H 0000H 02AFH 0003H 001CH
+	bl	_volGetAdValue
+
+;;		stepMixed = adValueToStep(adValue);
+CLINEA 0000H 0000H 02B1H 0003H 0025H
+	bl	_adValueToStep
+	st	r0,	NEAR _stepMixed
+
+;;		ledMixedOn();
+CLINEA 0000H 0001H 02B2H 0003H 000FH
+	bl	_ledMixedOn
+
+;;		_IntervalStart();
+CLINEA 0000H 0001H 02B3H 0003H 0013H
+	bl	__IntervalStart
+CBLOCKEND 109 4 692
+
+;;	else // STATE_COLOR_MIXED
+CLINEA 0000H 0001H 02B5H 0002H 001AH
+	bal	_$L192
+_$L190 :
+CBLOCK 109 5 694
+
+;;		_state.state_sub = STATE_COLOR_NATURAL;
+CLINEA 0000H 0001H 02B7H 0003H 0029H
+	rb	NEAR __state.2
+	rb	NEAR __state.1
+
+;;		_IntervalStop();
+CLINEA 0000H 0001H 02B8H 0003H 0012H
+	bl	__IntervalStop
+
+;;		ledMixedOff();
+CLINEA 0000H 0001H 02B9H 0003H 0010H
+	bl	_ledMixedOff
+
+;;		ledNaturalOn();
+CLINEA 0000H 0001H 02BAH 0003H 0011H
+	bl	_ledNaturalOn
+CBLOCKEND 109 5 699
+
+;;	}
+CLINEA 0000H 0000H 02BBH 0002H 0002H
+_$L192 :
+CBLOCKEND 109 3 700
+CBLOCKEND 109 2 700
+
+;;}
+CLINEA 0000H 0001H 02BCH 0001H 0001H
+	pop	pc
+CBLOCKEND 109 1 700
+CFUNCTIONEND 109
+
+
+	rseg $$_sendStr$main
+CFUNCTION 110
+
+__sendStr	:
+CBLOCK 110 1 703
+
+;;{
+CLINEA 0000H 0001H 02BFH 0001H 0001H
+	push	lr
+	push	fp
+	mov	fp,	sp
+	add	sp,	#-02
+	push	xr4
+	push	bp
+	push	er8
+CBLOCK 110 2 703
+CRET 000CH
+CLOCAL 47H 0002H 0027H 0002H "strState" 04H 03H 00H 00H 00H
+CLOCAL 46H 0001H 0019H 0002H "numState" 02H 00H 00H
+CLOCAL 43H 0002H 0002H 0002H "strStep" 05H 01H 02H 00H 00H 00H
+CLOCAL 46H 0001H 0018H 0002H "numStep" 02H 00H 00H
+CLOCAL 46H 0001H 0017H 0002H "nowStep" 02H 00H 00H
+CLOCAL 46H 0001H 001CH 0002H "maxFlag" 02H 00H 00H
+
+;;	unsigned char  nowStep = 0;
+CLINEA 0000H 0001H 02C5H 0002H 001CH
+	mov	r3,	#00h
+
+;;	unsigned char  maxFlag = FALSE;
+CLINEA 0000H 0001H 02C6H 0002H 0020H
+	mov	r8,	#00h
+
+;;	if( _state.state == STATE_COLOR )
+CLINEA 0000H 0001H 02C8H 0002H 0022H
+	tb	NEAR __state.0
+	bne	_$L194
+CBLOCK 110 3 713
+
+;;		switch( _state.state_sub )
+CLINEA 0000H 0001H 02CAH 0003H 001CH
+	l	r0,	NEAR __state
+	srl	r0,	#01h
+	and	r0,	#03h
+CBLOCK 110 4 715
+	cmp	r0,	#00h
+	bne	_$M25
+	b	_$L201
+_$M25 :
+
+;;		switch( _state.state_sub )
+CLINEA 0000H 0000H 02CAH 0003H 001CH
+	cmp	r0,	#01h
+	bne	_$M26
+	b	_$L206
+_$M26 :
+
+;;		switch( _state.state_sub )
+CLINEA 0000H 0000H 02CAH 0003H 001CH
+	cmp	r0,	#02h
+	bne	_$M27
+	b	_$L211
+_$M27 :
+
+;;				return;
+CLINEA 0000H 0001H 02DFH 0005H 000BH
+	b	_$L193
+CBLOCKEND 110 4 737
+
+;;		}
+CLINEA 0000H 0000H 02E1H 0003H 0003H
+_$L199 :
+	mov	r8,	r0
+
+;;	else if( _state.state == STATE_NIGHT )
+CLINEA 0000H 0001H 02E3H 0002H 0027H
+	bal	_$L214
+_$L194 :
+	tb	NEAR __state.0
+	beq	_$L214
+CBLOCK 110 5 740
+
+;;		strState = (unsigned char*)STR_STATE_NIGHT;
+CLINEA 0000H 0001H 02E5H 0003H 002DH
+	mov	r6,	#BYTE1 OFFSET $$S216
+	mov	r7,	#BYTE2 OFFSET $$S216
+
+;;		numState = (unsigned char)STR_STATE_NIGHT_NUM;
+CLINEA 0000H 0001H 02E6H 0003H 0030H
+	mov	r5,	#0bh
+
+;;		nowStep = stepNight + 1u;
+CLINEA 0000H 0001H 02E7H 0003H 001BH
+	l	r0,	NEAR _stepNight
+	add	r0,	#01h
+	mov	r3,	r0
+
+;;		maxFlag = ( stepNight == STEP_NIGHT_MAX ) ? TRUE : FALSE ;
+CLINEA 0000H 0000H 02E8H 0003H 003CH
+	l	r0,	NEAR _stepNight
+	cmp	r0,	#05h
+	bne	_$L217
+	mov	er0,	#1 
+	bal	_$L219
+_$L217 :
+	mov	er0,	#0 
+_$L219 :
+	mov	r8,	r0
+CBLOCKEND 110 5 745
+
+;;	}
+CLINEA 0000H 0000H 02E9H 0002H 0002H
+_$L214 :
+
+;;	numStep = 0;
+CLINEA 0000H 0001H 02EBH 0002H 000DH
+	mov	r4,	#00h
+
+;;	if( nowStep >= 10 )
+CLINEA 0000H 0001H 02ECH 0002H 0014H
+	mov	r0,	r3
+	cmp	r3,	#0ah
+	blt	_$L220
+CBLOCKEND 110 3 772
+CBLOCK 110 6 749
+
+;;		strStep[numStep] = ( ( nowStep / 10 ) + '0' );
+CLINEA 0000H 0001H 02EEH 0003H 0030H
+	mov	r1,	#00h
+	mov	r2,	#0ah
+	div	er0,	r2
+	add	r0,	#030h
+	st	r0,	-2[fp]
+
+;;		numStep++;
+CLINEA 0000H 0000H 02EFH 0003H 000CH
+	mov	r4,	#01h
+CBLOCKEND 110 6 752
+
+;;	}
+CLINEA 0000H 0000H 02F0H 0002H 0002H
+_$L220 :
+
+;;	if( nowStep > 0 )
+CLINEA 0000H 0001H 02F1H 0002H 0012H
+	cmp	r3,	#00h
+	ble	_$L222
+CBLOCK 110 7 754
+
+;;		strStep[numStep] = ( ( nowStep % 10 ) + '0' );
+CLINEA 0000H 0001H 02F3H 0003H 0030H
+	mov	r2,	r3
+	mov	r3,	#00h
+	mov	r0,	#0ah
+	div	er2,	r0
+	add	r0,	#030h
+	mov	r12,	r4
+	mov	r13,	#00h
+	add	bp,	fp
+	st	r0,	-2[bp]
+
+;;		numStep++;
+CLINEA 0000H 0000H 02F4H 0003H 000CH
+	add	r4,	#01h
+CBLOCKEND 110 7 757
+
+;;	}
+CLINEA 0000H 0000H 02F5H 0002H 0002H
+_$L222 :
+
+;;	uartSendStr( STR_BASE1, (unsigned char)STR_BASE1_NUM );
+CLINEA 0000H 0001H 02F8H 0002H 0038H
+	mov	r2,	#07h
+	mov	r0,	#BYTE1 OFFSET $$S224
+	mov	r1,	#BYTE2 OFFSET $$S224
+	bl	_uartSendStr
+
+;;	uartSendStr( strState,  numState );
+CLINEA 0000H 0001H 02F9H 0002H 0024H
+	mov	r2,	r5
+	mov	er0,	er6
+	bl	_uartSendStr
+
+;;	if( numStep > 0 )
+CLINEA 0000H 0001H 02FAH 0002H 0012H
+	cmp	r4,	#00h
+	ble	_$L228
+CBLOCK 110 8 763
+
+;;		uartSendStr( STR_BASE2, (unsigned char)STR_BASE2_NUM );
+CLINEA 0000H 0001H 02FCH 0003H 0039H
+	mov	r2,	#08h
+	mov	r0,	#BYTE1 OFFSET $$S227
+	mov	r1,	#BYTE2 OFFSET $$S227
+	bl	_uartSendStr
+
+;;		uartSendStr( strStep, numStep );
+CLINEA 0000H 0001H 02FDH 0003H 0022H
+	mov	r2,	r4
+	mov	er0,	fp
+	add	er0,	#-2
+	bl	_uartSendStr
+
+;;		if( maxFlag == TRUE )
+CLINEA 0000H 0001H 02FEH 0003H 0017H
+	cmp	r8,	#01h
+	bne	_$L228
+CBLOCK 110 9 767
+
+;;			uartSendStr( STR_MAX, (unsigned char)STR_MAX_NUM );
+CLINEA 0000H 0001H 0300H 0004H 0036H
+	mov	r2,	#04h
+	mov	r0,	#BYTE1 OFFSET $$S230
+	mov	r1,	#BYTE2 OFFSET $$S230
+	bl	_uartSendStr
+CBLOCKEND 110 9 769
+
+;;		}
+CLINEA 0000H 0000H 0301H 0003H 0003H
+_$L228 :
+CBLOCKEND 110 8 770
+
+;;	uartSendStr( STR_NEWLINE, (unsigned char)STR_NEWLINE_NUM );
+CLINEA 0000H 0001H 0303H 0002H 003CH
+	mov	r2,	#02h
+	mov	r0,	#BYTE1 OFFSET $$S231
+	mov	r1,	#BYTE2 OFFSET $$S231
+	bl	_uartSendStr
+CBLOCKEND 110 2 772
+
+;;}
+CLINEA 0000H 0001H 0304H 0001H 0001H
+_$L193 :
+	pop	er8
+	pop	bp
+	pop	xr4
+	mov	sp,	fp
+	pop	fp
+	pop	pc
+
+;;			case STATE_COLOR_NATURAL:
+CLINEA 0000H 0001H 02CCH 0004H 001CH
+_$L201 :
+
+;;				strState = (unsigned char*)STR_STATE_NATURAL;
+CLINEA 0000H 0001H 02CDH 0005H 0031H
+	mov	r6,	#BYTE1 OFFSET $$S202
+	mov	r7,	#BYTE2 OFFSET $$S202
+
+;;				numState = (unsigned char)STR_STATE_NATURAL_NUM;
+CLINEA 0000H 0001H 02CEH 0005H 0034H
+	mov	r5,	#013h
+
+;;				nowStep = stepNatural + 1u;
+CLINEA 0000H 0001H 02CFH 0005H 001FH
+	l	r0,	NEAR _stepNatural
+	add	r0,	#01h
+	mov	r3,	r0
+
+;;				maxFlag = ( stepNatural == STEP_SINGLE_MAX ) ? TRUE : FALSE ;
+CLINEA 0000H 0000H 02D0H 0005H 0041H
+	l	r0,	NEAR _stepNatural
+	cmp	r0,	#013h
+	bne	_$L203
+	mov	er0,	#1 
+	bal	_$L205
+_$L203 :
+	mov	er0,	#0 
+_$L205 :
+
+;;				break;
+CLINEA 0000H 0001H 02D1H 0005H 000AH
+	b	_$L199
+
+;;			case STATE_COLOR_BULB:
+CLINEA 0000H 0001H 02D2H 0004H 0019H
+_$L206 :
+
+;;				strState = (unsigned char*)STR_STATE_BULB;
+CLINEA 0000H 0001H 02D3H 0005H 002EH
+	mov	r6,	#BYTE1 OFFSET $$S207
+	mov	r7,	#BYTE2 OFFSET $$S207
+
+;;				numState = (unsigned char)STR_STATE_BULB_NUM;
+CLINEA 0000H 0001H 02D4H 0005H 0031H
+	mov	r5,	#010h
+
+;;				nowStep = stepBulb + 1u;
+CLINEA 0000H 0001H 02D5H 0005H 001CH
+	l	r0,	NEAR _stepBulb
+	add	r0,	#01h
+	mov	r3,	r0
+
+;;				maxFlag = ( stepBulb == STEP_SINGLE_MAX ) ? TRUE : FALSE ;
+CLINEA 0000H 0000H 02D6H 0005H 003EH
+	l	r0,	NEAR _stepBulb
+	cmp	r0,	#013h
+	bne	_$L208
+	mov	er0,	#1 
+	bal	_$L210
+_$L208 :
+	mov	er0,	#0 
+_$L210 :
+
+;;				break;
+CLINEA 0000H 0001H 02D7H 0005H 000AH
+	b	_$L199
+
+;;			case STATE_COLOR_MIXED:
+CLINEA 0000H 0001H 02D8H 0004H 001AH
+_$L211 :
+
+;;				strState = (unsigned char*)STR_STATE_MIXED;
+CLINEA 0000H 0001H 02D9H 0005H 002FH
+	mov	r6,	#BYTE1 OFFSET $$S212
+	mov	r7,	#BYTE2 OFFSET $$S212
+
+;;				numState = (unsigned char)STR_STATE_MIXED_NUM;
+CLINEA 0000H 0001H 02DAH 0005H 0032H
+	mov	r5,	#0bh
+
+;;				nowStep = 0; // ボリュームは出力しない
+CLINEA 0000H 0001H 02DBH 0005H 002AH
+	mov	r0,	#00h
+	mov	r3,	#00h
+
+;;				break;
+CLINEA 0000H 0001H 02DDH 0005H 000AH
+	b	_$L199
+CBLOCKEND 110 1 772
+CFUNCTIONEND 110
+
+	public _main_clrWDT
+	public _main
+	extrn code far : _ledNightStepUpDn
+	extrn code far : _ledMixedInit
+	extrn code far : _ledMixedStepUpDn
+	extrn code far : _irq_init
+	extrn code far : _ledBulbOn
+	extrn code far : _ledNaturalInit
+	extrn data near : _stepNight
+	extrn code far : _ledBulbStepUpDn
+	extrn code far : _ledMixedOff
+	extrn code far : _ledBulbOff
+	extrn code far : _ledBulbInit
+	extrn code far : _irq_di
+	extrn code far : _irq_ei
+	extrn code far : _clk_setSysclk
+	extrn code far : _ledNightOff
+	extrn code far : _irq_setHdr
+	extrn code far : _ledNaturalStepUpDn
+	extrn code far : _ledNaturalOn
+	extrn code far : _volInit
+	extrn code far : _ledNightToggle
+	extrn code far : _ledNightInit
+	extrn code far : _uartSendStr
+	extrn code far : _uartInit
+	extrn code far : _ledNaturalOff
+	extrn code far : _volGetAdValue
+	extrn data near : _stepNatural
+	extrn code far : _ledMixedOn
+	extrn code far : _ledNightOn
+	extrn code far : _adValueToStep
+	extrn code far : _tm_init
+	extrn data near : _stepMixed
+	extrn data near : _stepBulb
+	extrn code : $$start_up
+
+	cseg #00h at 02h
+	dw	$$start_up
+
+	rseg $$NINITTAB
+	db	00h
+	db	00h
+	db	00h
+	db	00h
+
+	rseg $$TAB_valBzrHalfCycle$main
+__valBzrHalfCycle :
+	dw	0330h
+
+	rseg $$TAB_valIntervalCycle$main
+__valIntervalCycle :
+	dw	09faah
+
+	rseg $$TAB$$S30$main
+$$S30 :
+	DB	"*** LED LIGHTING DEMO ***\x0a\x0d", 00H
+
+	rseg $$TAB$$S202$main
+$$S202 :
+	DB	"natural white color", 00H
+
+	rseg $$TAB$$S207$main
+$$S207 :
+	DB	"light bulb color", 00H
+
+	rseg $$TAB$$S212$main
+$$S212 :
+	DB	"mixed color", 00H
+
+	rseg $$TAB$$S216$main
+$$S216 :
+	DB	"night light", 00H
+
+	rseg $$TAB$$S224$main
+$$S224 :
+	DB	"state: ", 00H
+
+	rseg $$TAB$$S227$main
+$$S227 :
+	DB	", step: ", 00H
+
+	rseg $$TAB$$S230$main
+$$S230 :
+	DB	" max", 00H
+
+	rseg $$TAB$$S231$main
+$$S231 :
+	DB	"\x0a\x0d", 00H
+
+	rseg $$NINITVAR
+__state :
+	ds	01h
+__swInput :
+	ds	01h
+__bzrCount :
+	ds	01h
+__IntervalFlag :
+	ds	01h
+	extrn code : __imodu8lw
+
+	end

@@ -1,0 +1,18 @@
+//Circuit Notes:
+
+//Because your LaPi Development Board has 2 independent micros on it, you can easily 
+//connect them together and utilize both at the same time!
+//
+//You will want to connect the TX pin of one micro (say the Q111) to the RX pin
+//  of the other (Q112)...and likewise the RX pin of the first micro (Q111) to 
+//  the TX of the second (Q112). You can do this on the prototyping area of the
+//  LaPi Dev Board.  I put 330 resistors in series for each of the two connections
+//  to limit the current.
+//
+//Once connected, program each micro with the communication code, and they are 
+//  now able to communicate at very fast speeds. I had both micros running at
+//  512,000 Baud, and communication was fine!
+
+//In this example set, the Q111 micro (MASTER) sends data to the Q112 micro (SLAVE), so they
+//are acting as MASTER & SLAVE...but there is no reason, there couldn't be 
+//back-and-forth communication...

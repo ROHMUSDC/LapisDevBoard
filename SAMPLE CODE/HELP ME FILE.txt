@@ -1,0 +1,51 @@
+Carl's Notes (June 16th, 2013):
+
+It is best to read through some of the Lapis U8 Documents before trying to run these sample programs...BUT, if you really want to jump in,
+here are some starter tips...
+
+1.) Open up the IDE (Code Editor Enviornment) from your Start Menu...All Programs\U8 Tools\nX-U8\IDE U8 GUI Enviornment
+
+2.) Select File Open and point to a project (*.PID) in this directory such as: Q112 - Template\Q112-Template.PID
+
+3.) Open this code example and start to read through the code to get an idea of what it contains
+
+4.) To compile a project after you've made any desired changes, click Project/Rebuild
+
+5.) If you were successful, you should see a success message in the console window at the bottom of the IDE:
+	
+	"Object was created by RLU8
+
+	Convert End.
+
+	Finished building"
+
+6.) If you were not successful, we suggest you review some of the documentation that is installed with your U8 Dev Suite.
+
+	Documents of most interest and in a reasonable order of importance:
+	A.) IDEu8 Users Manual
+	B.) DTU8 Debugger Manual
+	C.) CCU8 Language Reference Manual
+	D.) CCU8 Programming Guide
+	E.) CCU8 User Guide
+	F.) RTLU8 Runtime Library Reference Manual
+	G.) nX-U8/100 Core Instruction Manual
+	H.) nanoEASE (Debugger) User Manual 
+	I.) nanoEASE (Debugger) Connection Manual
+	J.) HTU8 User Manual (HEX Code Generator for ROM)
+	K.) LCD Image Tool User Manual
+	L.) MACU8 Assembler Package User Manual
+	M.) Multiplication & Division Library User Manual
+	N.) uEASE (Debugger) User Manual
+	O.) uEASE (Debugger) Connection Manual
+	P.) Dr.ICE (In-Circuit Emmulator) User Manual
+
+	THESE 16 DOCUMENTS ARE FOUND IN THE U8 INSTALL DIRECTORY. YOU CAN REACH THEM FROM YOUR START MENU: 
+
+	ALL PROGRAMS\U8 DEV TOOLS\nX-U8 DOcuments
+
+7.) Read your LaPi User Manual and ensure your LaPi Board is connected to your computer
+
+8.) You can launch the Debugger from...All Programs\U8 Tools\nX-U8\DT U8 Debugger
+
+9.) Open a debugger example and start to read through the code to get an idea of what it contains (i.e.: Q112-GPIO_DEBUG_FILE.PDT)
+	

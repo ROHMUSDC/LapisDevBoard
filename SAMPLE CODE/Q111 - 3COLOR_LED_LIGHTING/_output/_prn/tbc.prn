@@ -1,0 +1,124 @@
+RASU8(ML610111)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1 
+ Source File: _output\_obj\tbc.asm
+ Object File: _output\_obj\tbc.obj
+ Date  : 2013/06/18 Tue.[16:11]
+ Title : 
+## Loc. Object                   Line   Source Statements
+
+                                    1   ;; Compile Options : /TML610111 /MS /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Ipwm /Iuart /Ivolume /Iled /D_ML610Q111 /SS 1024 /SD /Oa /Om /W 3 /Wc /Fa_output\_obj\ 
+                                    2   ;; Version Number  : Ver.3.31.4
+                                    3   ;; File Name       : tbc.c
+                                    4   
+                                    5   	type (ML610111) 
+                                    6   	model small, near
+                                    7   	$$tb_getHtbdiv$tbc segment code 2h #0h
+                                    8   	$$tb_setHtbdiv$tbc segment code 2h #0h
+                                    9   CVERSION 3.31.4
+                                   10   CGLOBAL 01H 02H 0000H "tb_getHtbdiv" 08H 02H 01H 00H 80H 00H 00H 00H 00H
+                                   11   CGLOBAL 01H 03H 0000H "tb_setHtbdiv" 08H 02H 00H 00H 80H 00H 00H 00H 01H
+                                   12   CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+                                   13   CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+                                   14   CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+                                   15   CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+                                   16   CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+                                   17   CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+                                   18   CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+                                   19   CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+                                   20   CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+                                   21   CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+                                   22   CFILE 0001H 00000022H "main\\mcu.h"
+                                   23   CFILE 0002H 000007EEH "C:\\Users\\cschell\\U8DEV~1\\Inc\\ml610111.h"
+                                   24   CFILE 0003H 00000036H "tbc\\tbc.h"
+                                   25   CFILE 0000H 00000052H "tbc\\tbc.c"
+                                   26   
+  --------------------------       27   	rseg $$tb_setHtbdiv$tbc
+                                   28   CFUNCTION 0
+                                   29   
+00:0000                            30   _tb_setHtbdiv	:
+                                   31   CBLOCK 0 1 55
+                                   32   
+                                   33   ;;{
+                                   34   CLINEA 0000H 0001H 0037H 0001H 0001H
+                                   35   CBLOCK 0 2 55
+                                   36   CARGUMENT 46H 0001H 0014H "htd" 02H 00H 00H
+                                   37   
+                                   38   ;;	if( htd > (unsigned char)TB_HTD_1_1 ){
+                                   39   CLINEA 0000H 0001H 0039H 0002H 0027H
+00:0000 0F 70                      40   	cmp	r0,	#0fh
+00:0002 02 C3                      41   	ble	_$L1
+                                   42   CBLOCK 0 3 57
+                                   43   
+                                   44   ;;		return ( TB_R_ERR_HTD );
+                                   45   CLINEA 0000H 0001H 003AH 0003H 001AH
+00:0004 7F E0                      46   	mov	er0,	#-1
+                                   47   CBLOCKEND 0 3 59
+                                   48   CBLOCKEND 0 2 63
+                                   49   
+                                   50   ;;}
+                                   51   CLINEA 0000H 0001H 003FH 0001H 0001H
+00:0006 1F-FE                      52   	rt
+                                   53   
+                                   54   ;;	}
+                                   55   CLINEA 0000H 0000H 003BH 0002H 0002H
+00:0008                            56   _$L1 :
+                                   57   
+                                   58   ;;	HTBDR = htd;
+                                   59   CLINEA 0000H 0001H 003DH 0002H 000DH
+00:0008 11-90 0B-F0                60   	st	r0,	0f00bh
+                                   61   
+                                   62   ;;	return ( TB_R_OK );
+                                   63   CLINEA 0000H 0001H 003EH 0002H 0014H
+00:000C 00 E0                      64   	mov	er0,	#0 
+00:000E 1F-FE                      65   	rt
+                                   66   CBLOCKEND 0 1 63
+                                   67   CFUNCTIONEND 0
+                                   68   
+                                   69   
+  --------------------------       70   	rseg $$tb_getHtbdiv$tbc
+                                   71   CFUNCTION 1
+                                   72   
+00:0000                            73   _tb_getHtbdiv	:
+                                   74   CBLOCK 1 1 73
+                                   75   
+                                   76   ;;{
+                                   77   CLINEA 0000H 0001H 0049H 0001H 0001H
+                                   78   CBLOCK 1 2 73
+                                   79   CLOCAL 46H 0001H 0014H 0002H "ratio" 02H 00H 00H
+                                   80   
+                                   81   ;;	ratio = HTBDR;
+                                   82   CLINEA 0000H 0001H 004DH 0002H 000FH
+00:0000 10-90 0B-F0                83   	l	r0,	0f00bh
+                                   84   
+                                   85   ;;	ratio = (unsigned char)( (unsigned char)( ~ratio ) & (unsigned char)HTBDR_HTD ) + (unsigned char)1;
+                                   86   CLINEA 0000H 0001H 004EH 0002H 0064H
+00:0004 FF 40                      87   	xor	r0,	#0ffh
+00:0006 0F 20                      88   	and	r0,	#0fh
+00:0008 01 10                      89   	add	r0,	#01h
+                                   90   
+                                   91   ;;	return ( ratio );
+                                   92   CLINEA 0000H 0001H 004FH 0002H 0012H
+                                   93   CBLOCKEND 1 2 80
+                                   94   
+                                   95   ;;}
+                                   96   CLINEA 0000H 0000H 0050H 0001H 0001H
+00:000A 1F-FE                      97   	rt
+                                   98   CBLOCKEND 1 1 80
+                                   99   CFUNCTIONEND 1
+                                  100   
+                                  101   	public _tb_getHtbdiv
+                                  102   	public _tb_setHtbdiv
+                                  103   	extrn code near : _main
+                                  104   
+                                  105   	end
+
+
+
+  Target       : ML610111 (nX-U8/100)
+  Memory Model : SMALL
+  Data   Model : NEAR
+  ROM WINDOW   : (not specified)
+  Internal RAM : E000H to E7FFH
+
+  Errors   : 0
+  Warnings : 0  (/Wrpeast)
+  Lines    : 105

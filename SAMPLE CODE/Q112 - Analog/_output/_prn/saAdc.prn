@@ -1,0 +1,377 @@
+RASU8(ML610112)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1 
+ Source File: _output\_obj\saadc.asm
+ Object File: _output\_obj\saadc.obj
+ Date  : 2013/08/09 Fri.[16:56]
+ Title : 
+## Loc. Object                   Line   Source Statements
+
+                                    1   ;; Compile Options : /TML610112 /MS /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Iuart /IsaAdc /SS 256 /SD /Oa /Ot /W 3 /Wc /Fa_output\_obj\ 
+                                    2   ;; Version Number  : Ver.3.31.4
+                                    3   ;; File Name       : saadc.c
+                                    4   
+                                    5   	type (ML610112) 
+                                    6   	model small, near
+                                    7   	$$saAdc_checkFin$saadc segment code 2h #0h
+                                    8   	$$saAdc_execute$saadc segment code 2h #0h
+                                    9   	$$saAdc_getResult$saadc segment code 2h #0h
+                                   10   	$$saAdc_init$saadc segment code 2h #0h
+                                   11   	$$saAdc_short_CH0CH1_off$saadc segment code 2h #0h
+                                   12   	$$saAdc_short_CH0CH1_on$saadc segment code 2h #0h
+                                   13   CVERSION 3.31.4
+                                   14   CGLOBAL 01H 03H 0000H "saAdc_checkFin" 08H 02H 04H 00H 80H 00H 00H 00H 01H
+                                   15   CGLOBAL 01H 03H 0000H "saAdc_short_CH0CH1_off" 08H 02H 02H 00H 80H 00H 00H 00H 07H
+                                   16   CGLOBAL 01H 03H 0000H "saAdc_init" 08H 02H 00H 00H 80H 00H 00H 00H 01H
+                                   17   CGLOBAL 01H 03H 0000H "saAdc_short_CH0CH1_on" 08H 02H 01H 00H 80H 00H 00H 00H 07H
+                                   18   CGLOBAL 01H 03H 0000H "saAdc_execute" 08H 02H 03H 00H 80H 00H 00H 00H 01H
+                                   19   CGLOBAL 01H 03H 0000H "saAdc_getResult" 08H 02H 05H 00H 80H 02H 00H 00H 01H
+                                   20   CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+                                   21   CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+                                   22   CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+                                   23   CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+                                   24   CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+                                   25   CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+                                   26   CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+                                   27   CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+                                   28   CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+                                   29   CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+                                   30   CFILE 0001H 00000023H "main\\mcu.h"
+                                   31   CFILE 0002H 0000085AH "main\\ML610112.H"
+                                   32   CFILE 0003H 00000074H "saadc\\saAdc.h"
+                                   33   CFILE 0000H 00000101H "saadc\\saadc.c"
+                                   34   
+  --------------------------       35   	rseg $$saAdc_init$saadc
+                                   36   CFUNCTION 0
+                                   37   
+00:0000                            38   _saAdc_init	:
+                                   39   CBLOCK 0 1 91
+                                   40   
+                                   41   ;;{
+                                   42   CLINEA 0000H 0001H 005BH 0001H 0001H
+00:0000 05-F2                      43   	mov	er2,	er0
+                                   44   CBLOCK 0 2 91
+                                   45   CARGUMENT 46H 0001H 0016H "lp" 02H 00H 00H
+                                   46   CARGUMENT 46H 0001H 0017H "ck" 02H 00H 00H
+                                   47   CARGUMENT 46H 0001H 0000H "en" 02H 00H 00H
+                                   48   CARGUMENT 46H 0001H 0000H "offset" 02H 00H 00H
+                                   49   CARGUMENT 42H 0001H 0000H "gain" 02H 00H 00H
+                                   50   CLOCAL 4AH 0001H 0000H 0002H "regTmp" 02H 00H 00H
+                                   51   
+                                   52   ;;	if( lp > (unsigned char)SAADC_LP_CONTINUE ) {
+                                   53   CLINEA 0000H 0001H 0060H 0002H 002EH
+00:0002 01 70                      54   	cmp	r0,	#01h
+00:0004 02 C3                      55   	ble	_$L1
+                                   56   CBLOCK 0 3 96
+                                   57   
+                                   58   ;;		return ( SAADC_R_ERR_LP );
+                                   59   CLINEA 0000H 0001H 0061H 0003H 001CH
+00:0006 7E E0                      60   	mov	er0,	#-2
+                                   61   CBLOCKEND 0 3 98
+                                   62   CBLOCKEND 0 2 133
+                                   63   
+                                   64   ;;}
+                                   65   CLINEA 0000H 0001H 0085H 0001H 0001H
+00:0008 1F-FE                      66   	rt
+                                   67   
+                                   68   ;;	}
+                                   69   CLINEA 0000H 0000H 0062H 0002H 0002H
+00:000A                            70   _$L1 :
+                                   71   
+                                   72   ;;	if( ck > (unsigned char)SAADC_CK_HIGH ) {
+                                   73   CLINEA 0000H 0001H 0064H 0002H 002AH
+00:000A 01 71                      74   	cmp	r1,	#01h
+00:000C 02 C3                      75   	ble	_$L3
+                                   76   CBLOCK 0 4 100
+                                   77   
+                                   78   ;;		return ( SAADC_R_ERR_CK );
+                                   79   CLINEA 0000H 0001H 0065H 0003H 001CH
+00:000E 7D E0                      80   	mov	er0,	#-3
+00:0010 1F-FE                      81   	rt
+                                   82   CBLOCKEND 0 4 102
+                                   83   
+                                   84   ;;	}
+                                   85   CLINEA 0000H 0000H 0066H 0002H 0002H
+00:0012                            86   _$L3 :
+                                   87   
+                                   88   ;;	SARUN = 0;			/* Conversion stop. */
+                                   89   CLINEA 0000H 0001H 0078H 0002H 0024H
+00:0012 82-A0 F1-F2                90   	rb	0f2f1h.0
+                                   91   
+                                   92   ;;	                                                    ( ck << 1 ) );		/* SACK = [ck] ...HCLK setting. */
+                                   93   CLINEA 0000H 0001H 007AH 0036H 0067H
+00:0016 30-80                      94   	mov	r0,	r3
+00:0018 1A-90                      95   	sll	r0,	#01h
+00:001A 23-80                      96   	or	r0,	r2
+00:001C 11-90 F0-F2                97   	st	r0,	0f2f0h
+                                   98   
+                                   99   ;;	return ( SAADC_R_OK );
+                                  100   CLINEA 0000H 0001H 0084H 0002H 0017H
+00:0020 00 E0                     101   	mov	er0,	#0 
+00:0022 1F-FE                     102   	rt
+                                  103   CBLOCKEND 0 1 133
+                                  104   CFUNCTIONEND 0
+                                  105   
+                                  106   
+  --------------------------      107   	rseg $$saAdc_short_CH0CH1_on$saadc
+                                  108   CFUNCTION 1
+                                  109   
+00:0000                           110   _saAdc_short_CH0CH1_on	:
+                                  111   CBLOCK 1 1 143
+                                  112   
+                                  113   ;;{
+                                  114   CLINEA 0000H 0001H 008FH 0001H 0001H
+                                  115   CBLOCK 1 2 143
+                                  116   CBLOCKEND 1 2 148
+                                  117   
+                                  118   ;;}
+                                  119   CLINEA 0000H 0001H 0094H 0001H 0001H
+00:0000 1F-FE                     120   	rt
+                                  121   CBLOCKEND 1 1 148
+                                  122   CFUNCTIONEND 1
+                                  123   
+                                  124   
+  --------------------------      125   	rseg $$saAdc_short_CH0CH1_off$saadc
+                                  126   CFUNCTION 2
+                                  127   
+00:0000                           128   _saAdc_short_CH0CH1_off	:
+                                  129   CBLOCK 2 1 158
+                                  130   
+                                  131   ;;{
+                                  132   CLINEA 0000H 0001H 009EH 0001H 0001H
+                                  133   CBLOCK 2 2 158
+                                  134   CBLOCKEND 2 2 163
+                                  135   
+                                  136   ;;}
+                                  137   CLINEA 0000H 0001H 00A3H 0001H 0001H
+00:0000 1F-FE                     138   	rt
+                                  139   CBLOCKEND 2 1 163
+                                  140   CFUNCTIONEND 2
+                                  141   
+                                  142   
+  --------------------------      143   	rseg $$saAdc_execute$saadc
+                                  144   CFUNCTION 3
+                                  145   
+00:0000                           146   _saAdc_execute	:
+                                  147   CBLOCK 3 1 179
+                                  148   
+                                  149   ;;{
+                                  150   CLINEA 0000H 0001H 00B3H 0001H 0001H
+                                  151   CBLOCK 3 2 179
+                                  152   CARGUMENT 46H 0001H 0014H "chBit" 02H 00H 00H
+                                  153   
+                                  154   ;;	if( chBit > (unsigned char)SAADC_CHBIT_CH0_CH1 ) {
+                                  155   CLINEA 0000H 0001H 00B6H 0002H 0033H
+00:0000 03 70                     156   	cmp	r0,	#03h
+00:0002 02 C3                     157   	ble	_$L8
+                                  158   CBLOCK 3 3 182
+                                  159   
+                                  160   ;;		return ( SAADC_R_ERR_CH );
+                                  161   CLINEA 0000H 0001H 00B7H 0003H 001CH
+00:0004 7F E0                     162   	mov	er0,	#-1
+                                  163   CBLOCKEND 3 3 184
+                                  164   CBLOCKEND 3 2 194
+                                  165   
+                                  166   ;;}
+                                  167   CLINEA 0000H 0001H 00C2H 0001H 0001H
+00:0006 1F-FE                     168   	rt
+                                  169   
+                                  170   ;;	}
+                                  171   CLINEA 0000H 0000H 00B8H 0002H 0002H
+00:0008                           172   _$L8 :
+                                  173   
+                                  174   ;;	SARUN = 0;	/* Conversion stop. */
+                                  175   CLINEA 0000H 0001H 00BAH 0002H 0022H
+00:0008 82-A0 F1-F2               176   	rb	0f2f1h.0
+                                  177   
+                                  178   ;;	SADMOD0 = chBit;							/* SACH0-1 = [chBit] ...Channel setting. */
+                                  179   CLINEA 0000H 0001H 00BBH 0002H 0043H
+00:000C 11-90 F2-F2               180   	st	r0,	0f2f2h
+                                  181   
+                                  182   ;;	QSAD = 0;			/* QSAD = 0 ...clear SAADC-IRQ. */
+                                  183   CLINEA 0000H 0001H 00BCH 0002H 002FH
+00:0010 A2-A0 1A-F0               184   	rb	0f01ah.2
+                                  185   
+                                  186   ;;	if( chBit != (unsigned char)SAADC_CHBIT_OFF ) {
+                                  187   CLINEA 0000H 0001H 00BEH 0002H 0030H
+00:0014 00 70                     188   	cmp	r0,	#00h
+00:0016 02 C9                     189   	beq	_$L10
+                                  190   CBLOCK 3 4 190
+                                  191   
+                                  192   ;;		SARUN = 1;	/* Conversion start. */
+                                  193   CLINEA 0000H 0001H 00BFH 0003H 0024H
+00:0018 80-A0 F1-F2               194   	sb	0f2f1h.0
+                                  195   CBLOCKEND 3 4 192
+                                  196   
+                                  197   ;;	}
+                                  198   CLINEA 0000H 0000H 00C0H 0002H 0002H
+00:001C                           199   _$L10 :
+                                  200   
+                                  201   ;;	return ( SAADC_R_OK );
+                                  202   CLINEA 0000H 0001H 00C1H 0002H 0017H
+00:001C 00 E0                     203   	mov	er0,	#0 
+00:001E 1F-FE                     204   	rt
+                                  205   CBLOCKEND 3 1 194
+                                  206   CFUNCTIONEND 3
+                                  207   
+                                  208   
+  --------------------------      209   	rseg $$saAdc_checkFin$saadc
+                                  210   CFUNCTION 4
+                                  211   
+00:0000                           212   _saAdc_checkFin	:
+                                  213   CBLOCK 4 1 206
+                                  214   
+                                  215   ;;{
+                                  216   CLINEA 0000H 0001H 00CEH 0001H 0001H
+                                  217   CBLOCK 4 2 206
+                                  218   CLOCAL 46H 0001H 0014H 0002H "reg" 02H 00H 00H
+                                  219   
+                                  220   ;;	reg = IRQ2;
+                                  221   CLINEA 0000H 0001H 00D1H 0002H 000CH
+00:0000 10-90 1A-F0               222   	l	r0,	0f01ah
+                                  223   
+                                  224   ;;	if( ( reg & (unsigned char)IRQ2_QSAD ) != 0 ) {
+                                  225   CLINEA 0000H 0001H 00D3H 0002H 0030H
+00:0004 21-A0                     226   	tb	r0.2
+00:0006 02 C9                     227   	beq	_$L13
+                                  228   CBLOCK 4 3 211
+                                  229   
+                                  230   ;;		return ( SAADC_R_FIN );
+                                  231   CLINEA 0000H 0001H 00D4H 0003H 0019H
+00:0008 01 E0                     232   	mov	er0,	#1 
+                                  233   CBLOCKEND 4 3 213
+                                  234   CBLOCKEND 4 2 215
+                                  235   
+                                  236   ;;}
+                                  237   CLINEA 0000H 0001H 00D7H 0001H 0001H
+00:000A 1F-FE                     238   	rt
+                                  239   
+                                  240   ;;	}
+                                  241   CLINEA 0000H 0000H 00D5H 0002H 0002H
+00:000C                           242   _$L13 :
+                                  243   
+                                  244   ;;	return ( SAADC_R_NOT_FIN );
+                                  245   CLINEA 0000H 0001H 00D6H 0002H 001CH
+00:000C 00 E0                     246   	mov	er0,	#0 
+00:000E 1F-FE                     247   	rt
+                                  248   CBLOCKEND 4 1 215
+                                  249   CFUNCTIONEND 4
+                                  250   
+                                  251   
+  --------------------------      252   	rseg $$saAdc_getResult$saadc
+                                  253   CFUNCTION 5
+                                  254   
+00:0000                           255   _saAdc_getResult	:
+                                  256   CBLOCK 5 1 228
+                                  257   
+                                  258   ;;{
+                                  259   CLINEA 0000H 0001H 00E4H 0001H 0001H
+00:0000 5E-FA                     260   	push	er10
+00:0002 25-FA                     261   	mov	er10,	er2
+                                  262   CBLOCK 5 2 228
+                                  263   CARGUMENT 46H 0001H 0014H "chNo" 02H 00H 00H
+                                  264   CARGUMENT 46H 0002H 0029H "result" 04H 03H 00H 00H 01H
+                                  265   CLOCAL 46H 0001H 0015H 0002H "rl" 02H 00H 00H
+                                  266   CLOCAL 46H 0001H 0016H 0002H "rh" 02H 00H 00H
+                                  267   
+                                  268   ;;	if( chNo > (unsigned char)1u ) {
+                                  269   CLINEA 0000H 0001H 00E9H 0002H 0021H
+00:0004 01 70                     270   	cmp	r0,	#01h
+00:0006 03 C3                     271   	ble	_$L16
+                                  272   CBLOCK 5 3 233
+                                  273   
+                                  274   ;;		return ( SAADC_R_ERR_CH );
+                                  275   CLINEA 0000H 0001H 00EAH 0003H 001CH
+00:0008 7F E0                     276   	mov	er0,	#-1
+                                  277   CBLOCKEND 5 3 235
+                                  278   CBLOCKEND 5 2 249
+                                  279   
+                                  280   ;;}
+                                  281   CLINEA 0000H 0001H 00F9H 0001H 0001H
+00:000A                           282   _$L15 :
+00:000A 1E-FA                     283   	pop	er10
+00:000C 1F-FE                     284   	rt
+                                  285   
+                                  286   ;;	}
+                                  287   CLINEA 0000H 0000H 00EBH 0002H 0002H
+00:000E                           288   _$L16 :
+                                  289   
+                                  290   ;;	if( chNo == (unsigned char)0u ) {
+                                  291   CLINEA 0000H 0001H 00EDH 0002H 0022H
+00:000E 00 70                     292   	cmp	r0,	#00h
+00:0010 06 C8                     293   	bne	_$L18
+                                  294   CBLOCK 5 4 237
+                                  295   
+                                  296   ;;		rl = SADR0L;
+                                  297   CLINEA 0000H 0001H 00EEH 0003H 000EH
+00:0012 10-90 D0-F2               298   	l	r0,	0f2d0h
+00:0016 00-81                     299   	mov	r1,	r0
+                                  300   
+                                  301   ;;		rh = SADR0H;
+                                  302   CLINEA 0000H 0001H 00EFH 0003H 000EH
+00:0018 10-90 D1-F2               303   	l	r0,	0f2d1h
+                                  304   CBLOCKEND 5 4 240
+                                  305   
+                                  306   ;;	else {
+                                  307   CLINEA 0000H 0001H 00F1H 0002H 0007H
+00:001C 05 CE                     308   	bal	_$L20
+00:001E                           309   _$L18 :
+                                  310   CBLOCK 5 5 241
+                                  311   
+                                  312   ;;		rl = SADR1L;
+                                  313   CLINEA 0000H 0001H 00F2H 0003H 000EH
+00:001E 10-90 D2-F2               314   	l	r0,	0f2d2h
+00:0022 00-81                     315   	mov	r1,	r0
+                                  316   
+                                  317   ;;		rh = SADR1H;
+                                  318   CLINEA 0000H 0001H 00F3H 0003H 000EH
+00:0024 10-90 D3-F2               319   	l	r0,	0f2d3h
+                                  320   CBLOCKEND 5 5 244
+                                  321   
+                                  322   ;;	}
+                                  323   CLINEA 0000H 0000H 00F4H 0002H 0002H
+00:0028                           324   _$L20 :
+00:0028 00-82                     325   	mov	r2,	r0
+                                  326   
+                                  327   ;;	                            ( ( rh & (unsigned char)SADRH_SAR ) << 4 ) );
+                                  328   CLINEA 0000H 0001H 00F7H 001EH 004AH
+00:002A 10-80                     329   	mov	r0,	r1
+00:002C 00 01                     330   	mov	r1,	#00h
+00:002E F0 20                     331   	and	r0,	#0f0h
+00:0030 00 21                     332   	and	r1,	#00h
+00:0032 4D-90                     333   	srlc	r0,	#04h
+00:0034 4E-91                     334   	sra	r1,	#04h
+00:0036 00 03                     335   	mov	r3,	#00h
+00:0038 00 23                     336   	and	r3,	#00h
+00:003A 4B-93                     337   	sllc	r3,	#04h
+00:003C 4A-92                     338   	sll	r2,	#04h
+00:003E 03-82                     339   	or	r2,	r0
+00:0040 13-83                     340   	or	r3,	r1
+00:0042 A3-92                     341   	st	er2,	[er10]
+                                  342   
+                                  343   ;;	return ( SAADC_R_OK );
+                                  344   CLINEA 0000H 0001H 00F8H 0002H 0017H
+00:0044 00 E0                     345   	mov	er0,	#0 
+00:0046 E1 CE                     346   	bal	_$L15
+                                  347   CBLOCKEND 5 1 249
+                                  348   CFUNCTIONEND 5
+                                  349   
+                                  350   	public _saAdc_checkFin
+                                  351   	public _saAdc_short_CH0CH1_off
+                                  352   	public _saAdc_init
+                                  353   	public _saAdc_short_CH0CH1_on
+                                  354   	public _saAdc_execute
+                                  355   	public _saAdc_getResult
+                                  356   	extrn code near : _main
+                                  357   
+                                  358   	end
+
+
+
+  Target       : ML610112 (nX-U8/100)
+  Memory Model : SMALL
+  Data   Model : NEAR
+  ROM WINDOW   : (not specified)
+  Internal RAM : E000H to EFFFH
+
+  Errors   : 0
+  Warnings : 0  (/Wrpeast)
+  Lines    : 358

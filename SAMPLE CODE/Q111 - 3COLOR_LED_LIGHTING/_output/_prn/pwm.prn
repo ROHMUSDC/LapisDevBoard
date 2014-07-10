@@ -1,0 +1,1398 @@
+RASU8(ML610111)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1 
+ Source File: _output\_obj\pwm.asm
+ Object File: _output\_obj\pwm.obj
+ Date  : 2013/06/18 Tue.[16:11]
+ Title : 
+## Loc. Object                   Line   Source Statements
+
+                                    1   ;; Compile Options : /TML610111 /MS /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Ipwm /Iuart /Ivolume /Iled /D_ML610Q111 /SS 1024 /SD /Oa /Om /W 3 /Wc /Fa_output\_obj\ 
+                                    2   ;; Version Number  : Ver.3.31.4
+                                    3   ;; File Name       : pwm.c
+                                    4   
+                                    5   	type (ML610111) 
+                                    6   	model small, near
+                                    7   	$$pwmC_clearCount$pwm segment code 2h #0h
+                                    8   	$$pwmC_selectClock$pwm segment code 2h #0h
+                                    9   	$$pwmC_selectInterrupt$pwm segment code 2h #0h
+                                   10   	$$pwmC_selectOutputPolarity$pwm segment code 2h #0h
+                                   11   	$$pwmC_setDuty$pwm segment code 2h #0h
+                                   12   	$$pwmC_setOneShotMode$pwm segment code 2h #0h
+                                   13   	$$pwmC_setPeriod$pwm segment code 2h #0h
+                                   14   	$$pwmC_start$pwm segment code 2h #0h
+                                   15   	$$pwmC_stop$pwm segment code 2h #0h
+                                   16   	$$pwmD_clearCount$pwm segment code 2h #0h
+                                   17   	$$pwmD_selectClock$pwm segment code 2h #0h
+                                   18   	$$pwmD_selectInterrupt$pwm segment code 2h #0h
+                                   19   	$$pwmD_selectOutputPolarity$pwm segment code 2h #0h
+                                   20   	$$pwmD_setDuty$pwm segment code 2h #0h
+                                   21   	$$pwmD_setOneShotMode$pwm segment code 2h #0h
+                                   22   	$$pwmD_setPeriod$pwm segment code 2h #0h
+                                   23   	$$pwmD_start$pwm segment code 2h #0h
+                                   24   	$$pwmD_stop$pwm segment code 2h #0h
+                                   25   	$$pwmE_clearCount$pwm segment code 2h #0h
+                                   26   	$$pwmE_selectClock$pwm segment code 2h #0h
+                                   27   	$$pwmE_selectInterrupt$pwm segment code 2h #0h
+                                   28   	$$pwmE_selectOutputPolarity$pwm segment code 2h #0h
+                                   29   	$$pwmE_setDuty$pwm segment code 2h #0h
+                                   30   	$$pwmE_setOneShotMode$pwm segment code 2h #0h
+                                   31   	$$pwmE_setPeriod$pwm segment code 2h #0h
+                                   32   	$$pwmE_start$pwm segment code 2h #0h
+                                   33   	$$pwmE_stop$pwm segment code 2h #0h
+                                   34   	$$pwmF0_setDisable$pwm segment code 2h #0h
+                                   35   	$$pwmF0_setDuty$pwm segment code 2h #0h
+                                   36   	$$pwmF0_setEnable$pwm segment code 2h #0h
+                                   37   	$$pwmF1_setDisable$pwm segment code 2h #0h
+                                   38   	$$pwmF1_setDuty$pwm segment code 2h #0h
+                                   39   	$$pwmF1_setEnable$pwm segment code 2h #0h
+                                   40   	$$pwmF2_setDisable$pwm segment code 2h #0h
+                                   41   	$$pwmF2_setDuty$pwm segment code 2h #0h
+                                   42   	$$pwmF2_setEnable$pwm segment code 2h #0h
+                                   43   	$$pwmF_clearCount$pwm segment code 2h #0h
+                                   44   	$$pwmF_dutyUpdate$pwm segment code 2h #0h
+                                   45   	$$pwmF_selectClock$pwm segment code 2h #0h
+                                   46   	$$pwmF_selectInterrupt$pwm segment code 2h #0h
+                                   47   	$$pwmF_selectOutputPolarity$pwm segment code 2h #0h
+                                   48   	$$pwmF_setOneShotMode$pwm segment code 2h #0h
+                                   49   	$$pwmF_setPeriod$pwm segment code 2h #0h
+                                   50   	$$pwmF_start$pwm segment code 2h #0h
+                                   51   	$$pwmF_stop$pwm segment code 2h #0h
+                                   52   CVERSION 3.31.4
+                                   53   CGLOBAL 01H 03H 0000H "pwmE_clearCount" 08H 02H 14H 00H 80H 00H 00H 00H 07H
+                                   54   CGLOBAL 01H 03H 0000H "pwmC_clearCount" 08H 02H 02H 00H 80H 00H 00H 00H 07H
+                                   55   CGLOBAL 01H 03H 0000H "pwmE_selectClock" 08H 02H 15H 00H 80H 00H 00H 00H 07H
+                                   56   CGLOBAL 01H 03H 0000H "pwmF0_setDisable" 08H 02H 29H 00H 80H 00H 00H 00H 07H
+                                   57   CGLOBAL 01H 03H 0000H "pwmC_stop" 08H 02H 07H 00H 80H 00H 00H 00H 07H
+                                   58   CGLOBAL 01H 03H 0000H "pwmE_stop" 08H 02H 19H 00H 80H 00H 00H 00H 07H
+                                   59   CGLOBAL 01H 03H 0000H "pwmF2_setDisable" 08H 02H 2BH 00H 80H 00H 00H 00H 07H
+                                   60   CGLOBAL 01H 03H 0000H "pwmF_selectClock" 08H 02H 20H 00H 80H 00H 00H 00H 07H
+                                   61   CGLOBAL 01H 03H 0000H "pwmC_selectClock" 08H 02H 03H 00H 80H 00H 00H 00H 07H
+                                   62   CGLOBAL 01H 03H 0000H "pwmD_selectClock" 08H 02H 0CH 00H 80H 00H 00H 00H 07H
+                                   63   CGLOBAL 01H 03H 0000H "pwmE_selectInterrupt" 08H 02H 16H 00H 80H 00H 00H 00H 07H
+                                   64   CGLOBAL 01H 03H 0000H "pwmF1_setEnable" 08H 02H 27H 00H 80H 00H 00H 00H 07H
+                                   65   CGLOBAL 01H 03H 0000H "pwmF0_setDuty" 08H 02H 1CH 00H 80H 00H 00H 00H 07H
+                                   66   CGLOBAL 01H 03H 0000H "pwmF_selectOutputPolarity" 08H 02H 22H 00H 80H 00H 00H 00H 07H
+                                   67   CGLOBAL 01H 03H 0000H "pwmD_setPeriod" 08H 02H 09H 00H 80H 00H 00H 00H 07H
+                                   68   CGLOBAL 01H 03H 0000H "pwmD_setOneShotMode" 08H 02H 11H 00H 80H 00H 00H 00H 07H
+                                   69   CGLOBAL 01H 03H 0000H "pwmC_setOneShotMode" 08H 02H 08H 00H 80H 00H 00H 00H 07H
+                                   70   CGLOBAL 01H 03H 0000H "pwmE_selectOutputPolarity" 08H 02H 17H 00H 80H 00H 00H 00H 07H
+                                   71   CGLOBAL 01H 03H 0000H "pwmE_start" 08H 02H 18H 00H 80H 00H 00H 00H 07H
+                                   72   CGLOBAL 01H 03H 0000H "pwmF_start" 08H 02H 23H 00H 80H 00H 00H 00H 07H
+                                   73   CGLOBAL 01H 03H 0000H "pwmC_start" 08H 02H 06H 00H 80H 00H 00H 00H 07H
+                                   74   CGLOBAL 01H 03H 0000H "pwmD_start" 08H 02H 0FH 00H 80H 00H 00H 00H 07H
+                                   75   CGLOBAL 01H 03H 0000H "pwmD_setDuty" 08H 02H 0AH 00H 80H 00H 00H 00H 07H
+                                   76   CGLOBAL 01H 03H 0000H "pwmC_setDuty" 08H 02H 01H 00H 80H 00H 00H 00H 07H
+                                   77   CGLOBAL 01H 03H 0000H "pwmD_selectOutputPolarity" 08H 02H 0EH 00H 80H 00H 00H 00H 07H
+                                   78   CGLOBAL 01H 03H 0000H "pwmE_setDuty" 08H 02H 13H 00H 80H 00H 00H 00H 07H
+                                   79   CGLOBAL 01H 03H 0000H "pwmD_selectInterrupt" 08H 02H 0DH 00H 80H 00H 00H 00H 07H
+                                   80   CGLOBAL 01H 03H 0000H "pwmF2_setEnable" 08H 02H 28H 00H 80H 00H 00H 00H 07H
+                                   81   CGLOBAL 01H 03H 0000H "pwmF_setOneShotMode" 08H 02H 25H 00H 80H 00H 00H 00H 07H
+                                   82   CGLOBAL 01H 03H 0000H "pwmE_setPeriod" 08H 02H 12H 00H 80H 00H 00H 00H 07H
+                                   83   CGLOBAL 01H 03H 0000H "pwmF_clearCount" 08H 02H 1FH 00H 80H 00H 00H 00H 07H
+                                   84   CGLOBAL 01H 03H 0000H "pwmD_clearCount" 08H 02H 0BH 00H 80H 00H 00H 00H 07H
+                                   85   CGLOBAL 01H 03H 0000H "pwmD_stop" 08H 02H 10H 00H 80H 00H 00H 00H 07H
+                                   86   CGLOBAL 01H 03H 0000H "pwmF_stop" 08H 02H 24H 00H 80H 00H 00H 00H 07H
+                                   87   CGLOBAL 01H 03H 0000H "pwmF1_setDisable" 08H 02H 2AH 00H 80H 00H 00H 00H 07H
+                                   88   CGLOBAL 01H 03H 0000H "pwmC_selectOutputPolarity" 08H 02H 05H 00H 80H 00H 00H 00H 07H
+                                   89   CGLOBAL 01H 03H 0000H "pwmF_selectInterrupt" 08H 02H 21H 00H 80H 00H 00H 00H 07H
+                                   90   CGLOBAL 01H 03H 0000H "pwmF0_setEnable" 08H 02H 26H 00H 80H 00H 00H 00H 07H
+                                   91   CGLOBAL 01H 03H 0000H "pwmC_setPeriod" 08H 02H 00H 00H 80H 00H 00H 00H 07H
+                                   92   CGLOBAL 01H 03H 0000H "pwmE_setOneShotMode" 08H 02H 1AH 00H 80H 00H 00H 00H 07H
+                                   93   CGLOBAL 01H 03H 0000H "pwmC_selectInterrupt" 08H 02H 04H 00H 80H 00H 00H 00H 07H
+                                   94   CGLOBAL 01H 03H 0000H "pwmF_setPeriod" 08H 02H 1BH 00H 80H 00H 00H 00H 07H
+                                   95   CGLOBAL 01H 03H 0000H "pwmF1_setDuty" 08H 02H 1DH 00H 80H 00H 00H 00H 07H
+                                   96   CGLOBAL 01H 03H 0000H "pwmF_dutyUpdate" 08H 02H 2CH 00H 80H 00H 00H 00H 07H
+                                   97   CGLOBAL 01H 03H 0000H "pwmF2_setDuty" 08H 02H 1EH 00H 80H 00H 00H 00H 07H
+                                   98   CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+                                   99   CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+                                  100   CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+                                  101   CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+                                  102   CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+                                  103   CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+                                  104   CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+                                  105   CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+                                  106   CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+                                  107   CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+                                  108   CFILE 0001H 00000022H "main\\mcu.h"
+                                  109   CFILE 0002H 000007EEH "C:\\Users\\cschell\\U8DEV~1\\Inc\\ml610111.h"
+                                  110   CFILE 0003H 00000080H "pwm\\pwm.h"
+                                  111   CFILE 0000H 00000119H "pwm\\pwm.c"
+                                  112   
+  --------------------------      113   	rseg $$pwmC_setPeriod$pwm
+                                  114   CFUNCTION 0
+                                  115   
+00:0000                           116   _pwmC_setPeriod	:
+                                  117   CBLOCK 0 1 32
+                                  118   
+                                  119   ;;{
+                                  120   CLINEA 0000H 0001H 0020H 0001H 0001H
+                                  121   CBLOCK 0 2 32
+                                  122   CARGUMENT 46H 0002H 0024H "period" 02H 00H 01H
+                                  123   
+                                  124   ;;	PWCP = period;
+                                  125   CLINEA 0000H 0001H 0021H 0002H 000FH
+00:0000 13-90 10-F9               126   	st	er0,	0f910h
+                                  127   CBLOCKEND 0 2 34
+                                  128   
+                                  129   ;;}
+                                  130   CLINEA 0000H 0001H 0022H 0001H 0001H
+00:0004 1F-FE                     131   	rt
+                                  132   CBLOCKEND 0 1 34
+                                  133   CFUNCTIONEND 0
+                                  134   
+                                  135   
+  --------------------------      136   	rseg $$pwmC_setDuty$pwm
+                                  137   CFUNCTION 1
+                                  138   
+00:0000                           139   _pwmC_setDuty	:
+                                  140   CBLOCK 1 1 37
+                                  141   
+                                  142   ;;{
+                                  143   CLINEA 0000H 0001H 0025H 0001H 0001H
+                                  144   CBLOCK 1 2 37
+                                  145   CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+                                  146   
+                                  147   ;;	PWCD = duty;
+                                  148   CLINEA 0000H 0001H 0026H 0002H 000DH
+00:0000 13-90 12-F9               149   	st	er0,	0f912h
+                                  150   CBLOCKEND 1 2 39
+                                  151   
+                                  152   ;;}
+                                  153   CLINEA 0000H 0001H 0027H 0001H 0001H
+00:0004 1F-FE                     154   	rt
+                                  155   CBLOCKEND 1 1 39
+                                  156   CFUNCTIONEND 1
+                                  157   
+                                  158   
+  --------------------------      159   	rseg $$pwmC_clearCount$pwm
+                                  160   CFUNCTION 2
+                                  161   
+00:0000                           162   _pwmC_clearCount	:
+                                  163   CBLOCK 2 1 42
+                                  164   
+                                  165   ;;{
+                                  166   CLINEA 0000H 0001H 002AH 0001H 0001H
+                                  167   CBLOCK 2 2 42
+                                  168   
+                                  169   ;;	PWCCL = 0;
+                                  170   CLINEA 0000H 0001H 002BH 0002H 000BH
+00:0000 00 00                     171   	mov	r0,	#00h
+00:0002 11-90 14-F9               172   	st	r0,	0f914h
+                                  173   CBLOCKEND 2 2 44
+                                  174   
+                                  175   ;;}
+                                  176   CLINEA 0000H 0001H 002CH 0001H 0001H
+00:0006 1F-FE                     177   	rt
+                                  178   CBLOCKEND 2 1 44
+                                  179   CFUNCTIONEND 2
+                                  180   
+                                  181   
+  --------------------------      182   	rseg $$pwmC_selectClock$pwm
+                                  183   CFUNCTION 3
+                                  184   
+00:0000                           185   _pwmC_selectClock	:
+                                  186   CBLOCK 3 1 47
+                                  187   
+                                  188   ;;{
+                                  189   CLINEA 0000H 0001H 002FH 0001H 0001H
+00:0000 00-82                     190   	mov	r2,	r0
+                                  191   CBLOCK 3 2 47
+                                  192   CARGUMENT 46H 0001H 0016H "clkSel" 02H 00H 00H
+                                  193   CLOCAL 46H 0001H 0015H 0002H "tmpCs" 02H 00H 00H
+                                  194   
+                                  195   ;;	PCCS0 =  tmpCs       & 1;
+                                  196   CLINEA 0000H 0001H 0032H 0002H 001AH
+00:0002 01 20                     197   	and	r0,	#01h
+00:0004 03 C9                     198   	beq	_$M4
+00:0006 80-A0 16-F9               199   	sb	0f916h.0
+00:000A 02 CE                     200   	bal	_$M5
+00:000C                           201   _$M4 :
+00:000C 82-A0 16-F9               202   	rb	0f916h.0
+00:0010                           203   _$M5 :
+                                  204   
+                                  205   ;;	PCCS1 = (tmpCs >> 1) & 1;
+                                  206   CLINEA 0000H 0001H 0033H 0002H 001AH
+00:0010 20-80                     207   	mov	r0,	r2
+00:0012 00 01                     208   	mov	r1,	#00h
+00:0014 1D-90                     209   	srlc	r0,	#01h
+00:0016 01 20                     210   	and	r0,	#01h
+00:0018 03 C9                     211   	beq	_$M6
+00:001A 90-A0 16-F9               212   	sb	0f916h.1
+00:001E 1F-FE                     213   	rt
+00:0020                           214   _$M6 :
+00:0020 92-A0 16-F9               215   	rb	0f916h.1
+                                  216   CBLOCKEND 3 2 52
+                                  217   
+                                  218   ;;}
+                                  219   CLINEA 0000H 0001H 0034H 0001H 0001H
+00:0024 1F-FE                     220   	rt
+                                  221   CBLOCKEND 3 1 52
+                                  222   CFUNCTIONEND 3
+                                  223   
+                                  224   
+  --------------------------      225   	rseg $$pwmC_selectInterrupt$pwm
+                                  226   CFUNCTION 4
+                                  227   
+00:0000                           228   _pwmC_selectInterrupt	:
+                                  229   CBLOCK 4 1 55
+                                  230   
+                                  231   ;;{
+                                  232   CLINEA 0000H 0001H 0037H 0001H 0001H
+00:0000 00-82                     233   	mov	r2,	r0
+                                  234   CBLOCK 4 2 55
+                                  235   CARGUMENT 46H 0001H 0016H "intSel" 02H 00H 00H
+                                  236   CLOCAL 46H 0001H 0015H 0002H "tmpIs" 02H 00H 00H
+                                  237   
+                                  238   ;;	PCIS0 =  tmpIs       & 1;
+                                  239   CLINEA 0000H 0001H 0039H 0002H 001AH
+00:0002 01 20                     240   	and	r0,	#01h
+00:0004 03 C9                     241   	beq	_$M9
+00:0006 A0-A0 16-F9               242   	sb	0f916h.2
+00:000A 02 CE                     243   	bal	_$M10
+00:000C                           244   _$M9 :
+00:000C A2-A0 16-F9               245   	rb	0f916h.2
+00:0010                           246   _$M10 :
+                                  247   
+                                  248   ;;	PCIS1 = (tmpIs >> 1) & 1;
+                                  249   CLINEA 0000H 0001H 003AH 0002H 001AH
+00:0010 20-80                     250   	mov	r0,	r2
+00:0012 00 01                     251   	mov	r1,	#00h
+00:0014 1D-90                     252   	srlc	r0,	#01h
+00:0016 01 20                     253   	and	r0,	#01h
+00:0018 03 C9                     254   	beq	_$M11
+00:001A B0-A0 16-F9               255   	sb	0f916h.3
+00:001E 1F-FE                     256   	rt
+00:0020                           257   _$M11 :
+00:0020 B2-A0 16-F9               258   	rb	0f916h.3
+                                  259   CBLOCKEND 4 2 59
+                                  260   
+                                  261   ;;}
+                                  262   CLINEA 0000H 0001H 003BH 0001H 0001H
+00:0024 1F-FE                     263   	rt
+                                  264   CBLOCKEND 4 1 59
+                                  265   CFUNCTIONEND 4
+                                  266   
+                                  267   
+  --------------------------      268   	rseg $$pwmC_selectOutputPolarity$pwm
+                                  269   CFUNCTION 5
+                                  270   
+00:0000                           271   _pwmC_selectOutputPolarity	:
+                                  272   CBLOCK 5 1 62
+                                  273   
+                                  274   ;;{
+                                  275   CLINEA 0000H 0001H 003EH 0001H 0001H
+                                  276   CBLOCK 5 2 62
+                                  277   CARGUMENT 46H 0001H 0014H "outPol" 02H 00H 00H
+                                  278   
+                                  279   ;;	PCNEG = outPol;
+                                  280   CLINEA 0000H 0001H 003FH 0002H 0010H
+00:0000 01 20                     281   	and	r0,	#01h
+00:0002 03 C9                     282   	beq	_$M14
+00:0004 C0-A0 16-F9               283   	sb	0f916h.4
+00:0008 1F-FE                     284   	rt
+00:000A                           285   _$M14 :
+00:000A C2-A0 16-F9               286   	rb	0f916h.4
+                                  287   CBLOCKEND 5 2 64
+                                  288   
+                                  289   ;;}
+                                  290   CLINEA 0000H 0001H 0040H 0001H 0001H
+00:000E 1F-FE                     291   	rt
+                                  292   CBLOCKEND 5 1 64
+                                  293   CFUNCTIONEND 5
+                                  294   
+                                  295   
+  --------------------------      296   	rseg $$pwmC_start$pwm
+                                  297   CFUNCTION 6
+                                  298   
+00:0000                           299   _pwmC_start	:
+                                  300   CBLOCK 6 1 67
+                                  301   
+                                  302   ;;{
+                                  303   CLINEA 0000H 0001H 0043H 0001H 0001H
+                                  304   CBLOCK 6 2 67
+                                  305   
+                                  306   ;;	PCRUN = 1;
+                                  307   CLINEA 0000H 0001H 0044H 0002H 000BH
+00:0000 80-A0 17-F9               308   	sb	0f917h.0
+                                  309   CBLOCKEND 6 2 69
+                                  310   
+                                  311   ;;}
+                                  312   CLINEA 0000H 0001H 0045H 0001H 0001H
+00:0004 1F-FE                     313   	rt
+                                  314   CBLOCKEND 6 1 69
+                                  315   CFUNCTIONEND 6
+                                  316   
+                                  317   
+  --------------------------      318   	rseg $$pwmC_stop$pwm
+                                  319   CFUNCTION 7
+                                  320   
+00:0000                           321   _pwmC_stop	:
+                                  322   CBLOCK 7 1 72
+                                  323   
+                                  324   ;;{
+                                  325   CLINEA 0000H 0001H 0048H 0001H 0001H
+                                  326   CBLOCK 7 2 72
+                                  327   
+                                  328   ;;	PCRUN = 0;
+                                  329   CLINEA 0000H 0001H 0049H 0002H 000BH
+00:0000 82-A0 17-F9               330   	rb	0f917h.0
+                                  331   CBLOCKEND 7 2 74
+                                  332   
+                                  333   ;;}
+                                  334   CLINEA 0000H 0001H 004AH 0001H 0001H
+00:0004 1F-FE                     335   	rt
+                                  336   CBLOCKEND 7 1 74
+                                  337   CFUNCTIONEND 7
+                                  338   
+                                  339   
+  --------------------------      340   	rseg $$pwmC_setOneShotMode$pwm
+                                  341   CFUNCTION 8
+                                  342   
+00:0000                           343   _pwmC_setOneShotMode	:
+                                  344   CBLOCK 8 1 77
+                                  345   
+                                  346   ;;{
+                                  347   CLINEA 0000H 0001H 004DH 0001H 0001H
+                                  348   CBLOCK 8 2 77
+                                  349   CARGUMENT 46H 0001H 0014H "mode" 02H 00H 00H
+                                  350   
+                                  351   ;;	PCOST = (mode) & 1;
+                                  352   CLINEA 0000H 0001H 004EH 0002H 0014H
+00:0000 01 20                     353   	and	r0,	#01h
+00:0002 03 C9                     354   	beq	_$M19
+00:0004 F0-A0 18-F9               355   	sb	0f918h.7
+00:0008 1F-FE                     356   	rt
+00:000A                           357   _$M19 :
+00:000A F2-A0 18-F9               358   	rb	0f918h.7
+                                  359   CBLOCKEND 8 2 79
+                                  360   
+                                  361   ;;}
+                                  362   CLINEA 0000H 0001H 004FH 0001H 0001H
+00:000E 1F-FE                     363   	rt
+                                  364   CBLOCKEND 8 1 79
+                                  365   CFUNCTIONEND 8
+                                  366   
+                                  367   
+  --------------------------      368   	rseg $$pwmD_setPeriod$pwm
+                                  369   CFUNCTION 9
+                                  370   
+00:0000                           371   _pwmD_setPeriod	:
+                                  372   CBLOCK 9 1 84
+                                  373   
+                                  374   ;;{
+                                  375   CLINEA 0000H 0001H 0054H 0001H 0001H
+                                  376   CBLOCK 9 2 84
+                                  377   CARGUMENT 46H 0002H 0024H "period" 02H 00H 01H
+                                  378   
+                                  379   ;;	PWDP = period;
+                                  380   CLINEA 0000H 0001H 0055H 0002H 000FH
+00:0000 13-90 20-F9               381   	st	er0,	0f920h
+                                  382   CBLOCKEND 9 2 86
+                                  383   
+                                  384   ;;}
+                                  385   CLINEA 0000H 0001H 0056H 0001H 0001H
+00:0004 1F-FE                     386   	rt
+                                  387   CBLOCKEND 9 1 86
+                                  388   CFUNCTIONEND 9
+                                  389   
+                                  390   
+  --------------------------      391   	rseg $$pwmD_setDuty$pwm
+                                  392   CFUNCTION 10
+                                  393   
+00:0000                           394   _pwmD_setDuty	:
+                                  395   CBLOCK 10 1 89
+                                  396   
+                                  397   ;;{
+                                  398   CLINEA 0000H 0001H 0059H 0001H 0001H
+                                  399   CBLOCK 10 2 89
+                                  400   CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+                                  401   
+                                  402   ;;	PWDD = duty;
+                                  403   CLINEA 0000H 0001H 005AH 0002H 000DH
+00:0000 13-90 22-F9               404   	st	er0,	0f922h
+                                  405   CBLOCKEND 10 2 91
+                                  406   
+                                  407   ;;}
+                                  408   CLINEA 0000H 0001H 005BH 0001H 0001H
+00:0004 1F-FE                     409   	rt
+                                  410   CBLOCKEND 10 1 91
+                                  411   CFUNCTIONEND 10
+                                  412   
+                                  413   
+  --------------------------      414   	rseg $$pwmD_clearCount$pwm
+                                  415   CFUNCTION 11
+                                  416   
+00:0000                           417   _pwmD_clearCount	:
+                                  418   CBLOCK 11 1 94
+                                  419   
+                                  420   ;;{
+                                  421   CLINEA 0000H 0001H 005EH 0001H 0001H
+                                  422   CBLOCK 11 2 94
+                                  423   
+                                  424   ;;	PWDCL = 0;
+                                  425   CLINEA 0000H 0001H 005FH 0002H 000BH
+00:0000 00 00                     426   	mov	r0,	#00h
+00:0002 11-90 24-F9               427   	st	r0,	0f924h
+                                  428   CBLOCKEND 11 2 96
+                                  429   
+                                  430   ;;}
+                                  431   CLINEA 0000H 0001H 0060H 0001H 0001H
+00:0006 1F-FE                     432   	rt
+                                  433   CBLOCKEND 11 1 96
+                                  434   CFUNCTIONEND 11
+                                  435   
+                                  436   
+  --------------------------      437   	rseg $$pwmD_selectClock$pwm
+                                  438   CFUNCTION 12
+                                  439   
+00:0000                           440   _pwmD_selectClock	:
+                                  441   CBLOCK 12 1 99
+                                  442   
+                                  443   ;;{
+                                  444   CLINEA 0000H 0001H 0063H 0001H 0001H
+00:0000 00-82                     445   	mov	r2,	r0
+                                  446   CBLOCK 12 2 99
+                                  447   CARGUMENT 46H 0001H 0016H "clkSel" 02H 00H 00H
+                                  448   CLOCAL 46H 0001H 0015H 0002H "tmpCs" 02H 00H 00H
+                                  449   
+                                  450   ;;	PDCS0 =  tmpCs       & 1;
+                                  451   CLINEA 0000H 0001H 0066H 0002H 001AH
+00:0002 01 20                     452   	and	r0,	#01h
+00:0004 03 C9                     453   	beq	_$M25
+00:0006 80-A0 26-F9               454   	sb	0f926h.0
+00:000A 02 CE                     455   	bal	_$M26
+00:000C                           456   _$M25 :
+00:000C 82-A0 26-F9               457   	rb	0f926h.0
+00:0010                           458   _$M26 :
+                                  459   
+                                  460   ;;	PDCS1 = (tmpCs >> 1) & 1;
+                                  461   CLINEA 0000H 0001H 0067H 0002H 001AH
+00:0010 20-80                     462   	mov	r0,	r2
+00:0012 00 01                     463   	mov	r1,	#00h
+00:0014 1D-90                     464   	srlc	r0,	#01h
+00:0016 01 20                     465   	and	r0,	#01h
+00:0018 03 C9                     466   	beq	_$M27
+00:001A 90-A0 26-F9               467   	sb	0f926h.1
+00:001E 1F-FE                     468   	rt
+00:0020                           469   _$M27 :
+00:0020 92-A0 26-F9               470   	rb	0f926h.1
+                                  471   CBLOCKEND 12 2 104
+                                  472   
+                                  473   ;;}
+                                  474   CLINEA 0000H 0001H 0068H 0001H 0001H
+00:0024 1F-FE                     475   	rt
+                                  476   CBLOCKEND 12 1 104
+                                  477   CFUNCTIONEND 12
+                                  478   
+                                  479   
+  --------------------------      480   	rseg $$pwmD_selectInterrupt$pwm
+                                  481   CFUNCTION 13
+                                  482   
+00:0000                           483   _pwmD_selectInterrupt	:
+                                  484   CBLOCK 13 1 107
+                                  485   
+                                  486   ;;{
+                                  487   CLINEA 0000H 0001H 006BH 0001H 0001H
+00:0000 00-82                     488   	mov	r2,	r0
+                                  489   CBLOCK 13 2 107
+                                  490   CARGUMENT 46H 0001H 0016H "intSel" 02H 00H 00H
+                                  491   CLOCAL 46H 0001H 0015H 0002H "tmpIs" 02H 00H 00H
+                                  492   
+                                  493   ;;	PDIS0 =  tmpIs       & 1;
+                                  494   CLINEA 0000H 0001H 006DH 0002H 001AH
+00:0002 01 20                     495   	and	r0,	#01h
+00:0004 03 C9                     496   	beq	_$M30
+00:0006 A0-A0 26-F9               497   	sb	0f926h.2
+00:000A 02 CE                     498   	bal	_$M31
+00:000C                           499   _$M30 :
+00:000C A2-A0 26-F9               500   	rb	0f926h.2
+00:0010                           501   _$M31 :
+                                  502   
+                                  503   ;;	PDIS1 = (tmpIs >> 1) & 1;
+                                  504   CLINEA 0000H 0001H 006EH 0002H 001AH
+00:0010 20-80                     505   	mov	r0,	r2
+00:0012 00 01                     506   	mov	r1,	#00h
+00:0014 1D-90                     507   	srlc	r0,	#01h
+00:0016 01 20                     508   	and	r0,	#01h
+00:0018 03 C9                     509   	beq	_$M32
+00:001A B0-A0 26-F9               510   	sb	0f926h.3
+00:001E 1F-FE                     511   	rt
+00:0020                           512   _$M32 :
+00:0020 B2-A0 26-F9               513   	rb	0f926h.3
+                                  514   CBLOCKEND 13 2 111
+                                  515   
+                                  516   ;;}
+                                  517   CLINEA 0000H 0001H 006FH 0001H 0001H
+00:0024 1F-FE                     518   	rt
+                                  519   CBLOCKEND 13 1 111
+                                  520   CFUNCTIONEND 13
+                                  521   
+                                  522   
+  --------------------------      523   	rseg $$pwmD_selectOutputPolarity$pwm
+                                  524   CFUNCTION 14
+                                  525   
+00:0000                           526   _pwmD_selectOutputPolarity	:
+                                  527   CBLOCK 14 1 114
+                                  528   
+                                  529   ;;{
+                                  530   CLINEA 0000H 0001H 0072H 0001H 0001H
+                                  531   CBLOCK 14 2 114
+                                  532   CARGUMENT 46H 0001H 0014H "outPol" 02H 00H 00H
+                                  533   
+                                  534   ;;	PDNEG = outPol;
+                                  535   CLINEA 0000H 0001H 0073H 0002H 0010H
+00:0000 01 20                     536   	and	r0,	#01h
+00:0002 03 C9                     537   	beq	_$M35
+00:0004 C0-A0 26-F9               538   	sb	0f926h.4
+00:0008 1F-FE                     539   	rt
+00:000A                           540   _$M35 :
+00:000A C2-A0 26-F9               541   	rb	0f926h.4
+                                  542   CBLOCKEND 14 2 116
+                                  543   
+                                  544   ;;}
+                                  545   CLINEA 0000H 0001H 0074H 0001H 0001H
+00:000E 1F-FE                     546   	rt
+                                  547   CBLOCKEND 14 1 116
+                                  548   CFUNCTIONEND 14
+                                  549   
+                                  550   
+  --------------------------      551   	rseg $$pwmD_start$pwm
+                                  552   CFUNCTION 15
+                                  553   
+00:0000                           554   _pwmD_start	:
+                                  555   CBLOCK 15 1 119
+                                  556   
+                                  557   ;;{
+                                  558   CLINEA 0000H 0001H 0077H 0001H 0001H
+                                  559   CBLOCK 15 2 119
+                                  560   
+                                  561   ;;	PDRUN = 1;
+                                  562   CLINEA 0000H 0001H 0078H 0002H 000BH
+00:0000 80-A0 27-F9               563   	sb	0f927h.0
+                                  564   CBLOCKEND 15 2 121
+                                  565   
+                                  566   ;;}
+                                  567   CLINEA 0000H 0001H 0079H 0001H 0001H
+00:0004 1F-FE                     568   	rt
+                                  569   CBLOCKEND 15 1 121
+                                  570   CFUNCTIONEND 15
+                                  571   
+                                  572   
+  --------------------------      573   	rseg $$pwmD_stop$pwm
+                                  574   CFUNCTION 16
+                                  575   
+00:0000                           576   _pwmD_stop	:
+                                  577   CBLOCK 16 1 124
+                                  578   
+                                  579   ;;{
+                                  580   CLINEA 0000H 0001H 007CH 0001H 0001H
+                                  581   CBLOCK 16 2 124
+                                  582   
+                                  583   ;;	PDRUN = 0;
+                                  584   CLINEA 0000H 0001H 007DH 0002H 000BH
+00:0000 82-A0 27-F9               585   	rb	0f927h.0
+                                  586   CBLOCKEND 16 2 126
+                                  587   
+                                  588   ;;}
+                                  589   CLINEA 0000H 0001H 007EH 0001H 0001H
+00:0004 1F-FE                     590   	rt
+                                  591   CBLOCKEND 16 1 126
+                                  592   CFUNCTIONEND 16
+                                  593   
+                                  594   
+  --------------------------      595   	rseg $$pwmD_setOneShotMode$pwm
+                                  596   CFUNCTION 17
+                                  597   
+00:0000                           598   _pwmD_setOneShotMode	:
+                                  599   CBLOCK 17 1 129
+                                  600   
+                                  601   ;;{
+                                  602   CLINEA 0000H 0001H 0081H 0001H 0001H
+                                  603   CBLOCK 17 2 129
+                                  604   CARGUMENT 46H 0001H 0014H "mode" 02H 00H 00H
+                                  605   
+                                  606   ;;	PDOST = (mode) & 1;
+                                  607   CLINEA 0000H 0001H 0082H 0002H 0014H
+00:0000 01 20                     608   	and	r0,	#01h
+00:0002 03 C9                     609   	beq	_$M40
+00:0004 F0-A0 28-F9               610   	sb	0f928h.7
+00:0008 1F-FE                     611   	rt
+00:000A                           612   _$M40 :
+00:000A F2-A0 28-F9               613   	rb	0f928h.7
+                                  614   CBLOCKEND 17 2 131
+                                  615   
+                                  616   ;;}
+                                  617   CLINEA 0000H 0001H 0083H 0001H 0001H
+00:000E 1F-FE                     618   	rt
+                                  619   CBLOCKEND 17 1 131
+                                  620   CFUNCTIONEND 17
+                                  621   
+                                  622   
+  --------------------------      623   	rseg $$pwmE_setPeriod$pwm
+                                  624   CFUNCTION 18
+                                  625   
+00:0000                           626   _pwmE_setPeriod	:
+                                  627   CBLOCK 18 1 136
+                                  628   
+                                  629   ;;{
+                                  630   CLINEA 0000H 0001H 0088H 0001H 0001H
+                                  631   CBLOCK 18 2 136
+                                  632   CARGUMENT 46H 0002H 0024H "period" 02H 00H 01H
+                                  633   
+                                  634   ;;	PWEP = period;
+                                  635   CLINEA 0000H 0001H 0089H 0002H 000FH
+00:0000 13-90 30-F9               636   	st	er0,	0f930h
+                                  637   CBLOCKEND 18 2 138
+                                  638   
+                                  639   ;;}
+                                  640   CLINEA 0000H 0001H 008AH 0001H 0001H
+00:0004 1F-FE                     641   	rt
+                                  642   CBLOCKEND 18 1 138
+                                  643   CFUNCTIONEND 18
+                                  644   
+                                  645   
+  --------------------------      646   	rseg $$pwmE_setDuty$pwm
+                                  647   CFUNCTION 19
+                                  648   
+00:0000                           649   _pwmE_setDuty	:
+                                  650   CBLOCK 19 1 141
+                                  651   
+                                  652   ;;{
+                                  653   CLINEA 0000H 0001H 008DH 0001H 0001H
+                                  654   CBLOCK 19 2 141
+                                  655   CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+                                  656   
+                                  657   ;;	PWED = duty;
+                                  658   CLINEA 0000H 0001H 008EH 0002H 000DH
+00:0000 13-90 32-F9               659   	st	er0,	0f932h
+                                  660   CBLOCKEND 19 2 143
+                                  661   
+                                  662   ;;}
+                                  663   CLINEA 0000H 0001H 008FH 0001H 0001H
+00:0004 1F-FE                     664   	rt
+                                  665   CBLOCKEND 19 1 143
+                                  666   CFUNCTIONEND 19
+                                  667   
+                                  668   
+  --------------------------      669   	rseg $$pwmE_clearCount$pwm
+                                  670   CFUNCTION 20
+                                  671   
+00:0000                           672   _pwmE_clearCount	:
+                                  673   CBLOCK 20 1 146
+                                  674   
+                                  675   ;;{
+                                  676   CLINEA 0000H 0001H 0092H 0001H 0001H
+                                  677   CBLOCK 20 2 146
+                                  678   
+                                  679   ;;	PWECL = 0;
+                                  680   CLINEA 0000H 0001H 0093H 0002H 000BH
+00:0000 00 00                     681   	mov	r0,	#00h
+00:0002 11-90 34-F9               682   	st	r0,	0f934h
+                                  683   CBLOCKEND 20 2 148
+                                  684   
+                                  685   ;;}
+                                  686   CLINEA 0000H 0001H 0094H 0001H 0001H
+00:0006 1F-FE                     687   	rt
+                                  688   CBLOCKEND 20 1 148
+                                  689   CFUNCTIONEND 20
+                                  690   
+                                  691   
+  --------------------------      692   	rseg $$pwmE_selectClock$pwm
+                                  693   CFUNCTION 21
+                                  694   
+00:0000                           695   _pwmE_selectClock	:
+                                  696   CBLOCK 21 1 151
+                                  697   
+                                  698   ;;{
+                                  699   CLINEA 0000H 0001H 0097H 0001H 0001H
+00:0000 00-82                     700   	mov	r2,	r0
+                                  701   CBLOCK 21 2 151
+                                  702   CARGUMENT 46H 0001H 0016H "clkSel" 02H 00H 00H
+                                  703   CLOCAL 46H 0001H 0015H 0002H "tmpCs" 02H 00H 00H
+                                  704   
+                                  705   ;;	PECS0 =  tmpCs       & 1;
+                                  706   CLINEA 0000H 0001H 009AH 0002H 001AH
+00:0002 01 20                     707   	and	r0,	#01h
+00:0004 03 C9                     708   	beq	_$M46
+00:0006 80-A0 36-F9               709   	sb	0f936h.0
+00:000A 02 CE                     710   	bal	_$M47
+00:000C                           711   _$M46 :
+00:000C 82-A0 36-F9               712   	rb	0f936h.0
+00:0010                           713   _$M47 :
+                                  714   
+                                  715   ;;	PECS1 = (tmpCs >> 1) & 1;
+                                  716   CLINEA 0000H 0001H 009BH 0002H 001AH
+00:0010 20-80                     717   	mov	r0,	r2
+00:0012 00 01                     718   	mov	r1,	#00h
+00:0014 1D-90                     719   	srlc	r0,	#01h
+00:0016 01 20                     720   	and	r0,	#01h
+00:0018 03 C9                     721   	beq	_$M48
+00:001A 90-A0 36-F9               722   	sb	0f936h.1
+00:001E 1F-FE                     723   	rt
+00:0020                           724   _$M48 :
+00:0020 92-A0 36-F9               725   	rb	0f936h.1
+                                  726   CBLOCKEND 21 2 156
+                                  727   
+                                  728   ;;}
+                                  729   CLINEA 0000H 0001H 009CH 0001H 0001H
+00:0024 1F-FE                     730   	rt
+                                  731   CBLOCKEND 21 1 156
+                                  732   CFUNCTIONEND 21
+                                  733   
+                                  734   
+  --------------------------      735   	rseg $$pwmE_selectInterrupt$pwm
+                                  736   CFUNCTION 22
+                                  737   
+00:0000                           738   _pwmE_selectInterrupt	:
+                                  739   CBLOCK 22 1 159
+                                  740   
+                                  741   ;;{
+                                  742   CLINEA 0000H 0001H 009FH 0001H 0001H
+00:0000 00-82                     743   	mov	r2,	r0
+                                  744   CBLOCK 22 2 159
+                                  745   CARGUMENT 46H 0001H 0016H "intSel" 02H 00H 00H
+                                  746   CLOCAL 46H 0001H 0015H 0002H "tmpIs" 02H 00H 00H
+                                  747   
+                                  748   ;;	PEIS0 =  tmpIs       & 1;
+                                  749   CLINEA 0000H 0001H 00A1H 0002H 001AH
+00:0002 01 20                     750   	and	r0,	#01h
+00:0004 03 C9                     751   	beq	_$M51
+00:0006 A0-A0 36-F9               752   	sb	0f936h.2
+00:000A 02 CE                     753   	bal	_$M52
+00:000C                           754   _$M51 :
+00:000C A2-A0 36-F9               755   	rb	0f936h.2
+00:0010                           756   _$M52 :
+                                  757   
+                                  758   ;;	PEIS1 = (tmpIs >> 1) & 1;
+                                  759   CLINEA 0000H 0001H 00A2H 0002H 001AH
+00:0010 20-80                     760   	mov	r0,	r2
+00:0012 00 01                     761   	mov	r1,	#00h
+00:0014 1D-90                     762   	srlc	r0,	#01h
+00:0016 01 20                     763   	and	r0,	#01h
+00:0018 03 C9                     764   	beq	_$M53
+00:001A B0-A0 36-F9               765   	sb	0f936h.3
+00:001E 1F-FE                     766   	rt
+00:0020                           767   _$M53 :
+00:0020 B2-A0 36-F9               768   	rb	0f936h.3
+                                  769   CBLOCKEND 22 2 163
+                                  770   
+                                  771   ;;}
+                                  772   CLINEA 0000H 0001H 00A3H 0001H 0001H
+00:0024 1F-FE                     773   	rt
+                                  774   CBLOCKEND 22 1 163
+                                  775   CFUNCTIONEND 22
+                                  776   
+                                  777   
+  --------------------------      778   	rseg $$pwmE_selectOutputPolarity$pwm
+                                  779   CFUNCTION 23
+                                  780   
+00:0000                           781   _pwmE_selectOutputPolarity	:
+                                  782   CBLOCK 23 1 166
+                                  783   
+                                  784   ;;{
+                                  785   CLINEA 0000H 0001H 00A6H 0001H 0001H
+                                  786   CBLOCK 23 2 166
+                                  787   CARGUMENT 46H 0001H 0014H "outPol" 02H 00H 00H
+                                  788   
+                                  789   ;;	PENEG = outPol;
+                                  790   CLINEA 0000H 0001H 00A7H 0002H 0010H
+00:0000 01 20                     791   	and	r0,	#01h
+00:0002 03 C9                     792   	beq	_$M56
+00:0004 C0-A0 36-F9               793   	sb	0f936h.4
+00:0008 1F-FE                     794   	rt
+00:000A                           795   _$M56 :
+00:000A C2-A0 36-F9               796   	rb	0f936h.4
+                                  797   CBLOCKEND 23 2 168
+                                  798   
+                                  799   ;;}
+                                  800   CLINEA 0000H 0001H 00A8H 0001H 0001H
+00:000E 1F-FE                     801   	rt
+                                  802   CBLOCKEND 23 1 168
+                                  803   CFUNCTIONEND 23
+                                  804   
+                                  805   
+  --------------------------      806   	rseg $$pwmE_start$pwm
+                                  807   CFUNCTION 24
+                                  808   
+00:0000                           809   _pwmE_start	:
+                                  810   CBLOCK 24 1 171
+                                  811   
+                                  812   ;;{
+                                  813   CLINEA 0000H 0001H 00ABH 0001H 0001H
+                                  814   CBLOCK 24 2 171
+                                  815   
+                                  816   ;;	PERUN = 1;
+                                  817   CLINEA 0000H 0001H 00ACH 0002H 000BH
+00:0000 80-A0 37-F9               818   	sb	0f937h.0
+                                  819   CBLOCKEND 24 2 173
+                                  820   
+                                  821   ;;}
+                                  822   CLINEA 0000H 0001H 00ADH 0001H 0001H
+00:0004 1F-FE                     823   	rt
+                                  824   CBLOCKEND 24 1 173
+                                  825   CFUNCTIONEND 24
+                                  826   
+                                  827   
+  --------------------------      828   	rseg $$pwmE_stop$pwm
+                                  829   CFUNCTION 25
+                                  830   
+00:0000                           831   _pwmE_stop	:
+                                  832   CBLOCK 25 1 176
+                                  833   
+                                  834   ;;{
+                                  835   CLINEA 0000H 0001H 00B0H 0001H 0001H
+                                  836   CBLOCK 25 2 176
+                                  837   
+                                  838   ;;	PERUN = 0;
+                                  839   CLINEA 0000H 0001H 00B1H 0002H 000BH
+00:0000 82-A0 37-F9               840   	rb	0f937h.0
+                                  841   CBLOCKEND 25 2 178
+                                  842   
+                                  843   ;;}
+                                  844   CLINEA 0000H 0001H 00B2H 0001H 0001H
+00:0004 1F-FE                     845   	rt
+                                  846   CBLOCKEND 25 1 178
+                                  847   CFUNCTIONEND 25
+                                  848   
+                                  849   
+  --------------------------      850   	rseg $$pwmE_setOneShotMode$pwm
+                                  851   CFUNCTION 26
+                                  852   
+00:0000                           853   _pwmE_setOneShotMode	:
+                                  854   CBLOCK 26 1 181
+                                  855   
+                                  856   ;;{
+                                  857   CLINEA 0000H 0001H 00B5H 0001H 0001H
+                                  858   CBLOCK 26 2 181
+                                  859   CARGUMENT 46H 0001H 0014H "mode" 02H 00H 00H
+                                  860   
+                                  861   ;;	PEOST = (mode) & 1;
+                                  862   CLINEA 0000H 0001H 00B6H 0002H 0014H
+00:0000 01 20                     863   	and	r0,	#01h
+00:0002 03 C9                     864   	beq	_$M61
+00:0004 F0-A0 38-F9               865   	sb	0f938h.7
+00:0008 1F-FE                     866   	rt
+00:000A                           867   _$M61 :
+00:000A F2-A0 38-F9               868   	rb	0f938h.7
+                                  869   CBLOCKEND 26 2 183
+                                  870   
+                                  871   ;;}
+                                  872   CLINEA 0000H 0001H 00B7H 0001H 0001H
+00:000E 1F-FE                     873   	rt
+                                  874   CBLOCKEND 26 1 183
+                                  875   CFUNCTIONEND 26
+                                  876   
+                                  877   
+  --------------------------      878   	rseg $$pwmF_setPeriod$pwm
+                                  879   CFUNCTION 27
+                                  880   
+00:0000                           881   _pwmF_setPeriod	:
+                                  882   CBLOCK 27 1 187
+                                  883   
+                                  884   ;;{
+                                  885   CLINEA 0000H 0001H 00BBH 0001H 0001H
+                                  886   CBLOCK 27 2 187
+                                  887   CARGUMENT 46H 0002H 0024H "period" 02H 00H 01H
+                                  888   
+                                  889   ;;	PWFP = period;
+                                  890   CLINEA 0000H 0001H 00BCH 0002H 000FH
+00:0000 13-90 60-F9               891   	st	er0,	0f960h
+                                  892   CBLOCKEND 27 2 189
+                                  893   
+                                  894   ;;}
+                                  895   CLINEA 0000H 0001H 00BDH 0001H 0001H
+00:0004 1F-FE                     896   	rt
+                                  897   CBLOCKEND 27 1 189
+                                  898   CFUNCTIONEND 27
+                                  899   
+                                  900   
+  --------------------------      901   	rseg $$pwmF0_setDuty$pwm
+                                  902   CFUNCTION 28
+                                  903   
+00:0000                           904   _pwmF0_setDuty	:
+                                  905   CBLOCK 28 1 192
+                                  906   
+                                  907   ;;{
+                                  908   CLINEA 0000H 0001H 00C0H 0001H 0001H
+                                  909   CBLOCK 28 2 192
+                                  910   CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+                                  911   
+                                  912   ;;	PWF0D = duty;
+                                  913   CLINEA 0000H 0001H 00C1H 0002H 000EH
+00:0000 13-90 62-F9               914   	st	er0,	0f962h
+                                  915   CBLOCKEND 28 2 194
+                                  916   
+                                  917   ;;}
+                                  918   CLINEA 0000H 0001H 00C2H 0001H 0001H
+00:0004 1F-FE                     919   	rt
+                                  920   CBLOCKEND 28 1 194
+                                  921   CFUNCTIONEND 28
+                                  922   
+                                  923   
+  --------------------------      924   	rseg $$pwmF1_setDuty$pwm
+                                  925   CFUNCTION 29
+                                  926   
+00:0000                           927   _pwmF1_setDuty	:
+                                  928   CBLOCK 29 1 197
+                                  929   
+                                  930   ;;{
+                                  931   CLINEA 0000H 0001H 00C5H 0001H 0001H
+                                  932   CBLOCK 29 2 197
+                                  933   CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+                                  934   
+                                  935   ;;	PWF1D = duty;
+                                  936   CLINEA 0000H 0001H 00C6H 0002H 000EH
+00:0000 13-90 64-F9               937   	st	er0,	0f964h
+                                  938   CBLOCKEND 29 2 199
+                                  939   
+                                  940   ;;}
+                                  941   CLINEA 0000H 0001H 00C7H 0001H 0001H
+00:0004 1F-FE                     942   	rt
+                                  943   CBLOCKEND 29 1 199
+                                  944   CFUNCTIONEND 29
+                                  945   
+                                  946   
+  --------------------------      947   	rseg $$pwmF2_setDuty$pwm
+                                  948   CFUNCTION 30
+                                  949   
+00:0000                           950   _pwmF2_setDuty	:
+                                  951   CBLOCK 30 1 202
+                                  952   
+                                  953   ;;{
+                                  954   CLINEA 0000H 0001H 00CAH 0001H 0001H
+                                  955   CBLOCK 30 2 202
+                                  956   CARGUMENT 46H 0002H 0024H "duty" 02H 00H 01H
+                                  957   
+                                  958   ;;	PWF2D = duty;
+                                  959   CLINEA 0000H 0001H 00CBH 0002H 000EH
+00:0000 13-90 66-F9               960   	st	er0,	0f966h
+                                  961   CBLOCKEND 30 2 204
+                                  962   
+                                  963   ;;}
+                                  964   CLINEA 0000H 0001H 00CCH 0001H 0001H
+00:0004 1F-FE                     965   	rt
+                                  966   CBLOCKEND 30 1 204
+                                  967   CFUNCTIONEND 30
+                                  968   
+                                  969   
+  --------------------------      970   	rseg $$pwmF_clearCount$pwm
+                                  971   CFUNCTION 31
+                                  972   
+00:0000                           973   _pwmF_clearCount	:
+                                  974   CBLOCK 31 1 207
+                                  975   
+                                  976   ;;{
+                                  977   CLINEA 0000H 0001H 00CFH 0001H 0001H
+                                  978   CBLOCK 31 2 207
+                                  979   
+                                  980   ;;	PWFCL = 0;
+                                  981   CLINEA 0000H 0001H 00D0H 0002H 000BH
+00:0000 00 00                     982   	mov	r0,	#00h
+00:0002 11-90 70-F9               983   	st	r0,	0f970h
+                                  984   CBLOCKEND 31 2 209
+                                  985   
+                                  986   ;;}
+                                  987   CLINEA 0000H 0001H 00D1H 0001H 0001H
+00:0006 1F-FE                     988   	rt
+                                  989   CBLOCKEND 31 1 209
+                                  990   CFUNCTIONEND 31
+                                  991   
+                                  992   
+  --------------------------      993   	rseg $$pwmF_selectClock$pwm
+                                  994   CFUNCTION 32
+                                  995   
+00:0000                           996   _pwmF_selectClock	:
+                                  997   CBLOCK 32 1 212
+                                  998   
+                                  999   ;;{
+                                 1000   CLINEA 0000H 0001H 00D4H 0001H 0001H
+00:0000 00-82                    1001   	mov	r2,	r0
+                                 1002   CBLOCK 32 2 212
+                                 1003   CARGUMENT 46H 0001H 0016H "clkSel" 02H 00H 00H
+                                 1004   CLOCAL 46H 0001H 0015H 0002H "tmpCs" 02H 00H 00H
+                                 1005   
+                                 1006   ;;	PFCS0 =  tmpCs       & 1;
+                                 1007   CLINEA 0000H 0001H 00D6H 0002H 001AH
+00:0002 01 20                    1008   	and	r0,	#01h
+00:0004 03 C9                    1009   	beq	_$M69
+00:0006 80-A0 72-F9              1010   	sb	0f972h.0
+00:000A 02 CE                    1011   	bal	_$M70
+00:000C                          1012   _$M69 :
+00:000C 82-A0 72-F9              1013   	rb	0f972h.0
+00:0010                          1014   _$M70 :
+                                 1015   
+                                 1016   ;;	PFCS1 = (tmpCs >> 1) & 1;
+                                 1017   CLINEA 0000H 0001H 00D7H 0002H 001AH
+00:0010 20-80                    1018   	mov	r0,	r2
+00:0012 00 01                    1019   	mov	r1,	#00h
+00:0014 1D-90                    1020   	srlc	r0,	#01h
+00:0016 01 20                    1021   	and	r0,	#01h
+00:0018 03 C9                    1022   	beq	_$M71
+00:001A 90-A0 72-F9              1023   	sb	0f972h.1
+00:001E 1F-FE                    1024   	rt
+00:0020                          1025   _$M71 :
+00:0020 92-A0 72-F9              1026   	rb	0f972h.1
+                                 1027   CBLOCKEND 32 2 216
+                                 1028   
+                                 1029   ;;}
+                                 1030   CLINEA 0000H 0001H 00D8H 0001H 0001H
+00:0024 1F-FE                    1031   	rt
+                                 1032   CBLOCKEND 32 1 216
+                                 1033   CFUNCTIONEND 32
+                                 1034   
+                                 1035   
+  --------------------------     1036   	rseg $$pwmF_selectInterrupt$pwm
+                                 1037   CFUNCTION 33
+                                 1038   
+00:0000                          1039   _pwmF_selectInterrupt	:
+                                 1040   CBLOCK 33 1 219
+                                 1041   
+                                 1042   ;;{
+                                 1043   CLINEA 0000H 0001H 00DBH 0001H 0001H
+00:0000 00-82                    1044   	mov	r2,	r0
+                                 1045   CBLOCK 33 2 219
+                                 1046   CARGUMENT 46H 0001H 0016H "intSel" 02H 00H 00H
+                                 1047   CLOCAL 46H 0001H 0015H 0002H "tmpIs" 02H 00H 00H
+                                 1048   
+                                 1049   ;;	PFIS0 =  tmpIs       & 1;
+                                 1050   CLINEA 0000H 0001H 00DDH 0002H 001AH
+00:0002 01 20                    1051   	and	r0,	#01h
+00:0004 03 C9                    1052   	beq	_$M74
+00:0006 A0-A0 72-F9              1053   	sb	0f972h.2
+00:000A 02 CE                    1054   	bal	_$M75
+00:000C                          1055   _$M74 :
+00:000C A2-A0 72-F9              1056   	rb	0f972h.2
+00:0010                          1057   _$M75 :
+                                 1058   
+                                 1059   ;;	PFIS1 = (tmpIs >> 1) & 1;
+                                 1060   CLINEA 0000H 0001H 00DEH 0002H 001AH
+00:0010 20-80                    1061   	mov	r0,	r2
+00:0012 00 01                    1062   	mov	r1,	#00h
+00:0014 1D-90                    1063   	srlc	r0,	#01h
+00:0016 01 20                    1064   	and	r0,	#01h
+00:0018 03 C9                    1065   	beq	_$M76
+00:001A B0-A0 72-F9              1066   	sb	0f972h.3
+00:001E 1F-FE                    1067   	rt
+00:0020                          1068   _$M76 :
+00:0020 B2-A0 72-F9              1069   	rb	0f972h.3
+                                 1070   CBLOCKEND 33 2 223
+                                 1071   
+                                 1072   ;;}
+                                 1073   CLINEA 0000H 0001H 00DFH 0001H 0001H
+00:0024 1F-FE                    1074   	rt
+                                 1075   CBLOCKEND 33 1 223
+                                 1076   CFUNCTIONEND 33
+                                 1077   
+                                 1078   
+  --------------------------     1079   	rseg $$pwmF_selectOutputPolarity$pwm
+                                 1080   CFUNCTION 34
+                                 1081   
+00:0000                          1082   _pwmF_selectOutputPolarity	:
+                                 1083   CBLOCK 34 1 226
+                                 1084   
+                                 1085   ;;{
+                                 1086   CLINEA 0000H 0001H 00E2H 0001H 0001H
+                                 1087   CBLOCK 34 2 226
+                                 1088   CARGUMENT 46H 0001H 0014H "outPol" 02H 00H 00H
+                                 1089   
+                                 1090   ;;	PFNEG = outPol & 1;
+                                 1091   CLINEA 0000H 0001H 00E3H 0002H 0014H
+00:0000 01 20                    1092   	and	r0,	#01h
+00:0002 03 C9                    1093   	beq	_$M79
+00:0004 C0-A0 72-F9              1094   	sb	0f972h.4
+00:0008 1F-FE                    1095   	rt
+00:000A                          1096   _$M79 :
+00:000A C2-A0 72-F9              1097   	rb	0f972h.4
+                                 1098   CBLOCKEND 34 2 228
+                                 1099   
+                                 1100   ;;}
+                                 1101   CLINEA 0000H 0001H 00E4H 0001H 0001H
+00:000E 1F-FE                    1102   	rt
+                                 1103   CBLOCKEND 34 1 228
+                                 1104   CFUNCTIONEND 34
+                                 1105   
+                                 1106   
+  --------------------------     1107   	rseg $$pwmF_start$pwm
+                                 1108   CFUNCTION 35
+                                 1109   
+00:0000                          1110   _pwmF_start	:
+                                 1111   CBLOCK 35 1 231
+                                 1112   
+                                 1113   ;;{
+                                 1114   CLINEA 0000H 0001H 00E7H 0001H 0001H
+                                 1115   CBLOCK 35 2 231
+                                 1116   
+                                 1117   ;;	PFRUN = 1;
+                                 1118   CLINEA 0000H 0001H 00E8H 0002H 000BH
+00:0000 80-A0 73-F9              1119   	sb	0f973h.0
+                                 1120   CBLOCKEND 35 2 233
+                                 1121   
+                                 1122   ;;}
+                                 1123   CLINEA 0000H 0001H 00E9H 0001H 0001H
+00:0004 1F-FE                    1124   	rt
+                                 1125   CBLOCKEND 35 1 233
+                                 1126   CFUNCTIONEND 35
+                                 1127   
+                                 1128   
+  --------------------------     1129   	rseg $$pwmF_stop$pwm
+                                 1130   CFUNCTION 36
+                                 1131   
+00:0000                          1132   _pwmF_stop	:
+                                 1133   CBLOCK 36 1 236
+                                 1134   
+                                 1135   ;;{
+                                 1136   CLINEA 0000H 0001H 00ECH 0001H 0001H
+                                 1137   CBLOCK 36 2 236
+                                 1138   
+                                 1139   ;;	PFRUN = 0;
+                                 1140   CLINEA 0000H 0001H 00EDH 0002H 000BH
+00:0000 82-A0 73-F9              1141   	rb	0f973h.0
+                                 1142   CBLOCKEND 36 2 238
+                                 1143   
+                                 1144   ;;}
+                                 1145   CLINEA 0000H 0001H 00EEH 0001H 0001H
+00:0004 1F-FE                    1146   	rt
+                                 1147   CBLOCKEND 36 1 238
+                                 1148   CFUNCTIONEND 36
+                                 1149   
+                                 1150   
+  --------------------------     1151   	rseg $$pwmF_setOneShotMode$pwm
+                                 1152   CFUNCTION 37
+                                 1153   
+00:0000                          1154   _pwmF_setOneShotMode	:
+                                 1155   CBLOCK 37 1 241
+                                 1156   
+                                 1157   ;;{
+                                 1158   CLINEA 0000H 0001H 00F1H 0001H 0001H
+                                 1159   CBLOCK 37 2 241
+                                 1160   CARGUMENT 46H 0001H 0014H "mode" 02H 00H 00H
+                                 1161   
+                                 1162   ;;	PFOST = (mode) & 1;
+                                 1163   CLINEA 0000H 0001H 00F2H 0002H 0014H
+00:0000 01 20                    1164   	and	r0,	#01h
+00:0002 03 C9                    1165   	beq	_$M84
+00:0004 F0-A0 74-F9              1166   	sb	0f974h.7
+00:0008 1F-FE                    1167   	rt
+00:000A                          1168   _$M84 :
+00:000A F2-A0 74-F9              1169   	rb	0f974h.7
+                                 1170   CBLOCKEND 37 2 243
+                                 1171   
+                                 1172   ;;}
+                                 1173   CLINEA 0000H 0001H 00F3H 0001H 0001H
+00:000E 1F-FE                    1174   	rt
+                                 1175   CBLOCKEND 37 1 243
+                                 1176   CFUNCTIONEND 37
+                                 1177   
+                                 1178   
+  --------------------------     1179   	rseg $$pwmF0_setEnable$pwm
+                                 1180   CFUNCTION 38
+                                 1181   
+00:0000                          1182   _pwmF0_setEnable	:
+                                 1183   CBLOCK 38 1 246
+                                 1184   
+                                 1185   ;;{
+                                 1186   CLINEA 0000H 0001H 00F6H 0001H 0001H
+                                 1187   CBLOCK 38 2 246
+                                 1188   
+                                 1189   ;;	PF0EN = 1;
+                                 1190   CLINEA 0000H 0001H 00F7H 0002H 000BH
+00:0000 C0-A0 76-F9              1191   	sb	0f976h.4
+                                 1192   CBLOCKEND 38 2 248
+                                 1193   
+                                 1194   ;;}
+                                 1195   CLINEA 0000H 0001H 00F8H 0001H 0001H
+00:0004 1F-FE                    1196   	rt
+                                 1197   CBLOCKEND 38 1 248
+                                 1198   CFUNCTIONEND 38
+                                 1199   
+                                 1200   
+  --------------------------     1201   	rseg $$pwmF1_setEnable$pwm
+                                 1202   CFUNCTION 39
+                                 1203   
+00:0000                          1204   _pwmF1_setEnable	:
+                                 1205   CBLOCK 39 1 251
+                                 1206   
+                                 1207   ;;{
+                                 1208   CLINEA 0000H 0001H 00FBH 0001H 0001H
+                                 1209   CBLOCK 39 2 251
+                                 1210   
+                                 1211   ;;	PF1EN = 1;
+                                 1212   CLINEA 0000H 0001H 00FCH 0002H 000BH
+00:0000 D0-A0 76-F9              1213   	sb	0f976h.5
+                                 1214   CBLOCKEND 39 2 253
+                                 1215   
+                                 1216   ;;}
+                                 1217   CLINEA 0000H 0001H 00FDH 0001H 0001H
+00:0004 1F-FE                    1218   	rt
+                                 1219   CBLOCKEND 39 1 253
+                                 1220   CFUNCTIONEND 39
+                                 1221   
+                                 1222   
+  --------------------------     1223   	rseg $$pwmF2_setEnable$pwm
+                                 1224   CFUNCTION 40
+                                 1225   
+00:0000                          1226   _pwmF2_setEnable	:
+                                 1227   CBLOCK 40 1 256
+                                 1228   
+                                 1229   ;;{
+                                 1230   CLINEA 0000H 0001H 0100H 0001H 0001H
+                                 1231   CBLOCK 40 2 256
+                                 1232   
+                                 1233   ;;	PF2EN = 1;
+                                 1234   CLINEA 0000H 0001H 0101H 0002H 000BH
+00:0000 E0-A0 76-F9              1235   	sb	0f976h.6
+                                 1236   CBLOCKEND 40 2 258
+                                 1237   
+                                 1238   ;;}
+                                 1239   CLINEA 0000H 0001H 0102H 0001H 0001H
+00:0004 1F-FE                    1240   	rt
+                                 1241   CBLOCKEND 40 1 258
+                                 1242   CFUNCTIONEND 40
+                                 1243   
+                                 1244   
+  --------------------------     1245   	rseg $$pwmF0_setDisable$pwm
+                                 1246   CFUNCTION 41
+                                 1247   
+00:0000                          1248   _pwmF0_setDisable	:
+                                 1249   CBLOCK 41 1 261
+                                 1250   
+                                 1251   ;;{
+                                 1252   CLINEA 0000H 0001H 0105H 0001H 0001H
+                                 1253   CBLOCK 41 2 261
+                                 1254   
+                                 1255   ;;	PF0EN = 0;
+                                 1256   CLINEA 0000H 0001H 0106H 0002H 000BH
+00:0000 C2-A0 76-F9              1257   	rb	0f976h.4
+                                 1258   CBLOCKEND 41 2 263
+                                 1259   
+                                 1260   ;;}
+                                 1261   CLINEA 0000H 0001H 0107H 0001H 0001H
+00:0004 1F-FE                    1262   	rt
+                                 1263   CBLOCKEND 41 1 263
+                                 1264   CFUNCTIONEND 41
+                                 1265   
+                                 1266   
+  --------------------------     1267   	rseg $$pwmF1_setDisable$pwm
+                                 1268   CFUNCTION 42
+                                 1269   
+00:0000                          1270   _pwmF1_setDisable	:
+                                 1271   CBLOCK 42 1 266
+                                 1272   
+                                 1273   ;;{
+                                 1274   CLINEA 0000H 0001H 010AH 0001H 0001H
+                                 1275   CBLOCK 42 2 266
+                                 1276   
+                                 1277   ;;	PF1EN = 0;
+                                 1278   CLINEA 0000H 0001H 010BH 0002H 000BH
+00:0000 D2-A0 76-F9              1279   	rb	0f976h.5
+                                 1280   CBLOCKEND 42 2 268
+                                 1281   
+                                 1282   ;;}
+                                 1283   CLINEA 0000H 0001H 010CH 0001H 0001H
+00:0004 1F-FE                    1284   	rt
+                                 1285   CBLOCKEND 42 1 268
+                                 1286   CFUNCTIONEND 42
+                                 1287   
+                                 1288   
+  --------------------------     1289   	rseg $$pwmF2_setDisable$pwm
+                                 1290   CFUNCTION 43
+                                 1291   
+00:0000                          1292   _pwmF2_setDisable	:
+                                 1293   CBLOCK 43 1 271
+                                 1294   
+                                 1295   ;;{
+                                 1296   CLINEA 0000H 0001H 010FH 0001H 0001H
+                                 1297   CBLOCK 43 2 271
+                                 1298   
+                                 1299   ;;	PF2EN = 0;
+                                 1300   CLINEA 0000H 0001H 0110H 0002H 000BH
+00:0000 E2-A0 76-F9              1301   	rb	0f976h.6
+                                 1302   CBLOCKEND 43 2 273
+                                 1303   
+                                 1304   ;;}
+                                 1305   CLINEA 0000H 0001H 0111H 0001H 0001H
+00:0004 1F-FE                    1306   	rt
+                                 1307   CBLOCKEND 43 1 273
+                                 1308   CFUNCTIONEND 43
+                                 1309   
+                                 1310   
+  --------------------------     1311   	rseg $$pwmF_dutyUpdate$pwm
+                                 1312   CFUNCTION 44
+                                 1313   
+00:0000                          1314   _pwmF_dutyUpdate	:
+                                 1315   CBLOCK 44 1 276
+                                 1316   
+                                 1317   ;;{
+                                 1318   CLINEA 0000H 0001H 0114H 0001H 0001H
+                                 1319   CBLOCK 44 2 276
+                                 1320   
+                                 1321   ;;	PFUD = 1;
+                                 1322   CLINEA 0000H 0001H 0115H 0002H 000AH
+00:0000 80-A0 77-F9              1323   	sb	0f977h.0
+                                 1324   CBLOCKEND 44 2 278
+                                 1325   
+                                 1326   ;;}
+                                 1327   CLINEA 0000H 0001H 0116H 0001H 0001H
+00:0004 1F-FE                    1328   	rt
+                                 1329   CBLOCKEND 44 1 278
+                                 1330   CFUNCTIONEND 44
+                                 1331   
+                                 1332   	public _pwmE_clearCount
+                                 1333   	public _pwmC_clearCount
+                                 1334   	public _pwmE_selectClock
+                                 1335   	public _pwmF0_setDisable
+                                 1336   	public _pwmC_stop
+                                 1337   	public _pwmE_stop
+                                 1338   	public _pwmF2_setDisable
+                                 1339   	public _pwmF_selectClock
+                                 1340   	public _pwmC_selectClock
+                                 1341   	public _pwmD_selectClock
+                                 1342   	public _pwmE_selectInterrupt
+                                 1343   	public _pwmF1_setEnable
+                                 1344   	public _pwmF0_setDuty
+                                 1345   	public _pwmF_selectOutputPolarity
+                                 1346   	public _pwmD_setPeriod
+                                 1347   	public _pwmD_setOneShotMode
+                                 1348   	public _pwmC_setOneShotMode
+                                 1349   	public _pwmE_selectOutputPolarity
+                                 1350   	public _pwmE_start
+                                 1351   	public _pwmF_start
+                                 1352   	public _pwmC_start
+                                 1353   	public _pwmD_start
+                                 1354   	public _pwmD_setDuty
+                                 1355   	public _pwmC_setDuty
+                                 1356   	public _pwmD_selectOutputPolarity
+                                 1357   	public _pwmE_setDuty
+                                 1358   	public _pwmD_selectInterrupt
+                                 1359   	public _pwmF2_setEnable
+                                 1360   	public _pwmF_setOneShotMode
+                                 1361   	public _pwmE_setPeriod
+                                 1362   	public _pwmF_clearCount
+                                 1363   	public _pwmD_clearCount
+                                 1364   	public _pwmD_stop
+                                 1365   	public _pwmF_stop
+                                 1366   	public _pwmF1_setDisable
+                                 1367   	public _pwmC_selectOutputPolarity
+                                 1368   	public _pwmF_selectInterrupt
+                                 1369   	public _pwmF0_setEnable
+                                 1370   	public _pwmC_setPeriod
+                                 1371   	public _pwmE_setOneShotMode
+                                 1372   	public _pwmC_selectInterrupt
+                                 1373   	public _pwmF_setPeriod
+                                 1374   	public _pwmF1_setDuty
+                                 1375   	public _pwmF_dutyUpdate
+                                 1376   	public _pwmF2_setDuty
+                                 1377   	extrn code near : _main
+                                 1378   
+                                 1379   	end
+
+
+
+  Target       : ML610111 (nX-U8/100)
+  Memory Model : SMALL
+  Data   Model : NEAR
+  ROM WINDOW   : (not specified)
+  Internal RAM : E000H to E7FFH
+
+  Errors   : 0
+  Warnings : 0  (/Wrpeast)
+  Lines    : 1379

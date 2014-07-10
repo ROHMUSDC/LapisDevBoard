@@ -1,0 +1,673 @@
+RASU8(ML610111)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1 
+ Source File: _output\_obj\led.asm
+ Object File: _output\_obj\led.obj
+ Date  : 2013/06/18 Tue.[16:11]
+ Title : 
+## Loc. Object                   Line   Source Statements
+
+                                    1   ;; Compile Options : /TML610111 /MS /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Ipwm /Iuart /Ivolume /Iled /D_ML610Q111 /SS 1024 /SD /Oa /Om /W 3 /Wc /Fa_output\_obj\ 
+                                    2   ;; Version Number  : Ver.3.31.4
+                                    3   ;; File Name       : led.c
+                                    4   
+                                    5   	type (ML610111) 
+                                    6   	model small, near
+                                    7   	$$TAB_tblLedDuty$led segment table 2h #0h
+                                    8   	$$TAB_valLedPeriod$led segment table 2h #0h
+                                    9   	$$led_DutySet$led segment code 2h #0h
+                                   10   	$$led_Init$led segment code 2h #0h
+                                   11   	$$led_Off$led segment code 2h #0h
+                                   12   	$$led_On$led segment code 2h #0h
+                                   13   	$$led_cde_Off$led segment code 2h #0h
+                                   14   	$$led_cde_On$led segment code 2h #0h
+                                   15   	$$led_f_Off$led segment code 2h #0h
+                                   16   	$$led_f_On$led segment code 2h #0h
+                                   17   CVERSION 3.31.4
+                                   18   CGLOBAL 01H 03H 0000H "led_f_Off" 08H 02H 03H 00H 80H 00H 00H 00H 07H
+                                   19   CGLOBAL 01H 03H 0000H "led_cde_Off" 08H 02H 02H 00H 81H 02H 00H 00H 07H
+                                   20   CGLOBAL 01H 03H 0000H "led_f_On" 08H 02H 06H 00H 80H 00H 00H 00H 07H
+                                   21   CGLOBAL 01H 03H 0000H "led_cde_On" 08H 02H 05H 00H 80H 00H 00H 00H 07H
+                                   22   CGLOBAL 01H 03H 0000H "led_DutySet" 08H 02H 07H 00H 81H 02H 00H 00H 07H
+                                   23   CGLOBAL 01H 03H 0000H "led_Init" 08H 02H 00H 00H 81H 02H 00H 00H 07H
+                                   24   CGLOBAL 01H 03H 0000H "led_On" 08H 02H 04H 00H 80H 00H 00H 00H 07H
+                                   25   CGLOBAL 01H 03H 0000H "led_Off" 08H 02H 01H 00H 81H 02H 00H 00H 07H
+                                   26   CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+                                   27   CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+                                   28   CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+                                   29   CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+                                   30   CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+                                   31   CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+                                   32   CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+                                   33   CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+                                   34   CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+                                   35   CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+                                   36   CSGLOBAL 00H 0002H "_valLedPeriod" 02H 00H 08H
+                                   37   CGLOBAL 00H 42H 0002H "stepGreenLed" 02H 00H 08H
+                                   38   CGLOBAL 00H 42H 0002H "stepBlueLed" 02H 00H 08H
+                                   39   CSGLOBAL 00H 0040H "_tblLedDuty" 05H 01H 20H 00H 00H 08H
+                                   40   CGLOBAL 00H 42H 0002H "stepRedLed" 02H 00H 08H
+                                   41   CGLOBAL 00H 42H 0001H "stepLed" 02H 00H 00H
+                                   42   CFILE 0001H 00000029H "common\\common.h"
+                                   43   CFILE 0002H 00000022H "main\\mcu.h"
+                                   44   CFILE 0003H 000007EEH "C:\\Users\\cschell\\U8DEV~1\\Inc\\ml610111.h"
+                                   45   CFILE 0004H 0000003BH "led\\led.h"
+                                   46   CFILE 0005H 000000A0H "timer\\timer.h"
+                                   47   CFILE 0006H 00000080H "pwm\\pwm.h"
+                                   48   CFILE 0007H 00000022H "clock\\clock.h"
+                                   49   CFILE 0000H 000000D6H "led\\led.c"
+                                   50   
+  --------------------------       51   	rseg $$led_Init$led
+                                   52   CFUNCTION 0
+                                   53   
+00:0000                            54   _led_Init	:
+                                   55   CBLOCK 0 1 89
+                                   56   
+                                   57   ;;{
+                                   58   CLINEA 0000H 0001H 0059H 0001H 0001H
+00:0000 CE-F8                      59   	push	lr
+                                   60   CBLOCK 0 2 89
+                                   61   CRET 0000H
+                                   62   
+                                   63   ;;	PC0DIR = 0;	// output
+                                   64   CLINEA 0000H 0001H 005AH 0002H 0016H
+00:0002 82-A0 61-F2                65   	rb	0f261h.0
+                                   66   
+                                   67   ;;	PC0C0 = 1;
+                                   68   CLINEA 0000H 0001H 005BH 0002H 000BH
+00:0006 80-A0 62-F2                69   	sb	0f262h.0
+                                   70   
+                                   71   ;;	PC0C1 = 1;	// cmos
+                                   72   CLINEA 0000H 0001H 005CH 0002H 0013H
+00:000A 80-A0 63-F2                73   	sb	0f263h.0
+                                   74   
+                                   75   ;;	PC0MD0 = 0;
+                                   76   CLINEA 0000H 0001H 005DH 0002H 000CH
+00:000E 82-A0 64-F2                77   	rb	0f264h.0
+                                   78   
+                                   79   ;;	PC0MD1 = 1;	// PWMF0
+                                   80   CLINEA 0000H 0001H 005EH 0002H 0015H
+00:0012 80-A0 65-F2                81   	sb	0f265h.0
+                                   82   
+                                   83   ;;	PC1DIR = 0;	// output
+                                   84   CLINEA 0000H 0001H 0060H 0002H 0016H
+00:0016 92-A0 61-F2                85   	rb	0f261h.1
+                                   86   
+                                   87   ;;	PC1C0 = 1;
+                                   88   CLINEA 0000H 0001H 0061H 0002H 000BH
+00:001A 90-A0 62-F2                89   	sb	0f262h.1
+                                   90   
+                                   91   ;;	PC1C1 = 1;	// cmos
+                                   92   CLINEA 0000H 0001H 0062H 0002H 0013H
+00:001E 90-A0 63-F2                93   	sb	0f263h.1
+                                   94   
+                                   95   ;;	PC1MD0 = 0;
+                                   96   CLINEA 0000H 0001H 0063H 0002H 000CH
+00:0022 92-A0 64-F2                97   	rb	0f264h.1
+                                   98   
+                                   99   ;;	PC1MD1 = 1;	// PWMF1
+                                  100   CLINEA 0000H 0001H 0064H 0002H 0015H
+00:0026 90-A0 65-F2               101   	sb	0f265h.1
+                                  102   
+                                  103   ;;	PC2DIR = 0;	// output
+                                  104   CLINEA 0000H 0001H 0066H 0002H 0016H
+00:002A A2-A0 61-F2               105   	rb	0f261h.2
+                                  106   
+                                  107   ;;	PC2C0 = 1;
+                                  108   CLINEA 0000H 0001H 0067H 0002H 000BH
+00:002E A0-A0 62-F2               109   	sb	0f262h.2
+                                  110   
+                                  111   ;;	PC2C1 = 1;	// cmos
+                                  112   CLINEA 0000H 0001H 0068H 0002H 0013H
+00:0032 A0-A0 63-F2               113   	sb	0f263h.2
+                                  114   
+                                  115   ;;	PC2MD0 = 0;
+                                  116   CLINEA 0000H 0001H 0069H 0002H 000CH
+00:0036 A2-A0 64-F2               117   	rb	0f264h.2
+                                  118   
+                                  119   ;;	PC2MD1 = 1;	// PWMF2
+                                  120   CLINEA 0000H 0001H 006AH 0002H 0015H
+00:003A A0-A0 65-F2               121   	sb	0f265h.2
+                                  122   
+                                  123   ;;	PB0DIR = 0;	// output
+                                  124   CLINEA 0000H 0001H 006CH 0002H 0016H
+00:003E 82-A0 59-F2               125   	rb	0f259h.0
+                                  126   
+                                  127   ;;	PB0C0 = 1;
+                                  128   CLINEA 0000H 0001H 006DH 0002H 000BH
+00:0042 80-A0 5A-F2               129   	sb	0f25ah.0
+                                  130   
+                                  131   ;;	PB0C1 = 1;	// cmos
+                                  132   CLINEA 0000H 0001H 006EH 0002H 0013H
+00:0046 80-A0 5B-F2               133   	sb	0f25bh.0
+                                  134   
+                                  135   ;;	PB0MD0 = 1;
+                                  136   CLINEA 0000H 0001H 006FH 0002H 000CH
+00:004A 80-A0 5C-F2               137   	sb	0f25ch.0
+                                  138   
+                                  139   ;;	PB0MD1 = 0;	// PWMC
+                                  140   CLINEA 0000H 0001H 0070H 0002H 0014H
+00:004E 82-A0 5D-F2               141   	rb	0f25dh.0
+                                  142   
+                                  143   ;;	PB1DIR = 0;	// output
+                                  144   CLINEA 0000H 0001H 0072H 0002H 0016H
+00:0052 92-A0 59-F2               145   	rb	0f259h.1
+                                  146   
+                                  147   ;;	PB1C0 = 1;
+                                  148   CLINEA 0000H 0001H 0073H 0002H 000BH
+00:0056 90-A0 5A-F2               149   	sb	0f25ah.1
+                                  150   
+                                  151   ;;	PB1C1 = 1;	// cmos
+                                  152   CLINEA 0000H 0001H 0074H 0002H 0013H
+00:005A 90-A0 5B-F2               153   	sb	0f25bh.1
+                                  154   
+                                  155   ;;	PB1MD0 = 1;
+                                  156   CLINEA 0000H 0001H 0075H 0002H 000CH
+00:005E 90-A0 5C-F2               157   	sb	0f25ch.1
+                                  158   
+                                  159   ;;	PB1MD1 = 0;	// PWMD
+                                  160   CLINEA 0000H 0001H 0076H 0002H 0014H
+00:0062 92-A0 5D-F2               161   	rb	0f25dh.1
+                                  162   
+                                  163   ;;	PB2DIR = 0;	// output
+                                  164   CLINEA 0000H 0001H 0078H 0002H 0016H
+00:0066 A2-A0 59-F2               165   	rb	0f259h.2
+                                  166   
+                                  167   ;;	PB2C0 = 1;
+                                  168   CLINEA 0000H 0001H 0079H 0002H 000BH
+00:006A A0-A0 5A-F2               169   	sb	0f25ah.2
+                                  170   
+                                  171   ;;	PB2C1 = 1;	// cmos
+                                  172   CLINEA 0000H 0001H 007AH 0002H 0013H
+00:006E A0-A0 5B-F2               173   	sb	0f25bh.2
+                                  174   
+                                  175   ;;	PB2MD0 = 1;
+                                  176   CLINEA 0000H 0001H 007BH 0002H 000CH
+00:0072 A0-A0 5C-F2               177   	sb	0f25ch.2
+                                  178   
+                                  179   ;;	PB2MD1 = 0;	// PWME
+                                  180   CLINEA 0000H 0001H 007CH 0002H 0014H
+00:0076 A2-A0 5D-F2               181   	rb	0f25dh.2
+                                  182   
+                                  183   ;;	pwmF_setPeriod( _valLedPeriod );
+                                  184   CLINEA 0000H 0001H 007EH 0002H 0021H
+00:007A 7F E0                     185   	mov	er0,	#-1
+00:007C 01-F0'00-00'              186   	bl	_pwmF_setPeriod
+                                  187   
+                                  188   ;;	pwmF_selectClock( PWM_CS_HTBCLK );
+                                  189   CLINEA 0000H 0001H 007FH 0002H 0023H
+00:0080 01 00                     190   	mov	r0,	#01h
+00:0082 01-F0'00-00'              191   	bl	_pwmF_selectClock
+                                  192   
+                                  193   ;;	pwmF_selectOutputPolarity( PWM_NEG_NEG );
+                                  194   CLINEA 0000H 0001H 0080H 0002H 002AH
+00:0086 01 00                     195   	mov	r0,	#01h
+00:0088 01-F0'00-00'              196   	bl	_pwmF_selectOutputPolarity
+                                  197   
+                                  198   ;;	pwmF_setOneShotMode( PWM_OS_DIS );
+                                  199   CLINEA 0000H 0001H 0081H 0002H 0023H
+00:008C 00 00                     200   	mov	r0,	#00h
+00:008E 01-F0'00-00'              201   	bl	_pwmF_setOneShotMode
+                                  202   
+                                  203   ;;	pwmF0_setEnable();
+                                  204   CLINEA 0000H 0001H 0082H 0002H 0013H
+00:0092 01-F0'00-00'              205   	bl	_pwmF0_setEnable
+                                  206   
+                                  207   ;;	pwmF1_setEnable();
+                                  208   CLINEA 0000H 0001H 0083H 0002H 0013H
+00:0096 01-F0'00-00'              209   	bl	_pwmF1_setEnable
+                                  210   
+                                  211   ;;	pwmF2_setEnable();
+                                  212   CLINEA 0000H 0001H 0084H 0002H 0013H
+00:009A 01-F0'00-00'              213   	bl	_pwmF2_setEnable
+                                  214   
+                                  215   ;;	pwmC_setPeriod( _valLedPeriod );
+                                  216   CLINEA 0000H 0001H 0086H 0002H 0021H
+00:009E 7F E0                     217   	mov	er0,	#-1
+00:00A0 01-F0'00-00'              218   	bl	_pwmC_setPeriod
+                                  219   
+                                  220   ;;	pwmC_selectClock( PWM_CS_HTBCLK );
+                                  221   CLINEA 0000H 0001H 0087H 0002H 0023H
+00:00A4 01 00                     222   	mov	r0,	#01h
+00:00A6 01-F0'00-00'              223   	bl	_pwmC_selectClock
+                                  224   
+                                  225   ;;	pwmC_selectOutputPolarity( PWM_NEG_NEG );
+                                  226   CLINEA 0000H 0001H 0088H 0002H 002AH
+00:00AA 01 00                     227   	mov	r0,	#01h
+00:00AC 01-F0'00-00'              228   	bl	_pwmC_selectOutputPolarity
+                                  229   
+                                  230   ;;	pwmC_setOneShotMode( PWM_OS_DIS );
+                                  231   CLINEA 0000H 0001H 0089H 0002H 0023H
+00:00B0 00 00                     232   	mov	r0,	#00h
+00:00B2 01-F0'00-00'              233   	bl	_pwmC_setOneShotMode
+                                  234   
+                                  235   ;;	pwmD_setPeriod( _valLedPeriod );
+                                  236   CLINEA 0000H 0001H 008BH 0002H 0021H
+00:00B6 7F E0                     237   	mov	er0,	#-1
+00:00B8 01-F0'00-00'              238   	bl	_pwmD_setPeriod
+                                  239   
+                                  240   ;;	pwmD_selectClock( PWM_CS_HTBCLK );
+                                  241   CLINEA 0000H 0001H 008CH 0002H 0023H
+00:00BC 01 00                     242   	mov	r0,	#01h
+00:00BE 01-F0'00-00'              243   	bl	_pwmD_selectClock
+                                  244   
+                                  245   ;;	pwmD_selectOutputPolarity( PWM_NEG_NEG );
+                                  246   CLINEA 0000H 0001H 008DH 0002H 002AH
+00:00C2 01 00                     247   	mov	r0,	#01h
+00:00C4 01-F0'00-00'              248   	bl	_pwmD_selectOutputPolarity
+                                  249   
+                                  250   ;;	pwmD_setOneShotMode( PWM_OS_DIS );
+                                  251   CLINEA 0000H 0001H 008EH 0002H 0023H
+00:00C8 00 00                     252   	mov	r0,	#00h
+00:00CA 01-F0'00-00'              253   	bl	_pwmD_setOneShotMode
+                                  254   
+                                  255   ;;	pwmE_setPeriod( _valLedPeriod );
+                                  256   CLINEA 0000H 0001H 0090H 0002H 0021H
+00:00CE 7F E0                     257   	mov	er0,	#-1
+00:00D0 01-F0'00-00'              258   	bl	_pwmE_setPeriod
+                                  259   
+                                  260   ;;	pwmE_selectClock( PWM_CS_HTBCLK );
+                                  261   CLINEA 0000H 0001H 0091H 0002H 0023H
+00:00D4 01 00                     262   	mov	r0,	#01h
+00:00D6 01-F0'00-00'              263   	bl	_pwmE_selectClock
+                                  264   
+                                  265   ;;	pwmE_selectOutputPolarity( PWM_NEG_NEG );
+                                  266   CLINEA 0000H 0001H 0092H 0002H 002AH
+00:00DA 01 00                     267   	mov	r0,	#01h
+00:00DC 01-F0'00-00'              268   	bl	_pwmE_selectOutputPolarity
+                                  269   
+                                  270   ;;	pwmE_setOneShotMode( PWM_OS_DIS );
+                                  271   CLINEA 0000H 0001H 0093H 0002H 0023H
+00:00E0 00 00                     272   	mov	r0,	#00h
+00:00E2 01-F0'00-00'              273   	bl	_pwmE_setOneShotMode
+                                  274   
+                                  275   ;;	stepRedLed = STEP_LED_MAX;
+                                  276   CLINEA 0000H 0001H 0095H 0002H 001BH
+00:00E6 1F E0                     277   	mov	er0,	#31
+00:00E8 13-90 00-00'              278   	st	er0,	NEAR _stepRedLed
+                                  279   
+                                  280   ;;	stepGreenLed = STEP_LED_MIN;
+                                  281   CLINEA 0000H 0001H 0096H 0002H 001DH
+00:00EC 00 E0                     282   	mov	er0,	#0 
+00:00EE 13-90 00-00'              283   	st	er0,	NEAR _stepGreenLed
+                                  284   
+                                  285   ;;	stepBlueLed = STEP_LED_MIN;
+                                  286   CLINEA 0000H 0001H 0097H 0002H 001CH
+00:00F2 13-90 00-00'              287   	st	er0,	NEAR _stepBlueLed
+                                  288   
+                                  289   ;;	led_DutySet();
+                                  290   CLINEA 0000H 0001H 0098H 0002H 000FH
+00:00F6 01-F0'00-00'              291   	bl	_led_DutySet
+                                  292   CBLOCKEND 0 2 153
+                                  293   
+                                  294   ;;}
+                                  295   CLINEA 0000H 0001H 0099H 0001H 0001H
+00:00FA 8E-F2                     296   	pop	pc
+                                  297   CBLOCKEND 0 1 153
+                                  298   CFUNCTIONEND 0
+                                  299   
+                                  300   
+  --------------------------      301   	rseg $$led_Off$led
+                                  302   CFUNCTION 1
+                                  303   
+00:0000                           304   _led_Off	:
+                                  305   CBLOCK 1 1 156
+                                  306   
+                                  307   ;;{
+                                  308   CLINEA 0000H 0001H 009CH 0001H 0001H
+00:0000 CE-F8                     309   	push	lr
+                                  310   CBLOCK 1 2 156
+                                  311   CRET 0000H
+                                  312   
+                                  313   ;;	PCRUN = 0;
+                                  314   CLINEA 0000H 0001H 009DH 0002H 000BH
+00:0002 82-A0 17-F9               315   	rb	0f917h.0
+                                  316   
+                                  317   ;;	PDRUN = 0;
+                                  318   CLINEA 0000H 0001H 009EH 0002H 000BH
+00:0006 82-A0 27-F9               319   	rb	0f927h.0
+                                  320   
+                                  321   ;;	PERUN = 0;
+                                  322   CLINEA 0000H 0001H 009FH 0002H 000BH
+00:000A 82-A0 37-F9               323   	rb	0f937h.0
+                                  324   
+                                  325   ;;	PFRUN = 0;
+                                  326   CLINEA 0000H 0001H 00A0H 0002H 000BH
+00:000E 82-A0 73-F9               327   	rb	0f973h.0
+                                  328   
+                                  329   ;;	pwmC_clearCount();
+                                  330   CLINEA 0000H 0001H 00A1H 0002H 0013H
+00:0012 01-F0'00-00'              331   	bl	_pwmC_clearCount
+                                  332   
+                                  333   ;;	pwmD_clearCount();
+                                  334   CLINEA 0000H 0001H 00A2H 0002H 0013H
+00:0016 01-F0'00-00'              335   	bl	_pwmD_clearCount
+                                  336   
+                                  337   ;;	pwmE_clearCount();
+                                  338   CLINEA 0000H 0001H 00A3H 0002H 0013H
+00:001A 01-F0'00-00'              339   	bl	_pwmE_clearCount
+                                  340   
+                                  341   ;;	pwmF_clearCount();
+                                  342   CLINEA 0000H 0001H 00A4H 0002H 0013H
+00:001E 01-F0'00-00'              343   	bl	_pwmF_clearCount
+                                  344   CBLOCKEND 1 2 165
+                                  345   
+                                  346   ;;}
+                                  347   CLINEA 0000H 0001H 00A5H 0001H 0001H
+00:0022 8E-F2                     348   	pop	pc
+                                  349   CBLOCKEND 1 1 165
+                                  350   CFUNCTIONEND 1
+                                  351   
+                                  352   
+  --------------------------      353   	rseg $$led_cde_Off$led
+                                  354   CFUNCTION 2
+                                  355   
+00:0000                           356   _led_cde_Off	:
+                                  357   CBLOCK 2 1 168
+                                  358   
+                                  359   ;;{
+                                  360   CLINEA 0000H 0001H 00A8H 0001H 0001H
+00:0000 CE-F8                     361   	push	lr
+                                  362   CBLOCK 2 2 168
+                                  363   CRET 0000H
+                                  364   
+                                  365   ;;	PCRUN = 0;
+                                  366   CLINEA 0000H 0001H 00A9H 0002H 000BH
+00:0002 82-A0 17-F9               367   	rb	0f917h.0
+                                  368   
+                                  369   ;;	PDRUN = 0;
+                                  370   CLINEA 0000H 0001H 00AAH 0002H 000BH
+00:0006 82-A0 27-F9               371   	rb	0f927h.0
+                                  372   
+                                  373   ;;	PERUN = 0;
+                                  374   CLINEA 0000H 0001H 00ABH 0002H 000BH
+00:000A 82-A0 37-F9               375   	rb	0f937h.0
+                                  376   
+                                  377   ;;	pwmC_clearCount();
+                                  378   CLINEA 0000H 0001H 00ACH 0002H 0013H
+00:000E 01-F0'00-00'              379   	bl	_pwmC_clearCount
+                                  380   
+                                  381   ;;	pwmD_clearCount();
+                                  382   CLINEA 0000H 0001H 00ADH 0002H 0013H
+00:0012 01-F0'00-00'              383   	bl	_pwmD_clearCount
+                                  384   
+                                  385   ;;	pwmE_clearCount();
+                                  386   CLINEA 0000H 0001H 00AEH 0002H 0013H
+00:0016 01-F0'00-00'              387   	bl	_pwmE_clearCount
+                                  388   CBLOCKEND 2 2 175
+                                  389   
+                                  390   ;;}
+                                  391   CLINEA 0000H 0001H 00AFH 0001H 0001H
+00:001A 8E-F2                     392   	pop	pc
+                                  393   CBLOCKEND 2 1 175
+                                  394   CFUNCTIONEND 2
+                                  395   
+                                  396   
+  --------------------------      397   	rseg $$led_f_Off$led
+                                  398   CFUNCTION 3
+                                  399   
+00:0000                           400   _led_f_Off	:
+                                  401   CBLOCK 3 1 178
+                                  402   
+                                  403   ;;{
+                                  404   CLINEA 0000H 0001H 00B2H 0001H 0001H
+                                  405   CBLOCK 3 2 178
+                                  406   
+                                  407   ;;	PFRUN = 0;
+                                  408   CLINEA 0000H 0001H 00B3H 0002H 000BH
+00:0000 82-A0 73-F9               409   	rb	0f973h.0
+                                  410   
+                                  411   ;;	pwmF_clearCount();
+                                  412   CLINEA 0000H 0001H 00B4H 0002H 0013H
+00:0004 00-F0'00-00'              413   	b	_pwmF_clearCount
+                                  414   CBLOCKEND 3 2 181
+                                  415   CLINEA 0000H 0001H 00B5H 0001H 0001H
+                                  416   CBLOCKEND 3 1 181
+                                  417   CFUNCTIONEND 3
+                                  418   
+                                  419   
+  --------------------------      420   	rseg $$led_On$led
+                                  421   CFUNCTION 4
+                                  422   
+00:0000                           423   _led_On	:
+                                  424   CBLOCK 4 1 184
+                                  425   
+                                  426   ;;{
+                                  427   CLINEA 0000H 0001H 00B8H 0001H 0001H
+                                  428   CBLOCK 4 2 184
+                                  429   
+                                  430   ;;	PCRUN = 1;
+                                  431   CLINEA 0000H 0001H 00B9H 0002H 000BH
+00:0000 80-A0 17-F9               432   	sb	0f917h.0
+                                  433   
+                                  434   ;;	PDRUN = 1;
+                                  435   CLINEA 0000H 0001H 00BAH 0002H 000BH
+00:0004 80-A0 27-F9               436   	sb	0f927h.0
+                                  437   
+                                  438   ;;	PERUN = 1;
+                                  439   CLINEA 0000H 0001H 00BBH 0002H 000BH
+00:0008 80-A0 37-F9               440   	sb	0f937h.0
+                                  441   
+                                  442   ;;	PFRUN = 1;
+                                  443   CLINEA 0000H 0001H 00BCH 0002H 000BH
+00:000C 80-A0 73-F9               444   	sb	0f973h.0
+                                  445   CBLOCKEND 4 2 189
+                                  446   
+                                  447   ;;}
+                                  448   CLINEA 0000H 0001H 00BDH 0001H 0001H
+00:0010 1F-FE                     449   	rt
+                                  450   CBLOCKEND 4 1 189
+                                  451   CFUNCTIONEND 4
+                                  452   
+                                  453   
+  --------------------------      454   	rseg $$led_cde_On$led
+                                  455   CFUNCTION 5
+                                  456   
+00:0000                           457   _led_cde_On	:
+                                  458   CBLOCK 5 1 192
+                                  459   
+                                  460   ;;{
+                                  461   CLINEA 0000H 0001H 00C0H 0001H 0001H
+                                  462   CBLOCK 5 2 192
+                                  463   
+                                  464   ;;	PCRUN = 1;
+                                  465   CLINEA 0000H 0001H 00C1H 0002H 000BH
+00:0000 80-A0 17-F9               466   	sb	0f917h.0
+                                  467   
+                                  468   ;;	PDRUN = 1;
+                                  469   CLINEA 0000H 0001H 00C2H 0002H 000BH
+00:0004 80-A0 27-F9               470   	sb	0f927h.0
+                                  471   
+                                  472   ;;	PERUN = 1;
+                                  473   CLINEA 0000H 0001H 00C3H 0002H 000BH
+00:0008 80-A0 37-F9               474   	sb	0f937h.0
+                                  475   CBLOCKEND 5 2 196
+                                  476   
+                                  477   ;;}
+                                  478   CLINEA 0000H 0001H 00C4H 0001H 0001H
+00:000C 1F-FE                     479   	rt
+                                  480   CBLOCKEND 5 1 196
+                                  481   CFUNCTIONEND 5
+                                  482   
+                                  483   
+  --------------------------      484   	rseg $$led_f_On$led
+                                  485   CFUNCTION 6
+                                  486   
+00:0000                           487   _led_f_On	:
+                                  488   CBLOCK 6 1 199
+                                  489   
+                                  490   ;;{
+                                  491   CLINEA 0000H 0001H 00C7H 0001H 0001H
+                                  492   CBLOCK 6 2 199
+                                  493   
+                                  494   ;;	PFRUN = 1;
+                                  495   CLINEA 0000H 0001H 00C8H 0002H 000BH
+00:0000 80-A0 73-F9               496   	sb	0f973h.0
+                                  497   CBLOCKEND 6 2 201
+                                  498   
+                                  499   ;;}
+                                  500   CLINEA 0000H 0001H 00C9H 0001H 0001H
+00:0004 1F-FE                     501   	rt
+                                  502   CBLOCKEND 6 1 201
+                                  503   CFUNCTIONEND 6
+                                  504   
+                                  505   
+  --------------------------      506   	rseg $$led_DutySet$led
+                                  507   CFUNCTION 7
+                                  508   
+00:0000                           509   _led_DutySet	:
+                                  510   CBLOCK 7 1 204
+                                  511   
+                                  512   ;;{
+                                  513   CLINEA 0000H 0001H 00CCH 0001H 0001H
+00:0000 CE-F8                     514   	push	lr
+                                  515   CBLOCK 7 2 204
+                                  516   CRET 0000H
+                                  517   
+                                  518   ;;	pwmC_setDuty( _tblLedDuty[stepBlueLed] );
+                                  519   CLINEA 0000H 0001H 00CDH 0002H 002AH
+00:0002 12-90 00-00'              520   	l	er0,	NEAR _stepBlueLed
+00:0006 06-F0                     521   	add	er0,	er0
+00:0008 08-A0 00-00'              522   	l	er0,	NEAR __tblLedDuty[er0]
+00:000C 01-F0'00-00'              523   	bl	_pwmC_setDuty
+                                  524   
+                                  525   ;;	pwmD_setDuty( _tblLedDuty[stepRedLed] );
+                                  526   CLINEA 0000H 0001H 00CEH 0002H 0029H
+00:0010 12-90 00-00'              527   	l	er0,	NEAR _stepRedLed
+00:0014 06-F0                     528   	add	er0,	er0
+00:0016 08-A0 00-00'              529   	l	er0,	NEAR __tblLedDuty[er0]
+00:001A 01-F0'00-00'              530   	bl	_pwmD_setDuty
+                                  531   
+                                  532   ;;	pwmE_setDuty( _tblLedDuty[stepGreenLed] );
+                                  533   CLINEA 0000H 0001H 00CFH 0002H 002BH
+00:001E 12-90 00-00'              534   	l	er0,	NEAR _stepGreenLed
+00:0022 06-F0                     535   	add	er0,	er0
+00:0024 08-A0 00-00'              536   	l	er0,	NEAR __tblLedDuty[er0]
+00:0028 01-F0'00-00'              537   	bl	_pwmE_setDuty
+                                  538   
+                                  539   ;;	pwmF0_setDuty( _tblLedDuty[stepBlueLed] );
+                                  540   CLINEA 0000H 0001H 00D1H 0002H 002BH
+00:002C 12-90 00-00'              541   	l	er0,	NEAR _stepBlueLed
+00:0030 06-F0                     542   	add	er0,	er0
+00:0032 08-A0 00-00'              543   	l	er0,	NEAR __tblLedDuty[er0]
+00:0036 01-F0'00-00'              544   	bl	_pwmF0_setDuty
+                                  545   
+                                  546   ;;	pwmF1_setDuty( _tblLedDuty[stepRedLed] );
+                                  547   CLINEA 0000H 0001H 00D2H 0002H 002AH
+00:003A 12-90 00-00'              548   	l	er0,	NEAR _stepRedLed
+00:003E 06-F0                     549   	add	er0,	er0
+00:0040 08-A0 00-00'              550   	l	er0,	NEAR __tblLedDuty[er0]
+00:0044 01-F0'00-00'              551   	bl	_pwmF1_setDuty
+                                  552   
+                                  553   ;;	pwmF2_setDuty( _tblLedDuty[stepGreenLed] );
+                                  554   CLINEA 0000H 0001H 00D3H 0002H 002CH
+00:0048 12-90 00-00'              555   	l	er0,	NEAR _stepGreenLed
+00:004C 06-F0                     556   	add	er0,	er0
+00:004E 08-A0 00-00'              557   	l	er0,	NEAR __tblLedDuty[er0]
+00:0052 01-F0'00-00'              558   	bl	_pwmF2_setDuty
+                                  559   
+                                  560   ;;	pwmF_dutyUpdate();
+                                  561   CLINEA 0000H 0001H 00D4H 0002H 0013H
+00:0056 01-F0'00-00'              562   	bl	_pwmF_dutyUpdate
+                                  563   CBLOCKEND 7 2 213
+                                  564   
+                                  565   ;;}
+                                  566   CLINEA 0000H 0001H 00D5H 0001H 0001H
+00:005A 8E-F2                     567   	pop	pc
+                                  568   CBLOCKEND 7 1 213
+                                  569   CFUNCTIONEND 7
+                                  570   
+                                  571   	public _led_f_Off
+                                  572   	public _led_cde_Off
+                                  573   	public _led_f_On
+                                  574   	public _led_cde_On
+                                  575   	public _led_DutySet
+                                  576   	public _led_Init
+                                  577   	public _led_On
+                                  578   	public _led_Off
+                                  579   	_stepGreenLed comm data 02h #00h
+                                  580   	_stepBlueLed comm data 02h #00h
+                                  581   	_stepRedLed comm data 02h #00h
+                                  582   	_stepLed comm data 01h #00h
+                                  583   	extrn code near : _pwmE_clearCount
+                                  584   	extrn code near : _pwmC_clearCount
+                                  585   	extrn code near : _pwmE_selectClock
+                                  586   	extrn code near : _pwmF_selectClock
+                                  587   	extrn code near : _pwmC_selectClock
+                                  588   	extrn code near : _pwmD_selectClock
+                                  589   	extrn code near : _pwmF1_setEnable
+                                  590   	extrn code near : _pwmF0_setDuty
+                                  591   	extrn code near : _pwmF_selectOutputPolarity
+                                  592   	extrn code near : _pwmD_setPeriod
+                                  593   	extrn code near : _pwmD_setOneShotMode
+                                  594   	extrn code near : _pwmC_setOneShotMode
+                                  595   	extrn code near : _pwmE_selectOutputPolarity
+                                  596   	extrn code near : _pwmD_setDuty
+                                  597   	extrn code near : _pwmC_setDuty
+                                  598   	extrn code near : _pwmD_selectOutputPolarity
+                                  599   	extrn code near : _pwmE_setDuty
+                                  600   	extrn code near : _pwmF2_setEnable
+                                  601   	extrn code near : _pwmF_setOneShotMode
+                                  602   	extrn code near : _pwmE_setPeriod
+                                  603   	extrn code near : _pwmF_clearCount
+                                  604   	extrn code near : _pwmD_clearCount
+                                  605   	extrn code near : _pwmC_selectOutputPolarity
+                                  606   	extrn code near : _pwmF0_setEnable
+                                  607   	extrn code near : _pwmC_setPeriod
+                                  608   	extrn code near : _pwmE_setOneShotMode
+                                  609   	extrn code near : _pwmF_setPeriod
+                                  610   	extrn code near : _pwmF1_setDuty
+                                  611   	extrn code near : _pwmF_dutyUpdate
+                                  612   	extrn code near : _pwmF2_setDuty
+                                  613   	extrn code near : _main
+                                  614   
+  --------------------------      615   	rseg $$TAB_valLedPeriod$led
+00:0000                           616   __valLedPeriod :
+00:0000 FF-FF                     617   	dw	0ffffh
+                                  618   
+  --------------------------      619   	rseg $$TAB_tblLedDuty$led
+00:0000                           620   __tblLedDuty :
+00:0000 00-00                     621   	dw	00h
+00:0002 42-08                     622   	dw	0842h
+00:0004 84-10                     623   	dw	01084h
+00:0006 C6-18                     624   	dw	018c6h
+00:0008 08-21                     625   	dw	02108h
+00:000A 4A-29                     626   	dw	0294ah
+00:000C 8C-31                     627   	dw	0318ch
+00:000E CE-39                     628   	dw	039ceh
+00:0010 10-42                     629   	dw	04210h
+00:0012 52-4A                     630   	dw	04a52h
+00:0014 94-52                     631   	dw	05294h
+00:0016 D6-5A                     632   	dw	05ad6h
+00:0018 18-63                     633   	dw	06318h
+00:001A 5A-6B                     634   	dw	06b5ah
+00:001C 9C-73                     635   	dw	0739ch
+00:001E DE-7B                     636   	dw	07bdeh
+00:0020 20-84                     637   	dw	08420h
+00:0022 62-8C                     638   	dw	08c62h
+00:0024 A4-94                     639   	dw	094a4h
+00:0026 E6-9C                     640   	dw	09ce6h
+00:0028 28-A5                     641   	dw	0a528h
+00:002A 6A-AD                     642   	dw	0ad6ah
+00:002C AC-B5                     643   	dw	0b5ach
+00:002E EE-BD                     644   	dw	0bdeeh
+00:0030 30-C6                     645   	dw	0c630h
+00:0032 72-CE                     646   	dw	0ce72h
+00:0034 B4-D6                     647   	dw	0d6b4h
+00:0036 F6-DE                     648   	dw	0def6h
+00:0038 38-E7                     649   	dw	0e738h
+00:003A 7A-EF                     650   	dw	0ef7ah
+00:003C BC-F7                     651   	dw	0f7bch
+00:003E FF-FF                     652   	dw	0ffffh
+                                  653   
+                                  654   	end
+
+
+
+  Target       : ML610111 (nX-U8/100)
+  Memory Model : SMALL
+  Data   Model : NEAR
+  ROM WINDOW   : (not specified)
+  Internal RAM : E000H to E7FFH
+
+  Errors   : 0
+  Warnings : 0  (/Wrpeast)
+  Lines    : 654

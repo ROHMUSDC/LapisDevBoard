@@ -1,0 +1,8 @@
+\t (00:00:40) allegro 16.5 P003 (v16-5-13C) i86
+\t (00:00:40)     Journal start - Thu May 02 12:14:32 2013
+\t (00:00:40)         Host=ROHM10748 User=cschell Pid=3916 CPUs=4
+\t (00:00:40) 
+\d (00:00:40) Database opened: C:/Users/cschell/Documents/Projects/LAPIS mini-LPMCU Demo Board/MASTER CD DOCUMENTATION/LaPi Design Files/LaPi Allegro PCB Layout/LaPi-Rev1.9.brd
+\i (00:00:40) etchedit 
+\i (00:00:46) exit 
+\t (00:00:47)     Journal end - Thu May 02 12:14:39 2013

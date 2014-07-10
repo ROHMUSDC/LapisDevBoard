@@ -1,0 +1,767 @@
+RASU8(ML610111)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1 
+ Source File: _output\_obj\timer.asm
+ Object File: _output\_obj\timer.obj
+ Date  : 2013/06/18 Tue.[16:11]
+ Title : 
+## Loc. Object                   Line   Source Statements
+
+                                    1   ;; Compile Options : /TML610111 /MS /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Ipwm /Iuart /Ivolume /Iled /D_ML610Q111 /SS 1024 /SD /Oa /Om /W 3 /Wc /Fa_output\_obj\ 
+                                    2   ;; Version Number  : Ver.3.31.4
+                                    3   ;; File Name       : timer.c
+                                    4   
+                                    5   	type (ML610111) 
+                                    6   	model small, near
+                                    7   	$$tm_clr89Counter$timer segment code 2h #0h
+                                    8   	$$tm_clrABCounter$timer segment code 2h #0h
+                                    9   	$$tm_get89Counter$timer segment code 2h #0h
+                                   10   	$$tm_get89Source$timer segment code 2h #0h
+                                   11   	$$tm_getABCounter$timer segment code 2h #0h
+                                   12   	$$tm_getABSource$timer segment code 2h #0h
+                                   13   	$$tm_init$timer segment code 2h #0h
+                                   14   	$$tm_restart89$timer segment code 2h #0h
+                                   15   	$$tm_restartAB$timer segment code 2h #0h
+                                   16   	$$tm_set89Data$timer segment code 2h #0h
+                                   17   	$$tm_set89Source$timer segment code 2h #0h
+                                   18   	$$tm_set8Oneshot$timer segment code 2h #0h
+                                   19   	$$tm_set9Oneshot$timer segment code 2h #0h
+                                   20   	$$tm_setABData$timer segment code 2h #0h
+                                   21   	$$tm_setABSource$timer segment code 2h #0h
+                                   22   	$$tm_setAOneshot$timer segment code 2h #0h
+                                   23   	$$tm_setBOneshot$timer segment code 2h #0h
+                                   24   	$$tm_start89$timer segment code 2h #0h
+                                   25   	$$tm_startAB$timer segment code 2h #0h
+                                   26   	$$tm_stop89$timer segment code 2h #0h
+                                   27   	$$tm_stopAB$timer segment code 2h #0h
+                                   28   CVERSION 3.31.4
+                                   29   CGLOBAL 01H 02H 0000H "tm_get89Counter" 08H 02H 07H 00H 80H 00H 00H 00H 08H
+                                   30   CGLOBAL 01H 02H 0000H "tm_getABSource" 08H 02H 10H 00H 80H 00H 00H 00H 00H
+                                   31   CGLOBAL 01H 02H 0000H "tm_get89Source" 08H 02H 0FH 00H 80H 00H 00H 00H 00H
+                                   32   CGLOBAL 01H 03H 0000H "tm_startAB" 08H 02H 02H 00H 80H 00H 00H 00H 07H
+                                   33   CGLOBAL 01H 03H 0000H "tm_restartAB" 08H 02H 04H 00H 80H 00H 00H 00H 07H
+                                   34   CGLOBAL 01H 03H 0000H "tm_clrABCounter" 08H 02H 0AH 00H 80H 00H 00H 00H 07H
+                                   35   CGLOBAL 01H 02H 0000H "tm_getABCounter" 08H 02H 08H 00H 80H 00H 00H 00H 08H
+                                   36   CGLOBAL 01H 03H 0000H "tm_setABData" 08H 02H 0CH 00H 80H 00H 00H 00H 07H
+                                   37   CGLOBAL 01H 03H 0000H "tm_stop89" 08H 02H 05H 00H 80H 00H 00H 00H 07H
+                                   38   CGLOBAL 01H 03H 0000H "tm_stopAB" 08H 02H 06H 00H 80H 00H 00H 00H 07H
+                                   39   CGLOBAL 01H 03H 0000H "tm_setAOneshot" 08H 02H 24H 00H 80H 00H 00H 00H 07H
+                                   40   CGLOBAL 01H 03H 0000H "tm_setBOneshot" 08H 02H 25H 00H 80H 00H 00H 00H 07H
+                                   41   CGLOBAL 01H 03H 0000H "tm_set9Oneshot" 08H 02H 23H 00H 80H 00H 00H 00H 07H
+                                   42   CGLOBAL 01H 03H 0000H "tm_set8Oneshot" 08H 02H 22H 00H 80H 00H 00H 00H 07H
+                                   43   CGLOBAL 01H 03H 0000H "tm_set89Data" 08H 02H 0BH 00H 80H 00H 00H 00H 07H
+                                   44   CGLOBAL 01H 03H 0000H "tm_setABSource" 08H 02H 0EH 00H 80H 00H 00H 00H 07H
+                                   45   CGLOBAL 01H 03H 0000H "tm_set89Source" 08H 02H 0DH 00H 80H 00H 00H 00H 07H
+                                   46   CGLOBAL 01H 03H 0000H "tm_init" 08H 02H 00H 00H 80H 00H 00H 00H 07H
+                                   47   CGLOBAL 01H 03H 0000H "tm_clr89Counter" 08H 02H 09H 00H 80H 00H 00H 00H 07H
+                                   48   CGLOBAL 01H 03H 0000H "tm_restart89" 08H 02H 03H 00H 80H 00H 00H 00H 07H
+                                   49   CGLOBAL 01H 03H 0000H "tm_start89" 08H 02H 01H 00H 80H 00H 00H 00H 07H
+                                   50   CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+                                   51   CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+                                   52   CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+                                   53   CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+                                   54   CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+                                   55   CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+                                   56   CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+                                   57   CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+                                   58   CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+                                   59   CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+                                   60   CFILE 0001H 00000029H "common\\common.h"
+                                   61   CFILE 0002H 00000022H "main\\mcu.h"
+                                   62   CFILE 0003H 000007EEH "C:\\Users\\cschell\\U8DEV~1\\Inc\\ml610111.h"
+                                   63   CFILE 0004H 000000A0H "timer\\timer.h"
+                                   64   CFILE 0000H 000000F4H "timer\\timer.c"
+                                   65   
+  --------------------------       66   	rseg $$tm_init$timer
+                                   67   CFUNCTION 0
+                                   68   
+00:0000                            69   _tm_init	:
+                                   70   CBLOCK 0 1 52
+                                   71   
+                                   72   ;;{
+                                   73   CLINEA 0000H 0001H 0034H 0001H 0001H
+                                   74   CBLOCK 0 2 52
+                                   75   CARGUMENT 46H 0001H 0014H "chNo" 02H 00H 00H
+                                   76   
+                                   77   ;;	switch( chNo ) {
+                                   78   CLINEA 0000H 0001H 0035H 0002H 0011H
+                                   79   CBLOCK 0 3 53
+00:0000 01 70                      80   	cmp	r0,	#01h
+00:0002 03 C9                      81   	beq	_$L6
+                                   82   
+                                   83   ;;	switch( chNo ) {
+                                   84   CLINEA 0000H 0000H 0035H 0002H 0011H
+00:0004 02 70                      85   	cmp	r0,	#02h
+00:0006 08 C9                      86   	beq	_$L7
+                                   87   
+                                   88   ;;	}
+                                   89   CLINEA 0000H 0000H 0042H 0002H 0002H
+                                   90   CBLOCKEND 0 3 66
+                                   91   CBLOCKEND 0 2 67
+                                   92   
+                                   93   ;;}
+                                   94   CLINEA 0000H 0001H 0043H 0001H 0001H
+00:0008 1F-FE                      95   	rt
+                                   96   
+                                   97   ;;	case TM_CH_NO_89 :
+                                   98   CLINEA 0000H 0001H 0036H 0002H 0013H
+00:000A                            99   _$L6 :
+                                  100   
+                                  101   ;;		T8RUN = 0;		/* T0RUN   = 0    ...count stop. */
+                                  102   CLINEA 0000H 0001H 0037H 0003H 0031H
+00:000A 82-A0 E3-F8               103   	rb	0f8e3h.0
+                                  104   
+                                  105   ;;		T9RUN = 0;		/* T1RUN   = 0    ...count stop. */
+                                  106   CLINEA 0000H 0001H 0038H 0003H 0031H
+00:000E 82-A0 E7-F8               107   	rb	0f8e7h.0
+                                  108   
+                                  109   ;;		T89M16 = 1;
+                                  110   CLINEA 0000H 0001H 0039H 0003H 000DH
+00:0012 D0-A0 E2-F8               111   	sb	0f8e2h.5
+                                  112   
+                                  113   ;;		break;
+                                  114   CLINEA 0000H 0001H 003AH 0003H 0008H
+00:0016 1F-FE                     115   	rt
+                                  116   
+                                  117   ;;	case TM_CH_NO_AB :
+                                  118   CLINEA 0000H 0001H 003BH 0002H 0013H
+00:0018                           119   _$L7 :
+                                  120   
+                                  121   ;;		TARUN = 0;		/* T0RUN   = 0    ...count stop. */
+                                  122   CLINEA 0000H 0001H 003CH 0003H 0031H
+00:0018 82-A0 EB-F8               123   	rb	0f8ebh.0
+                                  124   
+                                  125   ;;		TBRUN = 0;		/* T1RUN   = 0    ...count stop. */
+                                  126   CLINEA 0000H 0001H 003DH 0003H 0031H
+00:001C 82-A0 EF-F8               127   	rb	0f8efh.0
+                                  128   
+                                  129   ;;		TABM16 = 1;
+                                  130   CLINEA 0000H 0001H 003EH 0003H 000DH
+00:0020 D0-A0 EA-F8               131   	sb	0f8eah.5
+                                  132   
+                                  133   ;;		break;
+                                  134   CLINEA 0000H 0001H 003FH 0003H 0008H
+00:0024 1F-FE                     135   	rt
+                                  136   CBLOCKEND 0 1 67
+                                  137   CFUNCTIONEND 0
+                                  138   
+                                  139   
+  --------------------------      140   	rseg $$tm_start89$timer
+                                  141   CFUNCTION 1
+                                  142   
+00:0000                           143   _tm_start89	:
+                                  144   CBLOCK 1 1 77
+                                  145   
+                                  146   ;;{
+                                  147   CLINEA 0000H 0001H 004DH 0001H 0001H
+                                  148   CBLOCK 1 2 77
+                                  149   
+                                  150   ;;	TM8C = 0;
+                                  151   CLINEA 0000H 0001H 004EH 0002H 000AH
+00:0000 00 00                     152   	mov	r0,	#00h
+00:0002 11-90 E1-F8               153   	st	r0,	0f8e1h
+                                  154   
+                                  155   ;;	T8RUN = 1;
+                                  156   CLINEA 0000H 0001H 004FH 0002H 000BH
+00:0006 80-A0 E3-F8               157   	sb	0f8e3h.0
+                                  158   CBLOCKEND 1 2 80
+                                  159   
+                                  160   ;;}
+                                  161   CLINEA 0000H 0001H 0050H 0001H 0001H
+00:000A 1F-FE                     162   	rt
+                                  163   CBLOCKEND 1 1 80
+                                  164   CFUNCTIONEND 1
+                                  165   
+                                  166   
+  --------------------------      167   	rseg $$tm_startAB$timer
+                                  168   CFUNCTION 2
+                                  169   
+00:0000                           170   _tm_startAB	:
+                                  171   CBLOCK 2 1 83
+                                  172   
+                                  173   ;;{
+                                  174   CLINEA 0000H 0001H 0053H 0001H 0001H
+                                  175   CBLOCK 2 2 83
+                                  176   
+                                  177   ;;	TMAC = 0;
+                                  178   CLINEA 0000H 0001H 0054H 0002H 000AH
+00:0000 00 00                     179   	mov	r0,	#00h
+00:0002 11-90 E9-F8               180   	st	r0,	0f8e9h
+                                  181   
+                                  182   ;;	TARUN = 1;
+                                  183   CLINEA 0000H 0001H 0055H 0002H 000BH
+00:0006 80-A0 EB-F8               184   	sb	0f8ebh.0
+                                  185   CBLOCKEND 2 2 86
+                                  186   
+                                  187   ;;}
+                                  188   CLINEA 0000H 0001H 0056H 0001H 0001H
+00:000A 1F-FE                     189   	rt
+                                  190   CBLOCKEND 2 1 86
+                                  191   CFUNCTIONEND 2
+                                  192   
+                                  193   
+  --------------------------      194   	rseg $$tm_restart89$timer
+                                  195   CFUNCTION 3
+                                  196   
+00:0000                           197   _tm_restart89	:
+                                  198   CBLOCK 3 1 96
+                                  199   
+                                  200   ;;{
+                                  201   CLINEA 0000H 0001H 0060H 0001H 0001H
+                                  202   CBLOCK 3 2 96
+                                  203   
+                                  204   ;;	T8RUN = 1;
+                                  205   CLINEA 0000H 0001H 0061H 0002H 000BH
+00:0000 80-A0 E3-F8               206   	sb	0f8e3h.0
+                                  207   CBLOCKEND 3 2 98
+                                  208   
+                                  209   ;;}
+                                  210   CLINEA 0000H 0001H 0062H 0001H 0001H
+00:0004 1F-FE                     211   	rt
+                                  212   CBLOCKEND 3 1 98
+                                  213   CFUNCTIONEND 3
+                                  214   
+                                  215   
+  --------------------------      216   	rseg $$tm_restartAB$timer
+                                  217   CFUNCTION 4
+                                  218   
+00:0000                           219   _tm_restartAB	:
+                                  220   CBLOCK 4 1 101
+                                  221   
+                                  222   ;;{
+                                  223   CLINEA 0000H 0001H 0065H 0001H 0001H
+                                  224   CBLOCK 4 2 101
+                                  225   
+                                  226   ;;	TARUN = 1;
+                                  227   CLINEA 0000H 0001H 0066H 0002H 000BH
+00:0000 80-A0 EB-F8               228   	sb	0f8ebh.0
+                                  229   CBLOCKEND 4 2 103
+                                  230   
+                                  231   ;;}
+                                  232   CLINEA 0000H 0001H 0067H 0001H 0001H
+00:0004 1F-FE                     233   	rt
+                                  234   CBLOCKEND 4 1 103
+                                  235   CFUNCTIONEND 4
+                                  236   
+                                  237   
+  --------------------------      238   	rseg $$tm_stop89$timer
+                                  239   CFUNCTION 5
+                                  240   
+00:0000                           241   _tm_stop89	:
+                                  242   CBLOCK 5 1 113
+                                  243   
+                                  244   ;;{
+                                  245   CLINEA 0000H 0001H 0071H 0001H 0001H
+                                  246   CBLOCK 5 2 113
+                                  247   
+                                  248   ;;	T8RUN = 0;
+                                  249   CLINEA 0000H 0001H 0072H 0002H 000BH
+00:0000 82-A0 E3-F8               250   	rb	0f8e3h.0
+                                  251   CBLOCKEND 5 2 115
+                                  252   
+                                  253   ;;}
+                                  254   CLINEA 0000H 0001H 0073H 0001H 0001H
+00:0004 1F-FE                     255   	rt
+                                  256   CBLOCKEND 5 1 115
+                                  257   CFUNCTIONEND 5
+                                  258   
+                                  259   
+  --------------------------      260   	rseg $$tm_stopAB$timer
+                                  261   CFUNCTION 6
+                                  262   
+00:0000                           263   _tm_stopAB	:
+                                  264   CBLOCK 6 1 118
+                                  265   
+                                  266   ;;{
+                                  267   CLINEA 0000H 0001H 0076H 0001H 0001H
+                                  268   CBLOCK 6 2 118
+                                  269   
+                                  270   ;;	TARUN = 0;
+                                  271   CLINEA 0000H 0001H 0077H 0002H 000BH
+00:0000 82-A0 EB-F8               272   	rb	0f8ebh.0
+                                  273   CBLOCKEND 6 2 120
+                                  274   
+                                  275   ;;}
+                                  276   CLINEA 0000H 0001H 0078H 0001H 0001H
+00:0004 1F-FE                     277   	rt
+                                  278   CBLOCKEND 6 1 120
+                                  279   CFUNCTIONEND 6
+                                  280   
+                                  281   
+  --------------------------      282   	rseg $$tm_get89Counter$timer
+                                  283   CFUNCTION 7
+                                  284   
+00:0000                           285   _tm_get89Counter	:
+                                  286   CBLOCK 7 1 130
+                                  287   
+                                  288   ;;{
+                                  289   CLINEA 0000H 0001H 0082H 0001H 0001H
+                                  290   CBLOCK 7 2 130
+                                  291   CLOCAL 46H 0002H 0025H 0002H "ret" 02H 00H 08H
+                                  292   
+                                  293   ;;	unsigned short ret = TM8C;
+                                  294   CLINEA 0000H 0001H 0083H 0002H 001BH
+00:0000 10-90 E1-F8               295   	l	r0,	0f8e1h
+00:0004 00 01                     296   	mov	r1,	#00h
+00:0006 05-F2                     297   	mov	er2,	er0
+                                  298   
+                                  299   ;;	ret |= (TM9C << 8);
+                                  300   CLINEA 0000H 0001H 0084H 0002H 0014H
+00:0008 10-90 E5-F8               301   	l	r0,	0f8e5h
+00:000C 03-83                     302   	or	r3,	r0
+                                  303   
+                                  304   ;;	return ret;
+                                  305   CLINEA 0000H 0001H 0085H 0002H 000CH
+00:000E 25-F0                     306   	mov	er0,	er2
+                                  307   CBLOCKEND 7 2 134
+                                  308   
+                                  309   ;;}
+                                  310   CLINEA 0000H 0000H 0086H 0001H 0001H
+00:0010 1F-FE                     311   	rt
+                                  312   CBLOCKEND 7 1 134
+                                  313   CFUNCTIONEND 7
+                                  314   
+                                  315   
+  --------------------------      316   	rseg $$tm_getABCounter$timer
+                                  317   CFUNCTION 8
+                                  318   
+00:0000                           319   _tm_getABCounter	:
+                                  320   CBLOCK 8 1 137
+                                  321   
+                                  322   ;;{
+                                  323   CLINEA 0000H 0001H 0089H 0001H 0001H
+                                  324   CBLOCK 8 2 137
+                                  325   CLOCAL 46H 0002H 0025H 0002H "ret" 02H 00H 08H
+                                  326   
+                                  327   ;;	unsigned short ret = TMAC;
+                                  328   CLINEA 0000H 0001H 008AH 0002H 001BH
+00:0000 10-90 E9-F8               329   	l	r0,	0f8e9h
+00:0004 00 01                     330   	mov	r1,	#00h
+00:0006 05-F2                     331   	mov	er2,	er0
+                                  332   
+                                  333   ;;	ret |= (TMBC << 8);
+                                  334   CLINEA 0000H 0001H 008BH 0002H 0014H
+00:0008 10-90 ED-F8               335   	l	r0,	0f8edh
+00:000C 03-83                     336   	or	r3,	r0
+                                  337   
+                                  338   ;;	return ret;
+                                  339   CLINEA 0000H 0001H 008CH 0002H 000CH
+00:000E 25-F0                     340   	mov	er0,	er2
+                                  341   CBLOCKEND 8 2 141
+                                  342   
+                                  343   ;;}
+                                  344   CLINEA 0000H 0000H 008DH 0001H 0001H
+00:0010 1F-FE                     345   	rt
+                                  346   CBLOCKEND 8 1 141
+                                  347   CFUNCTIONEND 8
+                                  348   
+                                  349   
+  --------------------------      350   	rseg $$tm_clr89Counter$timer
+                                  351   CFUNCTION 9
+                                  352   
+00:0000                           353   _tm_clr89Counter	:
+                                  354   CBLOCK 9 1 151
+                                  355   
+                                  356   ;;{
+                                  357   CLINEA 0000H 0001H 0097H 0001H 0001H
+                                  358   CBLOCK 9 2 151
+                                  359   
+                                  360   ;;	TM8C = 0x00;
+                                  361   CLINEA 0000H 0001H 0098H 0002H 000DH
+00:0000 00 00                     362   	mov	r0,	#00h
+00:0002 11-90 E1-F8               363   	st	r0,	0f8e1h
+                                  364   CBLOCKEND 9 2 153
+                                  365   
+                                  366   ;;}
+                                  367   CLINEA 0000H 0001H 0099H 0001H 0001H
+00:0006 1F-FE                     368   	rt
+                                  369   CBLOCKEND 9 1 153
+                                  370   CFUNCTIONEND 9
+                                  371   
+                                  372   
+  --------------------------      373   	rseg $$tm_clrABCounter$timer
+                                  374   CFUNCTION 10
+                                  375   
+00:0000                           376   _tm_clrABCounter	:
+                                  377   CBLOCK 10 1 156
+                                  378   
+                                  379   ;;{
+                                  380   CLINEA 0000H 0001H 009CH 0001H 0001H
+                                  381   CBLOCK 10 2 156
+                                  382   
+                                  383   ;;	TMAC = 0x00;
+                                  384   CLINEA 0000H 0001H 009DH 0002H 000DH
+00:0000 00 00                     385   	mov	r0,	#00h
+00:0002 11-90 E9-F8               386   	st	r0,	0f8e9h
+                                  387   CBLOCKEND 10 2 158
+                                  388   
+                                  389   ;;}
+                                  390   CLINEA 0000H 0001H 009EH 0001H 0001H
+00:0006 1F-FE                     391   	rt
+                                  392   CBLOCKEND 10 1 158
+                                  393   CFUNCTIONEND 10
+                                  394   
+                                  395   
+  --------------------------      396   	rseg $$tm_set89Data$timer
+                                  397   CFUNCTION 11
+                                  398   
+00:0000                           399   _tm_set89Data	:
+                                  400   CBLOCK 11 1 168
+                                  401   
+                                  402   ;;{
+                                  403   CLINEA 0000H 0001H 00A8H 0001H 0001H
+                                  404   CBLOCK 11 2 168
+                                  405   CARGUMENT 46H 0002H 0024H "data" 02H 00H 01H
+                                  406   
+                                  407   ;;	TM8D = (unsigned char)(data & 0xFF);
+                                  408   CLINEA 0000H 0001H 00A9H 0002H 0025H
+00:0000 11-90 E0-F8               409   	st	r0,	0f8e0h
+                                  410   
+                                  411   ;;	TM9D = (unsigned char)(data >> 8);
+                                  412   CLINEA 0000H 0001H 00AAH 0002H 0023H
+00:0004 11-91 E4-F8               413   	st	r1,	0f8e4h
+                                  414   CBLOCKEND 11 2 171
+                                  415   
+                                  416   ;;}
+                                  417   CLINEA 0000H 0001H 00ABH 0001H 0001H
+00:0008 1F-FE                     418   	rt
+                                  419   CBLOCKEND 11 1 171
+                                  420   CFUNCTIONEND 11
+                                  421   
+                                  422   
+  --------------------------      423   	rseg $$tm_setABData$timer
+                                  424   CFUNCTION 12
+                                  425   
+00:0000                           426   _tm_setABData	:
+                                  427   CBLOCK 12 1 174
+                                  428   
+                                  429   ;;{
+                                  430   CLINEA 0000H 0001H 00AEH 0001H 0001H
+                                  431   CBLOCK 12 2 174
+                                  432   CARGUMENT 46H 0002H 0024H "data" 02H 00H 01H
+                                  433   
+                                  434   ;;	TMAD = (unsigned char)(data & 0xFF);
+                                  435   CLINEA 0000H 0001H 00AFH 0002H 0025H
+00:0000 11-90 E8-F8               436   	st	r0,	0f8e8h
+                                  437   
+                                  438   ;;	TMBD = (unsigned char)(data >> 8);
+                                  439   CLINEA 0000H 0001H 00B0H 0002H 0023H
+00:0004 11-91 EC-F8               440   	st	r1,	0f8ech
+                                  441   CBLOCKEND 12 2 177
+                                  442   
+                                  443   ;;}
+                                  444   CLINEA 0000H 0001H 00B1H 0001H 0001H
+00:0008 1F-FE                     445   	rt
+                                  446   CBLOCKEND 12 1 177
+                                  447   CFUNCTIONEND 12
+                                  448   
+                                  449   
+  --------------------------      450   	rseg $$tm_get89Source$timer
+                                  451   CFUNCTION 15
+                                  452   
+00:0000                           453   _tm_get89Source	:
+                                  454   CBLOCK 15 1 188
+                                  455   
+                                  456   ;;{
+                                  457   CLINEA 0000H 0001H 00BCH 0001H 0001H
+                                  458   CBLOCK 15 2 188
+                                  459   
+                                  460   ;;	return (unsigned char)(TM8CON0 & TM_CS_MASK);
+                                  461   CLINEA 0000H 0001H 00BDH 0002H 002EH
+00:0000 10-90 E2-F8               462   	l	r0,	0f8e2h
+00:0004 07 20                     463   	and	r0,	#07h
+                                  464   CBLOCKEND 15 2 190
+                                  465   
+                                  466   ;;}
+                                  467   CLINEA 0000H 0000H 00BEH 0001H 0001H
+00:0006 1F-FE                     468   	rt
+                                  469   CBLOCKEND 15 1 190
+                                  470   CFUNCTIONEND 15
+                                  471   
+                                  472   
+  --------------------------      473   	rseg $$tm_getABSource$timer
+                                  474   CFUNCTION 16
+                                  475   
+00:0000                           476   _tm_getABSource	:
+                                  477   CBLOCK 16 1 193
+                                  478   
+                                  479   ;;{
+                                  480   CLINEA 0000H 0001H 00C1H 0001H 0001H
+                                  481   CBLOCK 16 2 193
+                                  482   
+                                  483   ;;	return (unsigned char)(TMACON0 & TM_CS_MASK);
+                                  484   CLINEA 0000H 0001H 00C2H 0002H 002EH
+00:0000 10-90 EA-F8               485   	l	r0,	0f8eah
+00:0004 07 20                     486   	and	r0,	#07h
+                                  487   CBLOCKEND 16 2 195
+                                  488   
+                                  489   ;;}
+                                  490   CLINEA 0000H 0000H 00C3H 0001H 0001H
+00:0006 1F-FE                     491   	rt
+                                  492   CBLOCKEND 16 1 195
+                                  493   CFUNCTIONEND 16
+                                  494   
+                                  495   
+  --------------------------      496   	rseg $$tm_set89Source$timer
+                                  497   CFUNCTION 13
+                                  498   
+00:0000                           499   _tm_set89Source	:
+                                  500   CBLOCK 13 1 205
+                                  501   
+                                  502   ;;{
+                                  503   CLINEA 0000H 0001H 00CDH 0001H 0001H
+00:0000 00-82                     504   	mov	r2,	r0
+                                  505   CBLOCK 13 2 205
+                                  506   CARGUMENT 46H 0001H 0016H "cs" 02H 00H 00H
+                                  507   
+                                  508   ;;	T8CS0 = (cs & 0x01);
+                                  509   CLINEA 0000H 0001H 00CEH 0002H 0015H
+00:0002 01 20                     510   	and	r0,	#01h
+00:0004 03 C9                     511   	beq	_$M16
+00:0006 80-A0 E2-F8               512   	sb	0f8e2h.0
+00:000A 02 CE                     513   	bal	_$M17
+00:000C                           514   _$M16 :
+00:000C 82-A0 E2-F8               515   	rb	0f8e2h.0
+00:0010                           516   _$M17 :
+                                  517   
+                                  518   ;;	T8CS1 = (cs & 0x02) >> 1;
+                                  519   CLINEA 0000H 0001H 00CFH 0002H 001AH
+00:0010 20-80                     520   	mov	r0,	r2
+00:0012 00 01                     521   	mov	r1,	#00h
+00:0014 02 20                     522   	and	r0,	#02h
+00:0016 00 21                     523   	and	r1,	#00h
+00:0018 1D-90                     524   	srlc	r0,	#01h
+00:001A 01 20                     525   	and	r0,	#01h
+00:001C 03 C9                     526   	beq	_$M18
+00:001E 90-A0 E2-F8               527   	sb	0f8e2h.1
+00:0022 02 CE                     528   	bal	_$M19
+00:0024                           529   _$M18 :
+00:0024 92-A0 E2-F8               530   	rb	0f8e2h.1
+00:0028                           531   _$M19 :
+                                  532   
+                                  533   ;;	T8CS2 = (cs & 0x04) >> 2;
+                                  534   CLINEA 0000H 0001H 00D0H 0002H 001AH
+00:0028 20-80                     535   	mov	r0,	r2
+00:002A 00 01                     536   	mov	r1,	#00h
+00:002C 04 20                     537   	and	r0,	#04h
+00:002E 00 21                     538   	and	r1,	#00h
+00:0030 2D-90                     539   	srlc	r0,	#02h
+00:0032 01 20                     540   	and	r0,	#01h
+00:0034 03 C9                     541   	beq	_$M20
+00:0036 A0-A0 E2-F8               542   	sb	0f8e2h.2
+00:003A 1F-FE                     543   	rt
+00:003C                           544   _$M20 :
+00:003C A2-A0 E2-F8               545   	rb	0f8e2h.2
+                                  546   CBLOCKEND 13 2 209
+                                  547   
+                                  548   ;;}
+                                  549   CLINEA 0000H 0001H 00D1H 0001H 0001H
+00:0040 1F-FE                     550   	rt
+                                  551   CBLOCKEND 13 1 209
+                                  552   CFUNCTIONEND 13
+                                  553   
+                                  554   
+  --------------------------      555   	rseg $$tm_setABSource$timer
+                                  556   CFUNCTION 14
+                                  557   
+00:0000                           558   _tm_setABSource	:
+                                  559   CBLOCK 14 1 212
+                                  560   
+                                  561   ;;{
+                                  562   CLINEA 0000H 0001H 00D4H 0001H 0001H
+00:0000 00-82                     563   	mov	r2,	r0
+                                  564   CBLOCK 14 2 212
+                                  565   CARGUMENT 46H 0001H 0016H "cs" 02H 00H 00H
+                                  566   
+                                  567   ;;	TACS0 = (cs & 0x01);
+                                  568   CLINEA 0000H 0001H 00D5H 0002H 0015H
+00:0002 01 20                     569   	and	r0,	#01h
+00:0004 03 C9                     570   	beq	_$M23
+00:0006 80-A0 EA-F8               571   	sb	0f8eah.0
+00:000A 02 CE                     572   	bal	_$M24
+00:000C                           573   _$M23 :
+00:000C 82-A0 EA-F8               574   	rb	0f8eah.0
+00:0010                           575   _$M24 :
+                                  576   
+                                  577   ;;	TACS1 = (cs & 0x02) >> 1;
+                                  578   CLINEA 0000H 0001H 00D6H 0002H 001AH
+00:0010 20-80                     579   	mov	r0,	r2
+00:0012 00 01                     580   	mov	r1,	#00h
+00:0014 02 20                     581   	and	r0,	#02h
+00:0016 00 21                     582   	and	r1,	#00h
+00:0018 1D-90                     583   	srlc	r0,	#01h
+00:001A 01 20                     584   	and	r0,	#01h
+00:001C 03 C9                     585   	beq	_$M25
+00:001E 90-A0 EA-F8               586   	sb	0f8eah.1
+00:0022 02 CE                     587   	bal	_$M26
+00:0024                           588   _$M25 :
+00:0024 92-A0 EA-F8               589   	rb	0f8eah.1
+00:0028                           590   _$M26 :
+                                  591   
+                                  592   ;;	TACS2 = (cs & 0x04) >> 2;
+                                  593   CLINEA 0000H 0001H 00D7H 0002H 001AH
+00:0028 20-80                     594   	mov	r0,	r2
+00:002A 00 01                     595   	mov	r1,	#00h
+00:002C 04 20                     596   	and	r0,	#04h
+00:002E 00 21                     597   	and	r1,	#00h
+00:0030 2D-90                     598   	srlc	r0,	#02h
+00:0032 01 20                     599   	and	r0,	#01h
+00:0034 03 C9                     600   	beq	_$M27
+00:0036 A0-A0 EA-F8               601   	sb	0f8eah.2
+00:003A 1F-FE                     602   	rt
+00:003C                           603   _$M27 :
+00:003C A2-A0 EA-F8               604   	rb	0f8eah.2
+                                  605   CBLOCKEND 14 2 216
+                                  606   
+                                  607   ;;}
+                                  608   CLINEA 0000H 0001H 00D8H 0001H 0001H
+00:0040 1F-FE                     609   	rt
+                                  610   CBLOCKEND 14 1 216
+                                  611   CFUNCTIONEND 14
+                                  612   
+                                  613   
+  --------------------------      614   	rseg $$tm_set8Oneshot$timer
+                                  615   CFUNCTION 34
+                                  616   
+00:0000                           617   _tm_set8Oneshot	:
+                                  618   CBLOCK 34 1 226
+                                  619   
+                                  620   ;;{
+                                  621   CLINEA 0000H 0001H 00E2H 0001H 0001H
+                                  622   CBLOCK 34 2 226
+                                  623   CARGUMENT 46H 0001H 0014H "ost" 02H 00H 00H
+                                  624   
+                                  625   ;;	T8OST = ost;
+                                  626   CLINEA 0000H 0001H 00E3H 0002H 000DH
+00:0000 01 20                     627   	and	r0,	#01h
+00:0002 03 C9                     628   	beq	_$M30
+00:0004 F0-A0 E2-F8               629   	sb	0f8e2h.7
+00:0008 1F-FE                     630   	rt
+00:000A                           631   _$M30 :
+00:000A F2-A0 E2-F8               632   	rb	0f8e2h.7
+                                  633   CBLOCKEND 34 2 228
+                                  634   
+                                  635   ;;}
+                                  636   CLINEA 0000H 0001H 00E4H 0001H 0001H
+00:000E 1F-FE                     637   	rt
+                                  638   CBLOCKEND 34 1 228
+                                  639   CFUNCTIONEND 34
+                                  640   
+                                  641   
+  --------------------------      642   	rseg $$tm_set9Oneshot$timer
+                                  643   CFUNCTION 35
+                                  644   
+00:0000                           645   _tm_set9Oneshot	:
+                                  646   CBLOCK 35 1 231
+                                  647   
+                                  648   ;;{
+                                  649   CLINEA 0000H 0001H 00E7H 0001H 0001H
+                                  650   CBLOCK 35 2 231
+                                  651   CARGUMENT 46H 0001H 0014H "ost" 02H 00H 00H
+                                  652   
+                                  653   ;;	T9OST = ost;
+                                  654   CLINEA 0000H 0001H 00E8H 0002H 000DH
+00:0000 01 20                     655   	and	r0,	#01h
+00:0002 03 C9                     656   	beq	_$M33
+00:0004 F0-A0 E6-F8               657   	sb	0f8e6h.7
+00:0008 1F-FE                     658   	rt
+00:000A                           659   _$M33 :
+00:000A F2-A0 E6-F8               660   	rb	0f8e6h.7
+                                  661   CBLOCKEND 35 2 233
+                                  662   
+                                  663   ;;}
+                                  664   CLINEA 0000H 0001H 00E9H 0001H 0001H
+00:000E 1F-FE                     665   	rt
+                                  666   CBLOCKEND 35 1 233
+                                  667   CFUNCTIONEND 35
+                                  668   
+                                  669   
+  --------------------------      670   	rseg $$tm_setAOneshot$timer
+                                  671   CFUNCTION 36
+                                  672   
+00:0000                           673   _tm_setAOneshot	:
+                                  674   CBLOCK 36 1 236
+                                  675   
+                                  676   ;;{
+                                  677   CLINEA 0000H 0001H 00ECH 0001H 0001H
+                                  678   CBLOCK 36 2 236
+                                  679   CARGUMENT 46H 0001H 0014H "ost" 02H 00H 00H
+                                  680   
+                                  681   ;;	TAOST = ost;
+                                  682   CLINEA 0000H 0001H 00EDH 0002H 000DH
+00:0000 01 20                     683   	and	r0,	#01h
+00:0002 03 C9                     684   	beq	_$M36
+00:0004 F0-A0 EA-F8               685   	sb	0f8eah.7
+00:0008 1F-FE                     686   	rt
+00:000A                           687   _$M36 :
+00:000A F2-A0 EA-F8               688   	rb	0f8eah.7
+                                  689   CBLOCKEND 36 2 238
+                                  690   
+                                  691   ;;}
+                                  692   CLINEA 0000H 0001H 00EEH 0001H 0001H
+00:000E 1F-FE                     693   	rt
+                                  694   CBLOCKEND 36 1 238
+                                  695   CFUNCTIONEND 36
+                                  696   
+                                  697   
+  --------------------------      698   	rseg $$tm_setBOneshot$timer
+                                  699   CFUNCTION 37
+                                  700   
+00:0000                           701   _tm_setBOneshot	:
+                                  702   CBLOCK 37 1 241
+                                  703   
+                                  704   ;;{
+                                  705   CLINEA 0000H 0001H 00F1H 0001H 0001H
+                                  706   CBLOCK 37 2 241
+                                  707   CARGUMENT 46H 0001H 0014H "ost" 02H 00H 00H
+                                  708   
+                                  709   ;;	TBOST = ost;
+                                  710   CLINEA 0000H 0001H 00F2H 0002H 000DH
+00:0000 01 20                     711   	and	r0,	#01h
+00:0002 03 C9                     712   	beq	_$M39
+00:0004 F0-A0 EE-F8               713   	sb	0f8eeh.7
+00:0008 1F-FE                     714   	rt
+00:000A                           715   _$M39 :
+00:000A F2-A0 EE-F8               716   	rb	0f8eeh.7
+                                  717   CBLOCKEND 37 2 243
+                                  718   
+                                  719   ;;}
+                                  720   CLINEA 0000H 0001H 00F3H 0001H 0001H
+00:000E 1F-FE                     721   	rt
+                                  722   CBLOCKEND 37 1 243
+                                  723   CFUNCTIONEND 37
+                                  724   
+                                  725   	public _tm_get89Counter
+                                  726   	public _tm_getABSource
+                                  727   	public _tm_get89Source
+                                  728   	public _tm_startAB
+                                  729   	public _tm_restartAB
+                                  730   	public _tm_clrABCounter
+                                  731   	public _tm_getABCounter
+                                  732   	public _tm_setABData
+                                  733   	public _tm_stop89
+                                  734   	public _tm_stopAB
+                                  735   	public _tm_setAOneshot
+                                  736   	public _tm_setBOneshot
+                                  737   	public _tm_set9Oneshot
+                                  738   	public _tm_set8Oneshot
+                                  739   	public _tm_set89Data
+                                  740   	public _tm_setABSource
+                                  741   	public _tm_set89Source
+                                  742   	public _tm_init
+                                  743   	public _tm_clr89Counter
+                                  744   	public _tm_restart89
+                                  745   	public _tm_start89
+                                  746   	extrn code near : _main
+                                  747   
+                                  748   	end
+
+
+
+  Target       : ML610111 (nX-U8/100)
+  Memory Model : SMALL
+  Data   Model : NEAR
+  ROM WINDOW   : (not specified)
+  Internal RAM : E000H to E7FFH
+
+  Errors   : 0
+  Warnings : 0  (/Wrpeast)
+  Lines    : 748

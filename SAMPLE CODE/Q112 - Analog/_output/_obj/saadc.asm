@@ -1,0 +1,358 @@
+;; Compile Options : /TML610112 /MS /near /Icommon /Imain /Iirq /Itimer /Iclock /Itbc /Iuart /IsaAdc /SS 256 /SD /Oa /Ot /W 3 /Wc /Fa_output\_obj\ 
+;; Version Number  : Ver.3.31.4
+;; File Name       : saadc.c
+
+	type (ML610112) 
+	model small, near
+	$$saAdc_checkFin$saadc segment code 2h #0h
+	$$saAdc_execute$saadc segment code 2h #0h
+	$$saAdc_getResult$saadc segment code 2h #0h
+	$$saAdc_init$saadc segment code 2h #0h
+	$$saAdc_short_CH0CH1_off$saadc segment code 2h #0h
+	$$saAdc_short_CH0CH1_on$saadc segment code 2h #0h
+CVERSION 3.31.4
+CGLOBAL 01H 03H 0000H "saAdc_checkFin" 08H 02H 04H 00H 80H 00H 00H 00H 01H
+CGLOBAL 01H 03H 0000H "saAdc_short_CH0CH1_off" 08H 02H 02H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "saAdc_init" 08H 02H 00H 00H 80H 00H 00H 00H 01H
+CGLOBAL 01H 03H 0000H "saAdc_short_CH0CH1_on" 08H 02H 01H 00H 80H 00H 00H 00H 07H
+CGLOBAL 01H 03H 0000H "saAdc_execute" 08H 02H 03H 00H 80H 00H 00H 00H 01H
+CGLOBAL 01H 03H 0000H "saAdc_getResult" 08H 02H 05H 00H 80H 02H 00H 00H 01H
+CSTRUCTTAG 0000H 0000H 0000H 0008H 00000001H "_Notag"
+CSTRUCTMEM 52H 00000001H 00000000H "b0" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000001H "b1" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000002H "b2" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000003H "b3" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000004H "b4" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000005H "b5" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000006H "b6" 02H 00H 00H
+CSTRUCTMEM 52H 00000001H 00000007H "b7" 02H 00H 00H
+CTYPEDEF 0000H 0000H 43H "_BYTE_FIELD" 04H 00H 05H 00H 00H
+CFILE 0001H 00000023H "main\\mcu.h"
+CFILE 0002H 0000085AH "main\\ML610112.H"
+CFILE 0003H 00000074H "saadc\\saAdc.h"
+CFILE 0000H 00000101H "saadc\\saadc.c"
+
+	rseg $$saAdc_init$saadc
+CFUNCTION 0
+
+_saAdc_init	:
+CBLOCK 0 1 91
+
+;;{
+CLINEA 0000H 0001H 005BH 0001H 0001H
+	mov	er2,	er0
+CBLOCK 0 2 91
+CARGUMENT 46H 0001H 0016H "lp" 02H 00H 00H
+CARGUMENT 46H 0001H 0017H "ck" 02H 00H 00H
+CARGUMENT 46H 0001H 0000H "en" 02H 00H 00H
+CARGUMENT 46H 0001H 0000H "offset" 02H 00H 00H
+CARGUMENT 42H 0001H 0000H "gain" 02H 00H 00H
+CLOCAL 4AH 0001H 0000H 0002H "regTmp" 02H 00H 00H
+
+;;	if( lp > (unsigned char)SAADC_LP_CONTINUE ) {
+CLINEA 0000H 0001H 0060H 0002H 002EH
+	cmp	r0,	#01h
+	ble	_$L1
+CBLOCK 0 3 96
+
+;;		return ( SAADC_R_ERR_LP );
+CLINEA 0000H 0001H 0061H 0003H 001CH
+	mov	er0,	#-2
+CBLOCKEND 0 3 98
+CBLOCKEND 0 2 133
+
+;;}
+CLINEA 0000H 0001H 0085H 0001H 0001H
+	rt
+
+;;	}
+CLINEA 0000H 0000H 0062H 0002H 0002H
+_$L1 :
+
+;;	if( ck > (unsigned char)SAADC_CK_HIGH ) {
+CLINEA 0000H 0001H 0064H 0002H 002AH
+	cmp	r1,	#01h
+	ble	_$L3
+CBLOCK 0 4 100
+
+;;		return ( SAADC_R_ERR_CK );
+CLINEA 0000H 0001H 0065H 0003H 001CH
+	mov	er0,	#-3
+	rt
+CBLOCKEND 0 4 102
+
+;;	}
+CLINEA 0000H 0000H 0066H 0002H 0002H
+_$L3 :
+
+;;	SARUN = 0;			/* Conversion stop. */
+CLINEA 0000H 0001H 0078H 0002H 0024H
+	rb	0f2f1h.0
+
+;;	                                                    ( ck << 1 ) );		/* SACK = [ck] ...HCLK setting. */
+CLINEA 0000H 0001H 007AH 0036H 0067H
+	mov	r0,	r3
+	sll	r0,	#01h
+	or	r0,	r2
+	st	r0,	0f2f0h
+
+;;	return ( SAADC_R_OK );
+CLINEA 0000H 0001H 0084H 0002H 0017H
+	mov	er0,	#0 
+	rt
+CBLOCKEND 0 1 133
+CFUNCTIONEND 0
+
+
+	rseg $$saAdc_short_CH0CH1_on$saadc
+CFUNCTION 1
+
+_saAdc_short_CH0CH1_on	:
+CBLOCK 1 1 143
+
+;;{
+CLINEA 0000H 0001H 008FH 0001H 0001H
+CBLOCK 1 2 143
+CBLOCKEND 1 2 148
+
+;;}
+CLINEA 0000H 0001H 0094H 0001H 0001H
+	rt
+CBLOCKEND 1 1 148
+CFUNCTIONEND 1
+
+
+	rseg $$saAdc_short_CH0CH1_off$saadc
+CFUNCTION 2
+
+_saAdc_short_CH0CH1_off	:
+CBLOCK 2 1 158
+
+;;{
+CLINEA 0000H 0001H 009EH 0001H 0001H
+CBLOCK 2 2 158
+CBLOCKEND 2 2 163
+
+;;}
+CLINEA 0000H 0001H 00A3H 0001H 0001H
+	rt
+CBLOCKEND 2 1 163
+CFUNCTIONEND 2
+
+
+	rseg $$saAdc_execute$saadc
+CFUNCTION 3
+
+_saAdc_execute	:
+CBLOCK 3 1 179
+
+;;{
+CLINEA 0000H 0001H 00B3H 0001H 0001H
+CBLOCK 3 2 179
+CARGUMENT 46H 0001H 0014H "chBit" 02H 00H 00H
+
+;;	if( chBit > (unsigned char)SAADC_CHBIT_CH0_CH1 ) {
+CLINEA 0000H 0001H 00B6H 0002H 0033H
+	cmp	r0,	#03h
+	ble	_$L8
+CBLOCK 3 3 182
+
+;;		return ( SAADC_R_ERR_CH );
+CLINEA 0000H 0001H 00B7H 0003H 001CH
+	mov	er0,	#-1
+CBLOCKEND 3 3 184
+CBLOCKEND 3 2 194
+
+;;}
+CLINEA 0000H 0001H 00C2H 0001H 0001H
+	rt
+
+;;	}
+CLINEA 0000H 0000H 00B8H 0002H 0002H
+_$L8 :
+
+;;	SARUN = 0;	/* Conversion stop. */
+CLINEA 0000H 0001H 00BAH 0002H 0022H
+	rb	0f2f1h.0
+
+;;	SADMOD0 = chBit;							/* SACH0-1 = [chBit] ...Channel setting. */
+CLINEA 0000H 0001H 00BBH 0002H 0043H
+	st	r0,	0f2f2h
+
+;;	QSAD = 0;			/* QSAD = 0 ...clear SAADC-IRQ. */
+CLINEA 0000H 0001H 00BCH 0002H 002FH
+	rb	0f01ah.2
+
+;;	if( chBit != (unsigned char)SAADC_CHBIT_OFF ) {
+CLINEA 0000H 0001H 00BEH 0002H 0030H
+	cmp	r0,	#00h
+	beq	_$L10
+CBLOCK 3 4 190
+
+;;		SARUN = 1;	/* Conversion start. */
+CLINEA 0000H 0001H 00BFH 0003H 0024H
+	sb	0f2f1h.0
+CBLOCKEND 3 4 192
+
+;;	}
+CLINEA 0000H 0000H 00C0H 0002H 0002H
+_$L10 :
+
+;;	return ( SAADC_R_OK );
+CLINEA 0000H 0001H 00C1H 0002H 0017H
+	mov	er0,	#0 
+	rt
+CBLOCKEND 3 1 194
+CFUNCTIONEND 3
+
+
+	rseg $$saAdc_checkFin$saadc
+CFUNCTION 4
+
+_saAdc_checkFin	:
+CBLOCK 4 1 206
+
+;;{
+CLINEA 0000H 0001H 00CEH 0001H 0001H
+CBLOCK 4 2 206
+CLOCAL 46H 0001H 0014H 0002H "reg" 02H 00H 00H
+
+;;	reg = IRQ2;
+CLINEA 0000H 0001H 00D1H 0002H 000CH
+	l	r0,	0f01ah
+
+;;	if( ( reg & (unsigned char)IRQ2_QSAD ) != 0 ) {
+CLINEA 0000H 0001H 00D3H 0002H 0030H
+	tb	r0.2
+	beq	_$L13
+CBLOCK 4 3 211
+
+;;		return ( SAADC_R_FIN );
+CLINEA 0000H 0001H 00D4H 0003H 0019H
+	mov	er0,	#1 
+CBLOCKEND 4 3 213
+CBLOCKEND 4 2 215
+
+;;}
+CLINEA 0000H 0001H 00D7H 0001H 0001H
+	rt
+
+;;	}
+CLINEA 0000H 0000H 00D5H 0002H 0002H
+_$L13 :
+
+;;	return ( SAADC_R_NOT_FIN );
+CLINEA 0000H 0001H 00D6H 0002H 001CH
+	mov	er0,	#0 
+	rt
+CBLOCKEND 4 1 215
+CFUNCTIONEND 4
+
+
+	rseg $$saAdc_getResult$saadc
+CFUNCTION 5
+
+_saAdc_getResult	:
+CBLOCK 5 1 228
+
+;;{
+CLINEA 0000H 0001H 00E4H 0001H 0001H
+	push	er10
+	mov	er10,	er2
+CBLOCK 5 2 228
+CARGUMENT 46H 0001H 0014H "chNo" 02H 00H 00H
+CARGUMENT 46H 0002H 0029H "result" 04H 03H 00H 00H 01H
+CLOCAL 46H 0001H 0015H 0002H "rl" 02H 00H 00H
+CLOCAL 46H 0001H 0016H 0002H "rh" 02H 00H 00H
+
+;;	if( chNo > (unsigned char)1u ) {
+CLINEA 0000H 0001H 00E9H 0002H 0021H
+	cmp	r0,	#01h
+	ble	_$L16
+CBLOCK 5 3 233
+
+;;		return ( SAADC_R_ERR_CH );
+CLINEA 0000H 0001H 00EAH 0003H 001CH
+	mov	er0,	#-1
+CBLOCKEND 5 3 235
+CBLOCKEND 5 2 249
+
+;;}
+CLINEA 0000H 0001H 00F9H 0001H 0001H
+_$L15 :
+	pop	er10
+	rt
+
+;;	}
+CLINEA 0000H 0000H 00EBH 0002H 0002H
+_$L16 :
+
+;;	if( chNo == (unsigned char)0u ) {
+CLINEA 0000H 0001H 00EDH 0002H 0022H
+	cmp	r0,	#00h
+	bne	_$L18
+CBLOCK 5 4 237
+
+;;		rl = SADR0L;
+CLINEA 0000H 0001H 00EEH 0003H 000EH
+	l	r0,	0f2d0h
+	mov	r1,	r0
+
+;;		rh = SADR0H;
+CLINEA 0000H 0001H 00EFH 0003H 000EH
+	l	r0,	0f2d1h
+CBLOCKEND 5 4 240
+
+;;	else {
+CLINEA 0000H 0001H 00F1H 0002H 0007H
+	bal	_$L20
+_$L18 :
+CBLOCK 5 5 241
+
+;;		rl = SADR1L;
+CLINEA 0000H 0001H 00F2H 0003H 000EH
+	l	r0,	0f2d2h
+	mov	r1,	r0
+
+;;		rh = SADR1H;
+CLINEA 0000H 0001H 00F3H 0003H 000EH
+	l	r0,	0f2d3h
+CBLOCKEND 5 5 244
+
+;;	}
+CLINEA 0000H 0000H 00F4H 0002H 0002H
+_$L20 :
+	mov	r2,	r0
+
+;;	                            ( ( rh & (unsigned char)SADRH_SAR ) << 4 ) );
+CLINEA 0000H 0001H 00F7H 001EH 004AH
+	mov	r0,	r1
+	mov	r1,	#00h
+	and	r0,	#0f0h
+	and	r1,	#00h
+	srlc	r0,	#04h
+	sra	r1,	#04h
+	mov	r3,	#00h
+	and	r3,	#00h
+	sllc	r3,	#04h
+	sll	r2,	#04h
+	or	r2,	r0
+	or	r3,	r1
+	st	er2,	[er10]
+
+;;	return ( SAADC_R_OK );
+CLINEA 0000H 0001H 00F8H 0002H 0017H
+	mov	er0,	#0 
+	bal	_$L15
+CBLOCKEND 5 1 249
+CFUNCTIONEND 5
+
+	public _saAdc_checkFin
+	public _saAdc_short_CH0CH1_off
+	public _saAdc_init
+	public _saAdc_short_CH0CH1_on
+	public _saAdc_execute
+	public _saAdc_getResult
+	extrn code near : _main
+
+	end
