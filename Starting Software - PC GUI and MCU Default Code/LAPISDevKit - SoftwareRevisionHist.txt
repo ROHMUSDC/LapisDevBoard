@@ -1,0 +1,11 @@
+Revision Hist
+
+REV00 - This is the first revision of all LaPis Firmware and PC Application
+--GPIO implemented
+--I2C implemented
+--Operates for both Q111 and Q112
+
+REV01
+-Updated Documentation and cleaned up main.c comments
+-Cleaned up bugs and added checks when connecting to 111 or 112 device
+-Added Firmware Revision Number to starting Sequence acknowledge
